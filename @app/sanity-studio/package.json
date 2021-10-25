@@ -1,0 +1,28 @@
+{
+  "name": "@tycholiz/sanity-studio",
+  "version": "0.1.0",
+  "private": true,
+  "main": "package.json",
+  "author": "Kyle Tycholiz <tycholiz22@hotmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "sanity start",
+    "build": "sanity build"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.21.6",
+    "@sanity/core": "^2.21.6",
+    "@sanity/default-layout": "^2.21.6",
+    "@sanity/default-login": "^2.21.6",
+    "@sanity/desk-tool": "^2.21.6",
+    "@sanity/vision": "^2.21.6",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "styled-components": "^5.2.0"
+  },
+  "devDependencies": {}
+}

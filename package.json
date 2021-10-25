@@ -1,0 +1,27 @@
+{
+  "name": "tycholiz-com",
+  "private": true,
+  "version": "1.0.0",
+  "main": "web/index.js",
+  "author": "Kyle Tycholiz <39745457+Tycholiz@users.noreply.github.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "concurrently --kill-others-on-fail -c cyan,magenta --names Sanity,Nextjs \"yarn sanity dev\"  \"yarn web dev\"",
+    "build": "next build",
+    "start": "next start",
+    "--shortcuts to run commands in workspaces--": "",
+    "sanity": "yarn workspace @tycholiz/sanity-studio",
+    "web": "yarn workspace @tycholiz/webapp"
+  },
+  "dependencies": {
+    "concurrently": "^6.3.0",
+    "next": "^11.1.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "workspaces": {
+    "packages": [
+      "@app/*"
+    ]
+  }
+}
