@@ -3,3 +3,7 @@
 2. Run `yarn dev` from the root to start:
     - Sanity headless CMS
     - Next app
+
+### Infrastructure
+The folder structure of this project is laid out using yarn workspaces. All
+modules are found in the `@app/` directory.
