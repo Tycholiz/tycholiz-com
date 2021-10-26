@@ -1,4 +1,5 @@
 import groq from 'groq'
+import BlockContent from '@sanity/block-content-to-react'
 import imageUrlBuilder from '@sanity/image-url'
 import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import client from '../../sanity-client'
@@ -20,8 +21,8 @@ const Post = ({
   name = 'Missing name',
   categories,
   authorImage,
+  body = [],
 }: Props) => {
-  console.log(authorImage);
   
   return (
     <article>
@@ -42,6 +43,11 @@ const Post = ({
           />
         </div>
       )}
+      <BlockContent
+        blocks={body}
+        imageOptions={{ w: 320, h: 240, fit: 'max' }}
+        {...client.config()}
+      />
     </article>
   )
 }
@@ -51,7 +57,8 @@ const query = groq`
   title,
   "name": author->name,
   "categories": categories[]->title,
-  "authorImage": author->image
+  "authorImage": author->image,
+  body
 }`
 
 Post.getInitialProps = async function(context: any) {
