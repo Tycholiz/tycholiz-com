@@ -14,8 +14,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "outDir": "./lib"
+    "outDir": "./lib",
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "files": [
+    "@types/block-content-to-react.d.ts"
+  ],
 }
