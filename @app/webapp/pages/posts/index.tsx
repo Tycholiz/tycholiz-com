@@ -1,8 +1,8 @@
-import Link from 'next/link'
 import groq from 'groq'
 import client from '../../sanity-client'
+import { PostList } from '../../components/posts'
 
-type Props = {
+export type Props = {
   posts: {
     _id: string
     title: string
@@ -11,24 +11,9 @@ type Props = {
   }[]
 }
 
-const BrowsePosts = ({
-  posts = [],
-}: Props) => {
+const BrowsePostsPage = (props: Props) => {
   return (
-    <div>
-      <h1>Thoughts...</h1>
-      {posts.map(
-        ({ _id, title = '', slug = '', _updatedAt = '' }) =>
-          slug && (
-            <li key={_id}>
-              <Link href="/posts/[slug]" as={`/posts/${slug.current}`}>
-                <a>{title}</a>
-              </Link>{' '}
-              ({new Date(_updatedAt).toDateString()})
-            </li>
-          )
-      )}
-    </div>
+    <PostList {...props} />
   )
 }
 
@@ -36,8 +21,8 @@ const query = groq`
   *[_type == "post" && publishedAt < now()]|order(publishedAt desc)
 `
 
-BrowsePosts.getInitialProps = async () => ({
+BrowsePostsPage.getInitialProps = async () => ({
   posts: await client.fetch(query)
 })
 
-export default BrowsePosts
+export default BrowsePostsPage
