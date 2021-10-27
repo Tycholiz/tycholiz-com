@@ -1,6 +1,9 @@
+import Head from 'next/head'
 import groq from 'groq'
 import client from '../../sanity-client'
 import { PostList } from '../../components/posts'
+import { DefaultTemplate } from '../../components/templates'
+import { Header } from '../../components/common'
 
 export type Props = {
   posts: {
@@ -13,7 +16,19 @@ export type Props = {
 
 const BrowsePostsPage = (props: Props) => {
   return (
-    <PostList {...props} />
+    <>
+      <Head>
+        <title>Kyle Tycholiz</title>
+        <meta name="description" content="Personal website of Kyle Tycholiz" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+
+      <DefaultTemplate
+        header={<Header />}
+      >
+        <PostList {...props} />
+      </DefaultTemplate>
+    </>
   )
 }
 
