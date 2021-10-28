@@ -13,16 +13,25 @@ const Wrapper = styled.div`
 `
 
 const InnerWrapper = styled.div`
-  display: flex;
-  align-items: center;
   width: 100%;
+  background-color: tomato;
+`
+
+const Heading = styled.h1`
+`
+
+const NavList = styled.ul`
+  display: flex;
+  justify-content: space-around;
+  text-decoration: none;
 `
 
 export const Header = () => {
   return (
     <Wrapper>
       <InnerWrapper>
-        <ul>
+        <Heading>Kyle Tycholiz</Heading>
+        <NavList>
             <li>
               <Link href="/" as={`/`}>
                 <a>Home</a>
@@ -33,10 +42,14 @@ export const Header = () => {
                 <a>Thoughts</a>
               </Link>
             </li>
-            <li>blog</li>
+            <li>
+              <Link href="/" as={`/`}>
+                <a>Knowledge base</a>
+              </Link>
+            </li>
             <li>podcast</li>
             <li>what I'm working on</li>
-        </ul>
+        </NavList>
       </InnerWrapper>
     </Wrapper>
   )
