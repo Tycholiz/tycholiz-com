@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { HamburgerIcon } from '.'
+import { MenuButton } from '.'
 import { theme } from '../../styles/theme'
-import { useWindowSize, Size } from '../../hooks/useWindowSize'
 
 
 // this was formerly a Block component (from arc-react)
@@ -36,9 +35,7 @@ export const Header = () => {
     <Wrapper>
       <InnerWrapper>
         <Heading>Kyle Tycholiz</Heading>
-        {size.width < theme.mobile ?
-          <HamburgerIcon />
-          :
+          <MenuButton />
           <NavList>
               <li>
                 <Link href="/" as={`/`}>

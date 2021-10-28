@@ -30,7 +30,7 @@ const StyledBurger = styled.button`
   }
 `;
 
-export const HamburgerIcon = () => {
+export const MenuButton = () => {
     return (
       <StyledBurger>
         <div />
