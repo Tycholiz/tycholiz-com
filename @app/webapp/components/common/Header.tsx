@@ -1,5 +1,8 @@
 import Link from 'next/link'
 import styled from 'styled-components'
+import { HamburgerIcon } from '.'
+import { theme } from '../../styles/theme'
+import { useWindowSize, Size } from '../../hooks/useWindowSize'
 
 
 // this was formerly a Block component (from arc-react)
@@ -27,29 +30,35 @@ const NavList = styled.ul`
 `
 
 export const Header = () => {
+  const size: Size = useWindowSize();
+
   return (
     <Wrapper>
       <InnerWrapper>
         <Heading>Kyle Tycholiz</Heading>
-        <NavList>
-            <li>
-              <Link href="/" as={`/`}>
-                <a>Home</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/posts" as={`/posts`}>
-                <a>Thoughts</a>
-              </Link>
-            </li>
-            <li>
-              <Link href="/" as={`/`}>
-                <a>Knowledge base</a>
-              </Link>
-            </li>
-            <li>podcast</li>
-            <li>what I'm working on</li>
-        </NavList>
+        {size.width < theme.mobile ?
+          <HamburgerIcon />
+          :
+          <NavList>
+              <li>
+                <Link href="/" as={`/`}>
+                  <a>Home</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/posts" as={`/posts`}>
+                  <a>Thoughts</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/" as={`/`}>
+                  <a>Knowledge base</a>
+                </Link>
+              </li>
+              <li>podcast</li>
+              <li>what I'm working on</li>
+          </NavList>
+        }
       </InnerWrapper>
     </Wrapper>
   )
