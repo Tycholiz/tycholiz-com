@@ -24,38 +24,52 @@ const Heading = styled.h1`
 
 const NavList = styled.ul`
   display: flex;
-  justify-content: space-around;
-  text-decoration: none;
+  justify-content: flex-end;
+  list-style-type: none;
+
+  & li {
+    padding-left: 1em;
+  }
+
+  @media screen and (max-width: ${theme.mobile}) {
+    display: none;
+  }
+`
+
+const HamburgerWrapper = styled.div`
+  @media screen and (min-width: ${theme.mobile}) {
+    display: none;
+  }
 `
 
 export const Header = () => {
-  const size: Size = useWindowSize();
 
   return (
     <Wrapper>
       <InnerWrapper>
         <Heading>Kyle Tycholiz</Heading>
+        <HamburgerWrapper>
           <MenuButton />
-          <NavList>
-              <li>
-                <Link href="/" as={`/`}>
-                  <a>Home</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/posts" as={`/posts`}>
-                  <a>Thoughts</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/" as={`/`}>
-                  <a>Knowledge base</a>
-                </Link>
-              </li>
-              <li>podcast</li>
-              <li>what I'm working on</li>
-          </NavList>
-        }
+        </HamburgerWrapper>
+        <NavList>
+            <li>
+              <Link href="/" as={`/`}>
+                <a>Home</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/posts" as={`/posts`}>
+                <a>Thoughts</a>
+              </Link>
+            </li>
+            <li>
+              <Link href="/" as={`/`}>
+                <a>Knowledge base</a>
+              </Link>
+            </li>
+            <li>podcast</li>
+            <li>what I'm working on</li>
+        </NavList>
       </InnerWrapper>
     </Wrapper>
   )
