@@ -1,11 +1,9 @@
 import { FunctionComponent } from 'react'
-import { NextFunctionComponent } from 'next'
 import styled from 'styled-components'
 
 type Props = {
-  header: NextFunctionComponent
-  // footer: NextFunctionComponent
-  children: NextFunctionComponent
+  header: FunctionComponent
+  children: FunctionComponent
 }
 
 const Wrapper = styled.div`
@@ -39,14 +37,12 @@ const Footer = styled.footer`
 export const DefaultTemplate = ({
   header, 
   children, 
-  footer,
   ...props
 }: Props) => {
   return (
     <Wrapper {...props}>
-      <Header>{header}</Header>
+      {header}
       <Content>{children}</Content>
-      <Footer>{footer}</Footer>
     </Wrapper>
   )
 }
