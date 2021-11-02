@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Link from 'next/link'
+import { theme } from '../../styles/theme'
 import { List } from '.'
 
 
@@ -12,7 +13,16 @@ const Wrapper = styled.nav`
   justify-content: center;
   text-align: left;
   height: 100vh;
+  width: 85%;
   background-color: pink;
+
+  @media (min-width: ${theme.mobileSmall}) {
+    width: 70%;
+  }
+
+  @media (min-width: ${theme.mobileMedium}) {
+    width: 50%;
+  }
 `
 
 export const DrawerMenu = () => {
