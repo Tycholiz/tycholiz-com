@@ -22,7 +22,7 @@ const NavList = styled(List)`
     padding-left: 1em;
   }
 
-  @media screen and (max-width: ${theme.mobile}) {
+  @media screen and (max-width: ${theme.mobileLarge}) {
     display: none;
   }
 `

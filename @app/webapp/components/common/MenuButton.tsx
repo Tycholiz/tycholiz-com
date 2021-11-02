@@ -34,7 +34,7 @@ const StyledBurger = styled.button`
   }
 
   /* Ideally, this media query should be in the parent, as the button itself shouldn't decide when it renders */
-  @media screen and (min-width: ${theme.mobile}) {
+  @media screen and (min-width: ${theme.mobileLarge}) {
     display: none;
   }
   
