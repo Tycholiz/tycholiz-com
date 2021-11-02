@@ -56,21 +56,17 @@ export const DrawerMenu = () => {
     return (
       <Wrapper>
         <NavList>
-          <li>
+          <List>
             <Link href="/" as={`/`}>
               <a>Home</a>
             </Link>
-          </li>
-          <li>
             <Link href="/posts" as={`/posts`}>
               <a>Thoughts</a>
             </Link>
-          </li>
-          <li>
             <Link href="/" as={`/`}>
               <a>Knowledge base</a>
             </Link>
-          </li>
+          </List>
         </NavList>
       </Wrapper>
     )
