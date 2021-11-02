@@ -1,4 +1,5 @@
 export { Paragraph } from './Paragraph'
+export { Heading } from './Heading'
 export { Header } from './Header'
 export { MenuButton } from './MenuButton'
 export { DrawerMenu } from './DrawerMenu'
