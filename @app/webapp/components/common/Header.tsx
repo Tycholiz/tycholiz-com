@@ -1,30 +1,22 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { MenuButton } from '.'
-import { DrawerMenu } from '.'
+import { MenuButton, DrawerMenu, List } from '.'
 import { theme } from '../../styles/theme'
 
-
-// this was formerly a Block component (from arc-react)
-const Wrapper = styled.header`
-  position: fixed;
-  top: 0;
-  width: 100%;
-`
 
 const InnerWrapper = styled.nav`
   display: flex;
   justify-content: space-between;
-  width: 100%;
-  background-color: tomato;
+  align-items: center;
+  padding: 0.4em 2em;
 `
 
 const Heading = styled.h1``
 
-const NavList = styled.ul`
+const NavList = styled(List)`
   display: flex;
   justify-content: flex-end;
-  list-style-type: none;
+  background: pink;
 
   & li {
     padding-left: 1em;
@@ -37,10 +29,9 @@ const NavList = styled.ul`
 
 export const Header = () => {
   return (
-    <Wrapper>
       <InnerWrapper>
         <Heading>Kyle Tycholiz</Heading>
-        {/* <NavList>
+        <NavList>
           <li>
             <Link href="/" as={`/`}>
               <a>Home</a>
@@ -58,10 +49,9 @@ export const Header = () => {
           </li>
           <li>podcast</li>
           <li>what I'm working on</li>
-        </NavList> */}
-        {/* <MenuButton /> */}
-        {/* <DrawerMenu /> */}
+        </NavList>
+        <MenuButton />
+        <DrawerMenu />
       </InnerWrapper>
-    </Wrapper>
   )
 }

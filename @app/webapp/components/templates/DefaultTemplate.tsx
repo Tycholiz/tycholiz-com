@@ -9,20 +9,11 @@ type Props = {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding-top: 3.75rem;
   min-height: 100vh;
   box-sizing: border-box;
-  @media screen and (max-width: 640px) {
-    padding-top: 3.25rem;
-  }
 `
 
-const Header = styled.header`
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 999;
-`
+const Header = styled.header``
 
 const Content = styled.section`
   width: 100%;
@@ -41,7 +32,7 @@ export const DefaultTemplate = ({
 }: Props) => {
   return (
     <Wrapper {...props}>
-      {header}
+      <Header>{header}</Header>
       <Content>{children}</Content>
     </Wrapper>
   )

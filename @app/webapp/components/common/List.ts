@@ -25,5 +25,6 @@ export const List = ({ ordered, children, isStyled, ...props }: Props) => {
 }
 
 List.defaultProps = {
-    ordered: true
+    ordered: true,
+    isStyled: false,
 }

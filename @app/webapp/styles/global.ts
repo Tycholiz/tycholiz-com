@@ -10,10 +10,9 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     display: flex;
-    justify-content: center;
     align-items: center;
     background: ${({ theme }) => theme.primaryLight};
-    color: #EFFFFA;
+    color: #3C3C3C;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     height: 100vh;
     text-rendering: optimizeLegibility;
