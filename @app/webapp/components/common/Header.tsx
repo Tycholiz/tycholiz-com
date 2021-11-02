@@ -1,3 +1,4 @@
+import { useState, useRef } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
 import { MenuButton, DrawerMenu, List } from '.'
@@ -5,6 +6,7 @@ import { theme } from '../../styles/theme'
 
 
 const InnerWrapper = styled.nav`
+  /* position: relative; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -28,6 +30,8 @@ const NavList = styled(List)`
 `
 
 export const Header = () => {
+  const [isOpen, setOpen] = useState(false)
+
   return (
       <InnerWrapper>
         <Heading>Kyle Tycholiz</Heading>
@@ -50,8 +54,8 @@ export const Header = () => {
           <li>podcast</li>
           <li>what I'm working on</li>
         </NavList>
-        <MenuButton />
-        <DrawerMenu />
+        <MenuButton isOpen={isOpen} setOpen={setOpen} />
+        {/* <DrawerMenu isOpen={isOpen} setOpen={setOpen} /> */}
       </InnerWrapper>
   )
 }

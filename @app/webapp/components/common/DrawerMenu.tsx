@@ -4,6 +4,10 @@ import { theme } from '../../styles/theme'
 import { List } from '.'
 
 
+type Props = {
+  isOpen: boolean,
+}
+
 const Wrapper = styled.nav`
   position: absolute;
   top: 0;
@@ -14,6 +18,7 @@ const Wrapper = styled.nav`
   text-align: left;
   height: 100vh;
   width: 85%;
+  transform: ${({ isOpen }: Props) => isOpen ? 'translateX(0)' : 'translateX(100%)'};
   background-color: pink;
 
   @media (min-width: ${theme.mobileSmall}) {

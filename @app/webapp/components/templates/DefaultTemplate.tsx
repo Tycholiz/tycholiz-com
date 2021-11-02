@@ -1,9 +1,9 @@
-import { FunctionComponent } from 'react'
 import styled from 'styled-components'
+import { theme } from '../../styles/theme'
 
 type Props = {
-  header: FunctionComponent
-  children: FunctionComponent
+  header: JSX.Element
+  children: JSX.Element
 }
 
 const Wrapper = styled.div`
@@ -18,11 +18,13 @@ const Header = styled.header``
 const Content = styled.section`
   width: 100%;
   box-sizing: border-box;
-  margin: 2rem auto;
-`
-
-const Footer = styled.footer`
-  margin-top: auto;
+  margin: 1rem;
+  @media screen and (min-width: ${theme.mobileSmall}) {
+    margin: 2rem;
+  }
+  @media screen and (min-width: ${theme.mobileMedium}) {
+    margin: 3rem;
+  }
 `
 
 export const DefaultTemplate = ({
@@ -32,7 +34,7 @@ export const DefaultTemplate = ({
 }: Props) => {
   return (
     <Wrapper {...props}>
-      <Header>{header}</Header>
+      {/* <Header>{header}</Header> */}
       <Content>{children}</Content>
     </Wrapper>
   )
