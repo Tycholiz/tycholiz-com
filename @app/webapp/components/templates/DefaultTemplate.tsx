@@ -1,5 +1,4 @@
 import styled from 'styled-components'
-import { theme } from '../../styles/theme'
 
 type Props = {
   header: JSX.Element
@@ -18,13 +17,7 @@ const Header = styled.header``
 const Content = styled.section`
   width: 100%;
   box-sizing: border-box;
-  margin: 1rem;
-  @media screen and (min-width: ${theme.mobileSmall}) {
-    margin: 2rem;
-  }
-  @media screen and (min-width: ${theme.mobileMedium}) {
-    margin: 3rem;
-  }
+  padding: 0.4em 2em;
 `
 
 export const DefaultTemplate = ({
@@ -34,7 +27,7 @@ export const DefaultTemplate = ({
 }: Props) => {
   return (
     <Wrapper {...props}>
-      {/* <Header>{header}</Header> */}
+      <Header>{header}</Header>
       <Content>{children}</Content>
     </Wrapper>
   )

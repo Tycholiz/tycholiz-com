@@ -5,7 +5,7 @@ import { Paragraph, Heading } from '../common'
 export const Home = () => {
   return (
       <>
-        {/* <Heading>Me in 10 seconds</Heading>
+        <Heading>Me in 10 seconds</Heading>
         <Paragraph>
           I am a musician, programmer, and lifelong learner from Canada.
         </Paragraph>
@@ -30,31 +30,7 @@ export const Home = () => {
           with you! The best way to reach me is through email.
         </Paragraph>
 
-        <Heading>Latest articles</Heading> */}
-        <p>
-          An obsessive generalist, my interests range from investing, to software
-          development, to math and science, to logic and philosophy. A perpetual student
-          in all of my worthwhile fields (link here), I obsess over gathering information
-          that helps my worldview. See my Dendron second-brain.
-        </p>
-        {/* <p>
-          An obsessive generalist, my interests range from investing, to software
-          development, to math and science, to logic and philosophy. A perpetual student
-          in all of my worthwhile fields (link here), I obsess over gathering information
-          that helps my worldview. See my Dendron second-brain.
-        </p>
-        <p>
-          An obsessive generalist, my interests range from investing, to software
-          development, to math and science, to logic and philosophy. A perpetual student
-          in all of my worthwhile fields (link here), I obsess over gathering information
-          that helps my worldview. See my Dendron second-brain.
-        </p>
-        <p>
-          An obsessive generalist, my interests range from investing, to software
-          development, to math and science, to logic and philosophy. A perpetual student
-          in all of my worthwhile fields (link here), I obsess over gathering information
-          that helps my worldview. See my Dendron second-brain.
-        </p> */}
+        <Heading>Latest articles</Heading>
       </>
   )
 }

@@ -1,61 +1,42 @@
-import { useState, useRef } from 'react'
 import Link from 'next/link'
 import styled from 'styled-components'
-import { MenuButton, DrawerMenu, List } from '.'
+import { List, Heading, HorizontalRule } from '.'
 import { theme } from '../../styles/theme'
 
 
 const InnerWrapper = styled.nav`
-  /* position: relative; */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 0.4em 2em;
 `
 
-const Heading = styled.h1``
-
 const NavList = styled(List)`
   display: flex;
-  justify-content: flex-end;
-  background: pink;
+  padding-left: 0;
 
   & li {
-    padding-left: 1em;
-  }
-
-  @media screen and (max-width: ${theme.mobileLarge}) {
-    display: none;
+    padding-right: 1em;
   }
 `
 
 export const Header = () => {
-  const [isOpen, setOpen] = useState(false)
-
   return (
       <InnerWrapper>
-        <Heading>Kyle Tycholiz</Heading>
+        <Link href="/" as={`/`}>
+          <Heading>Kyle Tycholiz</Heading>
+        </Link>
+        <HorizontalRule />
         <NavList>
           <li>
-            <Link href="/" as={`/`}>
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
             <Link href="/posts" as={`/posts`}>
-              <a>Thoughts</a>
+              <a>THOUGHTS</a>
             </Link>
           </li>
           <li>
             <Link href="/" as={`/`}>
-              <a>Knowledge base</a>
+              <a>SECOND BRAIN</a>
             </Link>
           </li>
-          <li>podcast</li>
-          <li>what I'm working on</li>
+          <li>NOW</li>
         </NavList>
-        <MenuButton isOpen={isOpen} setOpen={setOpen} />
-        {/* <DrawerMenu isOpen={isOpen} setOpen={setOpen} /> */}
       </InnerWrapper>
   )
 }
