@@ -1,5 +1,6 @@
+import { useState } from 'react'
 import { ThemeProvider } from 'styled-components'
-import { theme } from '../styles/theme'
+import { lightTheme, darkTheme } from '../styles/theme'
 import { GlobalStyles } from '../styles/global'
 import type { AppProps } from 'next/app'
 
@@ -9,9 +10,17 @@ import type { AppProps } from 'next/app'
   by the page.
 */
 function MyApp({ Component, pageProps }: AppProps) {
+  const [isDarkMode, setDarkMode] = useState(false) 
+
+  const toggleTheme = () => {
+    isDarkMode === false ? setDarkMode(true) : setDarkMode(false)
+  }
+  const theme = isDarkMode ? darkTheme : lightTheme
+  
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
+      <button onClick={toggleTheme}>Switch Theme</button>
       <Component {...pageProps} />
     </ThemeProvider>
   )

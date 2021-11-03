@@ -25,6 +25,7 @@ export const DefaultTemplate = ({
   children, 
   ...props
 }: Props) => {
+  
   return (
     <Wrapper {...props}>
       <Header>{header}</Header>

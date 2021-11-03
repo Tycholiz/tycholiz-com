@@ -1,6 +1,5 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
-import { theme } from '../../styles/theme'
 
 type Props = {
   ordered: boolean,
@@ -9,11 +8,11 @@ type Props = {
 }
 
 const styles = css`
-  font-family: ${theme.fontParagraph};
+  font-family: ${({ theme }) => theme.font.paragraph};
   margin: 1rem 0;
   padding-left: 1.6rem;
   line-height: 1.7rem;
-  color: ${theme.primaryDark};
+  color: ${({ theme }) => theme.color.grayscale[0]};
   list-style-type: ${({ isStyled }: Props) => isStyled ? 'disc' : 'none'};
 `
 
@@ -26,5 +25,5 @@ export const List = ({ ordered, children, isStyled, ...props }: Props) => {
 
 List.defaultProps = {
     ordered: false,
-    isStyled: false,
+    isStyled: true,
 }

@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { List, Heading, HorizontalRule } from '.'
-import { theme } from '../../styles/theme'
 
 
 const InnerWrapper = styled.nav`
