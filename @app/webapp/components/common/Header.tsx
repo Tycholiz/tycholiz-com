@@ -30,7 +30,7 @@ export const Header = () => {
             </Link>
           </li>
           <li>
-            <Link href="/" as={`/`}>
+            <Link href="https://tycholiz.github.io/Digital-Garden/" as={`https://tycholiz.github.io/Digital-Garden/`}>
               <a>SECOND BRAIN</a>
             </Link>
           </li>
