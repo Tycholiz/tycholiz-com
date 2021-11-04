@@ -10,6 +10,8 @@ export const GlobalStyles = createGlobalStyle`
   }
   body {
     height: 100vh;
+    max-width: 800px;
+    margin: 0 auto;
     text-rendering: optimizeLegibility;
     background-color: ${({ theme }) => theme.color.background};
   }
