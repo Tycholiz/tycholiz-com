@@ -1,12 +1,21 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import groq from 'groq'
+import client from '../sanity-client'
 import { Home } from '../components/home'
 import { DefaultTemplate } from '../components/templates'
 import { Header } from '../components/common'
 
-const HomePage: NextPage = () => {
+type Props = {
+  posts: {
+    _id: string
+    title: string
+    slug: any
+    _updatedAt: string
+  }[]
+}
+
+const HomePage: NextPage<Props> = (props: Props) => {
   return (
     <>
       <Head>
@@ -19,10 +28,18 @@ const HomePage: NextPage = () => {
         header={<Header />}
         // footer={<Footer />}
       >
-        <Home />
+        <Home {...props} />
       </DefaultTemplate>
     </>
   )
 }
+
+const query = groq`
+  *[_type == "post" && publishedAt < now()][0..5] | order(publishedAt desc)
+`
+
+HomePage.getInitialProps = async () => ({
+  posts: await client.fetch(query)
+})
 
 export default HomePage

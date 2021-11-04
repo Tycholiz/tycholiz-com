@@ -1,8 +1,19 @@
 import styled from 'styled-components'
 import { Paragraph, Heading } from '../common'
+import { PostList } from '../posts/PostList'
 
+type Props = {
+  posts: {
+    _id: string
+    title: string
+    slug: any
+    _updatedAt: string
+  }[]
+}
 
-export const Home = () => {
+const PostWrapper = styled.div``
+
+export const Home: React.FC<Props> = ({ posts }) => {
   return (
       <>
         <Heading>Me in 10 seconds</Heading>
@@ -31,6 +42,10 @@ export const Home = () => {
         </Paragraph>
 
         <Heading>Latest articles</Heading>
+
+        <PostWrapper>
+          <PostList posts={posts} />
+        </PostWrapper>
       </>
   )
 }

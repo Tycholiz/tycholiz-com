@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { List } from '../common/List'
 
 
 type Props = {
@@ -14,8 +15,7 @@ export const PostList = ({
   posts = [],
 }: Props) => {
   return (
-    <div>
-      <h1>Thoughts...</h1>
+    <List>
       {posts.map(
         ({ _id, title = '', slug = '', _updatedAt = '' }) =>
           slug && (
@@ -27,6 +27,6 @@ export const PostList = ({
             </li>
           )
       )}
-    </div>
+    </List>
   )
 }
