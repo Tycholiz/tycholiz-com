@@ -11,12 +11,16 @@ type Props = {
   }[]
 }
 
+const HomeHeading = styled(Heading)`
+  color: ${({ theme }) => theme.color.primary[0]};
+`
+
 const PostWrapper = styled.div``
 
 export const Home: React.FC<Props> = ({ posts }) => {
   return (
       <>
-        <Heading>Me in 10 seconds</Heading>
+        <HomeHeading>Me in 10 seconds</HomeHeading>
         <Paragraph>
           I am a musician, programmer, and lifelong learner from Canada.
         </Paragraph>
@@ -28,10 +32,10 @@ export const Home: React.FC<Props> = ({ posts }) => {
           that helps my worldview. See my Dendron second-brain.
         </Paragraph>
 
-        <Heading>What I'm working on now</Heading>
+        <HomeHeading>What I'm working on now</HomeHeading>
         <Paragraph>See my now page.</Paragraph>
 
-        <Heading>Let's get in touch</Heading>
+        <HomeHeading>Let's get in touch</HomeHeading>
         <Paragraph>
           I love to make connections with people. Each of us is in a position
           to offer something valuable to another. Finding it is the key.
@@ -41,7 +45,7 @@ export const Home: React.FC<Props> = ({ posts }) => {
           with you! The best way to reach me is through email.
         </Paragraph>
 
-        <Heading>Latest articles</Heading>
+        <HomeHeading>Latest articles</HomeHeading>
 
         <PostWrapper>
           <PostList posts={posts} />
