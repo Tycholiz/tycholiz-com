@@ -53,6 +53,10 @@ export default {
       type: 'blockContent',
     },
   ],
+  initialValue: {
+    author: { _ref: 'cd5bdab5-9182-4db6-998b-0b975ef5d8e5' }, /* KyleTycholiz AuthorRef */
+    publishedAt: (new Date()).toISOString(),
+  },
 
   preview: {
     select: {
