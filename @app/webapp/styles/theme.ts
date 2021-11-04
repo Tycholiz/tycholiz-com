@@ -1,4 +1,3 @@
-
 const baseTheme = {
   breakpoint: {
     mobileSmall: '400px',
@@ -7,15 +6,13 @@ const baseTheme = {
   },
   color: {
     primary: [
-      '#1976d2', 
-      '#2196f3', 
-      '#71bcf7', 
-      '#c2e2fb',
+      '#60c17d', 
+      '#5e8d6c', 
     ],
   },
   font: {
-    heading: 'Arial',
-    paragraph: 'Arial',
+    heading: '"Lato", "Helvetica Neue", Helvetica, sans-serif',
+    paragraph: '"Work Sans", sans-serif',
   }
 }
 export const lightTheme = {
@@ -40,7 +37,7 @@ export const darkTheme = {
   ...baseTheme,
   color: {
     ...baseTheme.color,
-    background: '#000000',
+    background: '#061725',
     grayscale: [ 
       '#ffffff',
       '#eeeeee',
