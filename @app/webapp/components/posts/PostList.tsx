@@ -57,7 +57,7 @@ export const PostList = ({
           slug && (
             <li key={_id}>
               <InnerWrapper>
-                <Link href="/posts/[slug]" as={`/posts/${slug.current}`}>
+                <Link href="/posts/[slug]" as={`/posts/${slug.current}`} passHref>
                   <Anchor>
                     <DateLabel>{new Date(_updatedAt).toDateString()}</DateLabel>
                     <Title>{title}</Title>

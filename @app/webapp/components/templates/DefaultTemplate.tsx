@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 type Props = {
   header: JSX.Element
-  children: JSX.Element
+  children: JSX.Element | JSX.Element[]
 }
 
 const Wrapper = styled.div`

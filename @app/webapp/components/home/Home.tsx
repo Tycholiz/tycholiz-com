@@ -6,6 +6,7 @@ type Props = {
   posts: {
     _id: string
     title: string
+    subtitle: string
     slug: any
     _updatedAt: string
   }[]
@@ -32,10 +33,10 @@ export const Home: React.FC<Props> = ({ posts }) => {
           that helps my worldview. See my Dendron second-brain.
         </Paragraph>
 
-        <HomeHeading>What I'm working on now</HomeHeading>
+        <HomeHeading>What I&apos;m working on now</HomeHeading>
         <Paragraph>See my now page.</Paragraph>
 
-        <HomeHeading>Let's get in touch</HomeHeading>
+        <HomeHeading>Let&apos;s get in touch</HomeHeading>
         <Paragraph>
           I love to make connections with people. Each of us is in a position
           to offer something valuable to another. Finding it is the key.
