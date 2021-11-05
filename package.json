@@ -7,8 +7,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "concurrently --kill-others-on-fail -c cyan,magenta --names Sanity,Nextjs \"yarn sanity dev\"  \"yarn web dev\"",
-    "build": "next build",
-    "start": "next start",
+    "build": "yarn web build",
+    "start": "yarn web start",
     "--shortcuts to run commands in workspaces--": "",
     "sanity": "yarn workspace @tycholiz/sanity-studio",
     "web": "yarn workspace @tycholiz/webapp"
