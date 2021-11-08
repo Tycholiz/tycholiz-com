@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { List, Heading, HorizontalRule, Anchor } from '.'
+import { List, Heading, HorizontalRule } from '.'
 
 
 const InnerWrapper = styled.nav`
@@ -10,12 +10,13 @@ const InnerWrapper = styled.nav`
 const Bullet = styled.span`
   padding-left: 0.5em;
   padding-right: 0.5em;
-  color: ${({ theme }) => theme.color.primary[1]};
+  color: ${({ theme }) => theme.color.grayscale[2]};
 `
 
 const NavList = styled(List)`
   display: flex;
   padding-left: 0;
+  margin-bottom: 0;
 
   & a {
     text-decoration: none;
@@ -23,18 +24,20 @@ const NavList = styled(List)`
   }
 `
 
-const NavListItem = styled.a`
-  color: ${({ theme }) => theme.color.primary[0]};
-`
-
 export const Header = () => {
   return (
       <InnerWrapper>
-        <Link href="/" as={`/`}>
+        <Link href="/" as={`/`} passHref>
           <Heading>Kyle Tycholiz</Heading>
         </Link>
         <HorizontalRule />
         <NavList>
+          <li>
+            <Link href="/" as={`/`}>
+              <a>home</a>
+            </Link>
+          </li>
+          <Bullet>&bull;</Bullet>
           <li>
             <Link href="/posts" as={`/posts`}>
               <a>thoughts</a>
@@ -42,15 +45,13 @@ export const Header = () => {
           </li>
           <Bullet>&bull;</Bullet>
           <li>
-            <Link href="https://tycholiz.github.io/Digital-Garden/" as={`https://tycholiz.github.io/Digital-Garden/`}>
-              <a>second brain</a>
+            <Link href="/now" as={`/now`}>
+              <a>now</a>
             </Link>
           </li>
           <Bullet>&bull;</Bullet>
           <li>
-            <Link href="https://tycholiz.github.io/Digital-Garden/" as={`https://tycholiz.github.io/Digital-Garden/`}>
-              <a>now</a>
-            </Link>
+            <a href="https://tycholiz.github.io/Digital-Garden/" target="_blank" rel="noreferrer">second brain</a>
           </li>
         </NavList>
       </InnerWrapper>

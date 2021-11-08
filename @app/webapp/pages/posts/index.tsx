@@ -3,7 +3,7 @@ import groq from 'groq'
 import client from '../../sanity-client'
 import { PostList } from '../../components/posts'
 import { DefaultTemplate } from '../../components/templates'
-import { Header } from '../../components/common'
+import { Header, Heading } from '../../components/common'
 
 export type Props = {
   posts: {
@@ -27,6 +27,7 @@ const BrowsePostsPage = (props: Props) => {
       <DefaultTemplate
         header={<Header />}
       >
+        <Heading>Thoughts on...</Heading>
         <PostList {...props} />
       </DefaultTemplate>
     </>
