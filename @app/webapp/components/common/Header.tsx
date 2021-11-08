@@ -7,14 +7,10 @@ const InnerWrapper = styled.nav`
   padding: 0.4em 2em;
 `
 
-const Bullet = styled.span`
-  padding-left: 0.5em;
-  padding-right: 0.5em;
-  color: ${({ theme }) => theme.color.grayscale[2]};
-`
-
-const NavList = styled(List)`
+const NavList = styled.ul`
   display: flex;
+  flex-wrap: wrap;
+  list-style: none;
   padding-left: 0;
   margin-bottom: 0;
 
@@ -22,6 +18,12 @@ const NavList = styled(List)`
     text-decoration: none;
     color: ${({ theme }) => theme.color.primary[0]};
   }
+`
+
+const Bullet = styled.span`
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  color: ${({ theme }) => theme.color.grayscale[2]};
 `
 
 export const Header = () => {
