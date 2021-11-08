@@ -1,10 +1,20 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { List, Heading, HorizontalRule } from '.'
+import { Heading, HorizontalRule } from '.'
+
+type Props = {
+  toggleDarkMode: any
+}
 
 
 const InnerWrapper = styled.nav`
   padding: 0.4em 2em;
+`
+
+const TopLine = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `
 
 const NavList = styled.ul`
@@ -26,12 +36,15 @@ const Bullet = styled.span`
   color: ${({ theme }) => theme.color.grayscale[2]};
 `
 
-export const Header = () => {
+export const Header = (props: Props) => {
   return (
       <InnerWrapper>
-        <Link href="/" as={`/`} passHref>
-          <Heading>Kyle Tycholiz</Heading>
-        </Link>
+        <TopLine>
+          <Link href="/" as={`/`} passHref>
+            <Heading>Kyle Tycholiz</Heading>
+          </Link>
+          <button onClick={props.toggleDarkMode}>Tog</button>
+        </TopLine>
         <HorizontalRule />
         <NavList>
           <li>

@@ -14,9 +14,11 @@ type Props = {
     slug: any
     _updatedAt: string
   }[]
+  toggleDarkMode: any
 }
 
 const HomePage: NextPage<Props> = (props: Props) => {
+  
   return (
     <>
       <Head>
@@ -26,7 +28,7 @@ const HomePage: NextPage<Props> = (props: Props) => {
       </Head>
 
       <DefaultTemplate
-        header={<Header />}
+        header={<Header toggleDarkMode={props.toggleDarkMode} />}
         // footer={<Footer />}
       >
         <Home {...props} />

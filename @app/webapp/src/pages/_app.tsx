@@ -12,7 +12,7 @@ import type { AppProps } from 'next/app'
 function MyApp({ Component, pageProps }: AppProps) {
   const [isDarkMode, setDarkMode] = useState(false) 
 
-  const toggleTheme = () => {
+  const toggleDarkMode = () => {
     isDarkMode === false ? setDarkMode(true) : setDarkMode(false)
   }
   const theme = isDarkMode ? darkTheme : lightTheme
@@ -20,8 +20,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <button onClick={toggleTheme}>Switch Theme</button>
-      <Component {...pageProps} />
+      <button onClick={toggleDarkMode}>Switch Theme</button>
+      <Component {...pageProps} toggleDarkMode={toggleDarkMode} />
     </ThemeProvider>
   )
 }
