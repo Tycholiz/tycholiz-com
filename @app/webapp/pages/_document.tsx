@@ -1,11 +1,11 @@
-import Document from 'next/document'
+import Document, { DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 /*
   The purpose of this file is to enable Styled Components to work in Next.js
 */
 export default class MyDocument extends Document {
-  static async getInitialProps(ctx: any) {
+  static async getInitialProps(ctx: DocumentContext) {
     const sheet = new ServerStyleSheet()
     const originalRenderPage = ctx.renderPage
 
