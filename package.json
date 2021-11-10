@@ -10,6 +10,7 @@
     "build": "yarn web build",
     "start": "yarn web start",
     "lint": "yarn web lint",
+    "clean": "yarn web clean",
     "--shortcuts to run commands in workspaces--": "",
     "sanity": "yarn workspace @tycholiz/sanity-studio",
     "web": "yarn workspace @tycholiz/webapp"
