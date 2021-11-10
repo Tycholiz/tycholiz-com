@@ -9,6 +9,7 @@
     "dev": "concurrently --kill-others-on-fail -c cyan,magenta --names Sanity,Nextjs \"yarn sanity dev\"  \"yarn web dev\"",
     "build": "yarn web build",
     "start": "yarn web start",
+    "lint": "yarn web lint",
     "--shortcuts to run commands in workspaces--": "",
     "sanity": "yarn workspace @tycholiz/sanity-studio",
     "web": "yarn workspace @tycholiz/webapp"
