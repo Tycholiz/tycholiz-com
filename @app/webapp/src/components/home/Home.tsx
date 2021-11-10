@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Link from 'next/link'
 import { Paragraph, Heading } from '../common'
 import { PostList } from '../posts/PostList'
 import { Anchor } from '../common'
@@ -32,8 +33,8 @@ export const Home: React.FC<Props> = ({ posts }) => {
         </Paragraph>
 
         <Heading colored>What I&apos;m working on now</Heading>
-        <Paragraph>See my now page.</Paragraph>
-
+        <Paragraph>See my <Link href="/now" as={`/now`}><Anchor>now page</Anchor></Link>.</Paragraph>
+            
         <Heading colored>Let&apos;s get in touch</Heading>
         <Paragraph>
           I love to make connections with people. Each of us is in a position
