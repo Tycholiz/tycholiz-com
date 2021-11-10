@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Heading, HorizontalRule, Label } from '.'
+import constants from '../../constants'
 
 type Props = {
   toggleDarkMode: any
@@ -73,7 +74,7 @@ export const Header = (props: Props) => {
           </li>
           <Bullet>&bull;</Bullet>
           <li>
-            <a href="https://tycholiz.github.io/Digital-Garden/" target="_blank" rel="noreferrer">second brain</a>
+            <a href={constants.dendronTechUrl} target="_blank" rel="noreferrer">second brain</a>
           </li>
         </NavList>
       </InnerWrapper>

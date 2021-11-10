@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { Paragraph, Heading } from '../common'
 import { PostList } from '../posts/PostList'
+import { Anchor } from '../common'
+import constants from '../../constants'
 
 type Props = {
   posts: {
@@ -25,8 +27,8 @@ export const Home: React.FC<Props> = ({ posts }) => {
         <Paragraph>
           An obsessive generalist, my interests range from investing, to software
           development, to math and science, to logic and philosophy. A perpetual student
-          in all of my worthwhile fields (link here), I obsess over gathering information
-          that helps my worldview. See my Dendron second-brain.
+          in all of my worthwhile fields, I obsess over gathering information
+          that helps my worldview. See my Dendron <Anchor href={constants.dendronTechUrl}>second-brain</Anchor>.
         </Paragraph>
 
         <Heading colored>What I&apos;m working on now</Heading>
