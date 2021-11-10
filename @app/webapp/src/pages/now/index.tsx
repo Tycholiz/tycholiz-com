@@ -13,6 +13,7 @@ type Props = {
     _updatedAt: string
   }[]
   toggleDarkMode: any
+  isDarkMode: boolean
 }
 
 const NowPage: NextPage<Props> = (props: Props) => {
@@ -25,7 +26,7 @@ const NowPage: NextPage<Props> = (props: Props) => {
       </Head>
 
       <DefaultTemplate
-        header={<Header toggleDarkMode={props.toggleDarkMode} />}
+        header={<Header toggleDarkMode={props.toggleDarkMode} isDarkMode={props.isDarkMode} />}
         // footer={<Footer />}
       >
         <Now />
