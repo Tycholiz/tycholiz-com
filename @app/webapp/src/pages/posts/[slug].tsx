@@ -8,6 +8,7 @@ import { Header } from '../../components/common'
 type Props = {
   title: string
   name: string
+  subtitle: string
   categories: any[]
   authorImage: string
   body: any[]
@@ -37,6 +38,7 @@ const PostPage = (props: Props) => {
 const query = groq`
   *[_type == "post" && slug.current == $slug][0] {
   title,
+  subtitle,
   "name": author->name,
   "categories": categories[]->title,
   "authorImage": author->image,
