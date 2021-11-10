@@ -13,6 +13,7 @@ export type Props = {
     slug: any
     _updatedAt: string
   }[]
+  toggleDarkMode: any
 }
 
 const BrowsePostsPage = (props: Props) => {
@@ -25,7 +26,7 @@ const BrowsePostsPage = (props: Props) => {
       </Head>
 
       <DefaultTemplate
-        header={<Header />}
+        header={<Header toggleDarkMode={props.toggleDarkMode} />}
       >
         <Heading>Thoughts on...</Heading>
         <PostList {...props} />

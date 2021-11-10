@@ -20,7 +20,6 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <button onClick={toggleDarkMode}>Switch Theme</button>
       <Component {...pageProps} toggleDarkMode={toggleDarkMode} />
     </ThemeProvider>
   )

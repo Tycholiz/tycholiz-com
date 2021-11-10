@@ -12,9 +12,10 @@ type Props = {
     slug: any
     _updatedAt: string
   }[]
+  toggleDarkMode: any
 }
 
-const NowPage: NextPage<Props> = () => {
+const NowPage: NextPage<Props> = (props: Props) => {
   return (
     <>
       <Head>
@@ -24,7 +25,7 @@ const NowPage: NextPage<Props> = () => {
       </Head>
 
       <DefaultTemplate
-        header={<Header />}
+        header={<Header toggleDarkMode={props.toggleDarkMode} />}
         // footer={<Footer />}
       >
         <Now />

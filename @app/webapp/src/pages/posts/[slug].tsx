@@ -24,7 +24,7 @@ const PostPage = (props: Props) => {
       </Head>
 
       <DefaultTemplate
-        header={<Header />}
+        header={<Header toggleDarkMode={props.toggleDarkMode} />}
       >
         <Post {...props} />
       </DefaultTemplate>
