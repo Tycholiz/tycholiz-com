@@ -14,11 +14,11 @@ type Props = {
     slug: any
     _updatedAt: string
   }[]
-  toggleDarkMode: any
+  toggleDarkMode?: any
+  isDarkMode?: boolean
 }
 
-const HomePage: NextPage<Props> = (props: Props) => {
-  
+const HomePage: NextPage<Props> = ({ posts, toggleDarkMode, isDarkMode = false }: Props) => {
   return (
     <>
       <Head>
@@ -28,10 +28,10 @@ const HomePage: NextPage<Props> = (props: Props) => {
       </Head>
 
       <DefaultTemplate
-        header={<Header toggleDarkMode={props.toggleDarkMode} />}
+        header={<Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />}
         // footer={<Footer />}
       >
-        <Home {...props} />
+        <Home posts={posts} />
       </DefaultTemplate>
     </>
   )

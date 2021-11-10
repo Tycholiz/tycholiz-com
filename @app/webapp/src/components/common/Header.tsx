@@ -42,15 +42,15 @@ const StyledCheckbox = styled.input`
 
 `
 
-export const Header = (props: Props) => {
+export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
   return (
       <InnerWrapper>
         <TopLine>
           <Link href="/" as={`/`} passHref>
             <Heading>Kyle Tycholiz</Heading>
           </Link>
-          <Label>{props.isDarkMode ? "Dark mode" : "Light mode"}
-            <StyledCheckbox onChange={props.toggleDarkMode} type="checkbox" checked={props.isDarkMode} />
+          <Label>{isDarkMode ? "Dark mode" : "Light mode"}
+            <StyledCheckbox onChange={toggleDarkMode} type="checkbox" checked={isDarkMode} />
           </Label>
         </TopLine>
         <HorizontalRule />
