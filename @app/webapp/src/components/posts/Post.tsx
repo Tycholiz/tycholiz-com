@@ -1,8 +1,11 @@
+import Image from 'next/image'
 import styled from 'styled-components'
 import BlockContent from '@sanity/block-content-to-react'
+import { SanityImageSource } from '@sanity/image-url/lib/types/types'
+import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../sanity-client'
 import { Paragraph, Heading } from '../common'
-import { BlockProps } from '../../../@types/custom-types'
+import { BlockProps, ImageProps } from '../../../@types/custom-types'
 
 type Props = {
   title: string
@@ -10,6 +13,10 @@ type Props = {
   name: string
   categories: any[]
   body: any[]
+}
+
+function urlFor (source: SanityImageSource) {
+  return imageUrlBuilder(client).image(source)
 }
 
 const serializers = {
@@ -23,12 +30,31 @@ const serializers = {
         return <Heading level={level}>{props.children}</Heading>
       }
       return <Paragraph>{props.children}</Paragraph>
+    },
+    image: (props: ImageProps) => {
+      return (
+        <ImageWrapper>
+          <Image
+            src={urlFor(props.node.asset._ref)
+              .width(450)
+              .url()}
+            alt={props.node.alt}
+          />
+        </ImageWrapper>
+      )
     }
   }
 }
 
 const Subtitle = styled(Heading)`
   margin-bottom: 3em;
+`
+
+const ImageWrapper = styled.figure`
+  margin-top: 3em;
+  & img {
+    width: 100%;
+  }
 `
 
 export const Post = ({
@@ -43,7 +69,6 @@ export const Post = ({
       <Subtitle Heading level={3}>{subtitle}</Subtitle>
       <BlockContent
         blocks={body}
-        imageOptions={{ w: 320, h: 240, fit: 'max' }}
         serializers={serializers}
         {...client.config()}
       />
