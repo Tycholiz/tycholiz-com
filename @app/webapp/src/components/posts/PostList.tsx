@@ -19,8 +19,8 @@ const Wrapper = styled.ul`
 `
 
 const InnerWrapper = styled.div`
-  padding-top: 1em;
-  padding-bottom: 1em;
+  padding: 1em 0.5em;
+  margin: 1em -0.5em;
   cursor: pointer;
 
   &:hover {
@@ -59,15 +59,15 @@ export const PostList = ({
         ({ _id, title = '', subtitle = '', slug = '', _updatedAt = '' }) =>
           slug && (
             <li key={_id}>
-              <InnerWrapper>
-                <Link href="/posts/[slug]" as={`/posts/${slug.current}`} passHref>
-                  <StyledAnchor>
+              <Link href="/posts/[slug]" as={`/posts/${slug.current}`} passHref>
+                <StyledAnchor>
+                  <InnerWrapper>
                     <DateLabel>{new Date(_updatedAt).toDateString()}</DateLabel>
                     <Title>{title}</Title>
                     <Subtitle>{subtitle}</Subtitle>
-                  </StyledAnchor>
-                </Link>{' '}
-              </InnerWrapper>
+                  </InnerWrapper>
+                </StyledAnchor>
+              </Link>{' '}
             </li>
           )
       )}

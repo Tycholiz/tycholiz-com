@@ -15,6 +15,12 @@ type Props = {
   }[]
 }
 
+const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 const PostWrapper = styled.div``
 
 export const Home: React.FC<Props> = ({ posts }) => {
@@ -45,7 +51,10 @@ export const Home: React.FC<Props> = ({ posts }) => {
           with you! The best way to reach me is through email.
         </Paragraph>
 
-        <Heading colored>Latest articles</Heading>
+        <Row>
+          <Heading colored>Latest articles</Heading>
+          <Link href="/posts" as={`/posts`}><Anchor>see all</Anchor></Link>
+        </Row>
 
         <PostWrapper>
           <PostList posts={posts} />
