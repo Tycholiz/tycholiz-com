@@ -36,9 +36,11 @@ const serializers = {
         <ImageWrapper>
           <Image
             src={urlFor(props.node.asset._ref)
-              .width(450)
+              .width(650)
               .url()}
             alt={props.node.alt}
+            width={650}
+            height={350}
           />
         </ImageWrapper>
       )
@@ -51,7 +53,12 @@ const Subtitle = styled(Heading)`
 `
 
 const ImageWrapper = styled.figure`
-  margin-top: 3em;
+  margin: 3em 0 0 0;
+
+  @media (min-width: ${({ theme }) => theme.breakpoint.mobileMedium}) {
+    margin: 3em 2em 0;
+  }
+
   & img {
     width: 100%;
   }

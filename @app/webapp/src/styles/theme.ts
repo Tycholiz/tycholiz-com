@@ -2,7 +2,7 @@ const baseTheme = {
   breakpoint: {
     mobileSmall: '400px',
     mobileMedium: '541px',
-    mobileLarge: '950px',
+    mobileLarge: '650px',
   },
   color: {
     primary: [
