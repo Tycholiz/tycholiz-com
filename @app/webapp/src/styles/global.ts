@@ -16,5 +16,7 @@ export const GlobalStyles = createGlobalStyle`
     text-rendering: optimizeLegibility;
     background-color: ${({ theme }: DefaultTheme & { theme: Theme }) => theme.color.background};
     font-family: ${({ theme }) => theme.font.paragraph};
+    color: ${({ theme }) => theme.color.grayscale[2]};
+    font-size: 0.9rem;
   }
 `
