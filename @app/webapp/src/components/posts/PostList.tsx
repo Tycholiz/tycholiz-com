@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { List, Paragraph, Anchor } from '../common'
+import { Anchor } from '../common'
 
 
 type Props = {
@@ -28,8 +28,11 @@ const InnerWrapper = styled.div`
   }
 `
 
-const Title = styled.span`
+const StyledAnchor = styled(Anchor)`
+  text-decoration: none;
 `
+
+const Title = styled.span``
 
 const Subtitle = styled.div`
   color: ${({ theme }) => theme.color.grayscale[2]};
@@ -58,11 +61,11 @@ export const PostList = ({
             <li key={_id}>
               <InnerWrapper>
                 <Link href="/posts/[slug]" as={`/posts/${slug.current}`} passHref>
-                  <Anchor>
+                  <StyledAnchor>
                     <DateLabel>{new Date(_updatedAt).toDateString()}</DateLabel>
                     <Title>{title}</Title>
                     <Subtitle>{subtitle}</Subtitle>
-                  </Anchor>
+                  </StyledAnchor>
                 </Link>{' '}
               </InnerWrapper>
             </li>
