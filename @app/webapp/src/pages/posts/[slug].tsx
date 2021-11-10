@@ -11,6 +11,8 @@ type Props = {
   categories: any[]
   authorImage: string
   body: any[]
+  toggleDarkMode: any
+  isDarkMode: boolean
 }
 
 
@@ -24,7 +26,7 @@ const PostPage = (props: Props) => {
       </Head>
 
       <DefaultTemplate
-        header={<Header toggleDarkMode={props.toggleDarkMode} />}
+        header={<Header toggleDarkMode={props.toggleDarkMode} isDarkMode={props.isDarkMode} />}
       >
         <Post {...props} />
       </DefaultTemplate>
