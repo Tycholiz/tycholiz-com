@@ -3,6 +3,7 @@ import styled, { css } from 'styled-components'
 
 type Props = {
   level: number,
+  colored: boolean,
   children: JSX.Element,
 }
 
@@ -15,7 +16,7 @@ const styles = css`
   margin: 0;
   margin-top: 0.85714em;
   margin-bottom: 0.57142em;
-  color: ${({ theme }) => theme.color.grayscale[1]};
+  color: ${({ colored, theme }) => colored ? theme.color.primary[0] : theme.color.grayscale[1]};
 `
 
 export const Heading = styled(({
