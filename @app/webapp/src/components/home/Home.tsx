@@ -39,7 +39,7 @@ export const Home: React.FC<Props> = ({ posts }) => {
         </Paragraph>
 
         <Heading colored>What I&apos;m working on now</Heading>
-        <Paragraph>See my <Link href="/now" as={`/now`}><Anchor>now page</Anchor></Link>.</Paragraph>
+        <Paragraph>See my <Link href="/now" as={`/now`} passHref={true}><Anchor>now page</Anchor></Link>.</Paragraph>
             
         <Heading colored>Let&apos;s get in touch</Heading>
         <Paragraph>
@@ -53,7 +53,7 @@ export const Home: React.FC<Props> = ({ posts }) => {
 
         <Row>
           <Heading colored>Latest articles</Heading>
-          <Link href="/posts" as={`/posts`}><Anchor>see all</Anchor></Link>
+          <Link href="/posts" as={`/posts`} passHref={true}><Anchor>see all</Anchor></Link>
         </Row>
 
         <PostWrapper>
