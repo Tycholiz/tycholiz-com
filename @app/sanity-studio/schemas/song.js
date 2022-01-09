@@ -8,10 +8,5 @@ export default {
 			title: 'Title',
 			type: 'string',
 		},
-		{
-			name: '_sanityAsset',
-			title: '_sanityAsset',
-			type: 'string',
-		},
 	],
 }
