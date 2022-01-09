@@ -2,8 +2,8 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import groq from 'groq'
 import client from '../../sanity-client'
-import { Home } from '../components/home'
 import { DefaultTemplate } from '../components/templates'
+import { Home } from '../components/home'
 import { Header } from '../components/common'
 
 type Props = {

@@ -74,6 +74,12 @@ export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
           </li>
           <Bullet>&bull;</Bullet>
           <li>
+            <Link href="/music" as={`/music`}>
+              <a>music</a>
+            </Link>
+          </li>
+          <Bullet>&bull;</Bullet>
+          <li>
             <a href={constants.dendronTechUrl} target="_blank" rel="noreferrer">second brain</a>
           </li>
         </NavList>
