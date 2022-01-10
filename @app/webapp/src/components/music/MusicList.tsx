@@ -1,5 +1,6 @@
 import { MusicPlayer } from '../common'
 import styled from 'styled-components'
+import { SyntheticEvent } from 'react'
 
 type Props = {
   songs: {
@@ -18,9 +19,18 @@ const PlayerContainer = styled.div`
 
 export const MusicList: React.FC<Props> = ({ songs }) => {
 
+  const pauseOthers = (e: SyntheticEvent) => {
+    const audioTags = document.getElementsByTagName('audio')
+    for (var i = 0; i < audioTags.length; i++) {
+      if (audioTags[i] != e.target) {
+        audioTags[i].pause()
+      }
+    }
+  }
+
 	return (
     <PlayerContainer>
-      {songs.map(song => <MusicPlayer key={song._id} data={song} />)}
+      {songs.map(song => <MusicPlayer key={song._id} data={song} pauseOthers={pauseOthers} />)}
     </PlayerContainer>
   )
 }
