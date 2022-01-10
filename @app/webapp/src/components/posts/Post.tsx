@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../sanity-client'
-import { Paragraph, Heading } from '../common'
+import { Paragraph, Heading, Label } from '../common'
 import { BlockProps, ImageProps } from '../../../@types/custom-types'
 
 type Props = {
@@ -13,6 +13,7 @@ type Props = {
   name: string
   categories: any[]
   body: any[]
+  publishedAt: string
 }
 
 function urlFor (source: SanityImageSource) {
@@ -26,7 +27,7 @@ const serializers = {
 
       if (/^h\d/.test(style)) {
         const level: number = parseInt(style.replace(/[^\d]/g, ""))
-        
+
         return <Heading level={level}>{props.children}</Heading>
       }
       return <Paragraph>{props.children}</Paragraph>
@@ -68,12 +69,15 @@ export const Post = ({
   title = 'Missing title',
   subtitle,
   body = [],
+  publishedAt,
 }: Props) => {
-  
+  const formattedDate = new Date(publishedAt).toLocaleDateString("en-US", { year: 'numeric', month: 'long', day: 'numeric' })
+
   return (
     <article>
       <Heading>{title}</Heading>
       <Subtitle Heading level={3}>{subtitle}</Subtitle>
+      <Label>{formattedDate}</Label>
       <BlockContent
         blocks={body}
         serializers={serializers}

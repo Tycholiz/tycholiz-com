@@ -12,6 +12,7 @@ type Props = {
   categories: any[]
   authorImage: string
   body: any[]
+  publishedAt: string
   toggleDarkMode: any
   isDarkMode: boolean
 }
@@ -42,7 +43,8 @@ const query = groq`
   "name": author->name,
   "categories": categories[]->title,
   "authorImage": author->image,
-  body
+  body,
+  publishedAt
 }`
 
 PostPage.getInitialProps = async function(context: any) {
