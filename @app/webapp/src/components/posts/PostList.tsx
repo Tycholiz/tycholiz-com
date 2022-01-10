@@ -1,22 +1,21 @@
-import Link from 'next/link'
-import styled from 'styled-components'
-import { Anchor } from '../common'
-
+import Link from "next/link";
+import styled from "styled-components";
+import { Anchor } from "../common";
 
 type Props = {
   posts: {
-    _id: string
-    title: string
-    subtitle?: string
-    slug: any
-    _updatedAt: string
-  }[]
-}
+    _id: string;
+    title: string;
+    subtitle?: string;
+    slug: any;
+    _updatedAt: string;
+  }[];
+};
 
 const Wrapper = styled.ul`
   list-style-type: none;
   padding: 0;
-`
+`;
 
 const InnerWrapper = styled.div`
   padding: 1em 0.5em;
@@ -26,19 +25,19 @@ const InnerWrapper = styled.div`
   &:hover {
     background: ${({ theme }) => theme.color.grayscale[6]};
   }
-`
+`;
 
 const StyledAnchor = styled(Anchor)`
   text-decoration: none;
-`
+`;
 
-const Title = styled.span``
+const Title = styled.span``;
 
 const Subtitle = styled.div`
   color: ${({ theme }) => theme.color.grayscale[2]};
   font-style: italic;
   margin-top: 0.3em;
-`
+`;
 
 const DateLabel = styled.div`
   float: right;
@@ -48,15 +47,13 @@ const DateLabel = styled.div`
   @media (max-width: 700px) {
     display: none;
   }
-`
+`;
 
-export const PostList = ({
-  posts = [],
-}: Props) => {
+export const PostList = ({ posts = [] }: Props) => {
   return (
     <Wrapper>
       {posts.map(
-        ({ _id, title = '', subtitle = '', slug = '', _updatedAt = '' }) =>
+        ({ _id, title = "", subtitle = "", slug = "", _updatedAt = "" }) =>
           slug && (
             <li key={_id}>
               <Link href="/posts/[slug]" as={`/posts/${slug.current}`} passHref>
@@ -67,10 +64,10 @@ export const PostList = ({
                     <Subtitle>{subtitle}</Subtitle>
                   </InnerWrapper>
                 </StyledAnchor>
-              </Link>{' '}
+              </Link>{" "}
             </li>
           )
       )}
     </Wrapper>
-  )
-}
+  );
+};

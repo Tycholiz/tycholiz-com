@@ -1,5 +1,4 @@
-import styled from 'styled-components'
-
+import styled from "styled-components";
 
 export const Anchor = styled.a`
   color: ${({ theme }) => theme.color.primary[0]};
@@ -8,4 +7,4 @@ export const Anchor = styled.a`
   &:visited {
     color: ${({ theme }) => theme.color.primary[1]};
   }
-`
+`;

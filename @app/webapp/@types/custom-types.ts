@@ -1,30 +1,30 @@
 type BlockPropsNode = {
-  children: any[],
-  markDefs: any[],
-  style: string,
-  _key: string,
-  _type: "block",
-}
+  children: any[];
+  markDefs: any[];
+  style: string;
+  _key: string;
+  _type: "block";
+};
 
 type ImagePropsNode = {
-  _type: "image",
-  alt: string,
+  _type: "image";
+  alt: string;
   asset: {
-    _ref: string,
-    _type: string,
-  },
-}
+    _ref: string;
+    _type: string;
+  };
+};
 
 export type BlockProps = {
-  children: any[],
-  isInline?: any,
-  node: BlockPropsNode,
-  options: any
-}
+  children: any[];
+  isInline?: any;
+  node: BlockPropsNode;
+  options: any;
+};
 
 export type ImageProps = {
-  children: any[],
-  isInline?: any,
-  node: ImagePropsNode,
-  options: any
-}
+  children: any[];
+  isInline?: any;
+  node: ImagePropsNode;
+  options: any;
+};

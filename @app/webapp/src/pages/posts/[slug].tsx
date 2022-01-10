@@ -1,22 +1,21 @@
-import Head from 'next/head'
-import groq from 'groq'
-import client from '../../../sanity-client'
-import { Post } from '../../components/posts'
-import { DefaultTemplate } from '../../components/templates'
-import { Header } from '../../components/common'
+import Head from "next/head";
+import groq from "groq";
+import client from "../../../sanity-client";
+import { Post } from "../../components/posts";
+import { DefaultTemplate } from "../../components/templates";
+import { Header } from "../../components/common";
 
 type Props = {
-  title: string
-  name: string
-  subtitle: string
-  categories: any[]
-  authorImage: string
-  body: any[]
-  publishedAt: string
-  toggleDarkMode: any
-  isDarkMode: boolean
-}
-
+  title: string;
+  name: string;
+  subtitle: string;
+  categories: any[];
+  authorImage: string;
+  body: any[];
+  publishedAt: string;
+  toggleDarkMode: any;
+  isDarkMode: boolean;
+};
 
 const PostPage = (props: Props) => {
   return (
@@ -28,13 +27,18 @@ const PostPage = (props: Props) => {
       </Head>
 
       <DefaultTemplate
-        header={<Header toggleDarkMode={props.toggleDarkMode} isDarkMode={props.isDarkMode} />}
+        header={
+          <Header
+            toggleDarkMode={props.toggleDarkMode}
+            isDarkMode={props.isDarkMode}
+          />
+        }
       >
         <Post {...props} />
       </DefaultTemplate>
     </>
-  )
-}
+  );
+};
 
 const query = groq`
   *[_type == "post" && slug.current == $slug][0] {
@@ -45,12 +49,12 @@ const query = groq`
   "authorImage": author->image,
   body,
   publishedAt
-}`
+}`;
 
-PostPage.getInitialProps = async function(context: any) {
+PostPage.getInitialProps = async function (context: any) {
   // default the slug so that it doesn't return "undefined"
-  const { slug = '' } = context.query
-  return await client.fetch(query, { slug })
-}
+  const { slug = "" } = context.query;
+  return await client.fetch(query, { slug });
+};
 
-export default PostPage
+export default PostPage;

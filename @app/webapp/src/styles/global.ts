@@ -1,5 +1,5 @@
-import { createGlobalStyle, DefaultTheme } from 'styled-components';
-import { Theme } from './theme'
+import { createGlobalStyle, DefaultTheme } from "styled-components";
+import { Theme } from "./theme";
 
 export const GlobalStyles = createGlobalStyle`
   html, body {
@@ -14,9 +14,10 @@ export const GlobalStyles = createGlobalStyle`
     max-width: 800px;
     margin: 0 auto;
     text-rendering: optimizeLegibility;
-    background-color: ${({ theme }: DefaultTheme & { theme: Theme }) => theme.color.background};
+    background-color: ${({ theme }: DefaultTheme & { theme: Theme }) =>
+      theme.color.background};
     font-family: ${({ theme }) => theme.font.paragraph};
     color: ${({ theme }) => theme.color.grayscale[2]};
     font-size: 0.9rem;
   }
-`
+`;
