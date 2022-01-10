@@ -6,6 +6,9 @@ type Props = {
   data: {
     _id: string
     title: string
+		asset: {
+			url: string
+		}
   }
 }
 
@@ -14,14 +17,14 @@ const Container = styled.div`
 	flex-direction: column;
 `
 
-export const MusicPlayer = ({ data }: Props) => {
+export const MusicPlayer: React.FC<Props> = ({ data }) => {
 
 	return (
 		<Container>
 			<Paragraph>{data.title}</Paragraph>
 			<audio
 				controls
-				src="">
+				src={data.asset.url}>
 				Your browser does not support the
 				<code>audio</code> element.
 			</audio>
