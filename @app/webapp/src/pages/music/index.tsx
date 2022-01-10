@@ -8,15 +8,20 @@ import { Header } from '../../components/common'
 
 type Props = {
   songs: {
+    _id: string
     title: string
-    songUrl: string
-    asset: any
+    asset: {
+      url: string
+    }
   }[]
   toggleDarkMode: any
   isDarkMode: boolean
 }
 
 const MusicPage: NextPage<Props> = (props: Props) => {
+  console.log(props);
+
+
   return (
     <>
       <Head>
@@ -27,7 +32,6 @@ const MusicPage: NextPage<Props> = (props: Props) => {
 
       <DefaultTemplate
         header={<Header toggleDarkMode={props.toggleDarkMode} isDarkMode={props.isDarkMode} />}
-        // footer={<Footer />}
       >
         <MusicList songs={props.songs} />
       </DefaultTemplate>
@@ -43,8 +47,12 @@ const query = groq`
   }
 `
 
-MusicPage.getInitialProps = async () => ({
-    songs: await client.fetch(query)
-})
+export async function getStaticProps() {
+  return {
+    props: {
+      songs: await client.fetch(query)
+    },
+  }
+}
 
 export default MusicPage
