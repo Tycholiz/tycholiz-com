@@ -1,8 +1,6 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import groq from 'groq'
-import { S3Client, ListObjectsCommand } from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 import client from '../../../sanity-client'
 import { DefaultTemplate } from '../../components/templates'
 import { MusicList } from '../../components/music'
