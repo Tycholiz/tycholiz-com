@@ -19,13 +19,10 @@ type Props = {
 }
 
 const MusicPage: NextPage<Props> = (props: Props) => {
-  console.log(props);
-
-
   return (
     <>
       <Head>
-        <title>Kyle Tycholiz</title>
+        <title>Music of Kyle Tycholiz</title>
         <meta name="description" content="Music of Kyle Tycholiz" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
