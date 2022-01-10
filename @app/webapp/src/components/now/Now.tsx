@@ -24,7 +24,7 @@ export const Now = () => {
       is to get my publicly available Dendron Second Brain to stay up to date
       with my local one. Right now, deployments have to be made manually. From
       there I will try to write with some regularity. I still have not decided
-      what I'd like to write about, but the subject matter will be something
+      what I&apos;d like to write about, but the subject matter will be something
       that feels natural to me.
     </Paragraph>
     </>
