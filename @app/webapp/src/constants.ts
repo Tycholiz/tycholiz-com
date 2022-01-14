@@ -1,5 +1,5 @@
-const constants: Record<string, any> = {};
+const constants: Record<string, any> = {}
 
-constants.dendronTechUrl = "https://tycholiz.github.io/Digital-Garden/";
+constants.dendronTechUrl = 'https://tycholiz.github.io/Digital-Garden/'
 
-export default constants;
+export default constants

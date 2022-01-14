@@ -1,28 +1,24 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import groq from "groq";
-import client from "../../sanity-client";
-import { DefaultTemplate } from "../components/templates";
-import { Home } from "../components/home";
-import { Header } from "../components/common";
+import type { NextPage } from 'next'
+import Head from 'next/head'
+import groq from 'groq'
+import client from '../../sanity-client'
+import { DefaultTemplate } from '../components/templates'
+import { Home } from '../components/home'
+import { Header } from '../components/common'
 
 type Props = {
   posts: {
-    _id: string;
-    title: string;
-    subtitle: string;
-    slug: any;
-    _updatedAt: string;
-  }[];
-  toggleDarkMode?: any;
-  isDarkMode?: boolean;
-};
+    _id: string
+    title: string
+    subtitle: string
+    slug: any
+    _updatedAt: string
+  }[]
+  toggleDarkMode?: any
+  isDarkMode?: boolean
+}
 
-const HomePage: NextPage<Props> = ({
-  posts,
-  toggleDarkMode,
-  isDarkMode = false,
-}: Props) => {
+const HomePage: NextPage<Props> = ({ posts, toggleDarkMode, isDarkMode = false }: Props) => {
   return (
     <>
       <Head>
@@ -32,23 +28,21 @@ const HomePage: NextPage<Props> = ({
       </Head>
 
       <DefaultTemplate
-        header={
-          <Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
-        }
+        header={<Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />}
         // footer={<Footer />}
       >
         <Home posts={posts} />
       </DefaultTemplate>
     </>
-  );
-};
+  )
+}
 
 const query = groq`
   *[_type == "post" && publishedAt < now()][0..5] | order(publishedAt desc)
-`;
+`
 
 HomePage.getInitialProps = async () => ({
   posts: await client.fetch(query),
-});
+})
 
-export default HomePage;
+export default HomePage

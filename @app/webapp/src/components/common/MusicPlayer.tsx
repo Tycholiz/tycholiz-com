@@ -1,22 +1,22 @@
-import { Paragraph } from "../common";
-import styled from "styled-components";
-import { SyntheticEvent } from "react";
+import { Paragraph } from '../common'
+import styled from 'styled-components'
+import { SyntheticEvent } from 'react'
 
 type Props = {
   data: {
-    _id: string;
-    title: string;
+    _id: string
+    title: string
     asset: {
-      url: string;
-    };
-  };
-  pauseOthers: (e: SyntheticEvent) => void;
-};
+      url: string
+    }
+  }
+  pauseOthers: (e: SyntheticEvent) => void
+}
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-`;
+`
 
 export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
   return (
@@ -27,5 +27,5 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
         <code>audio</code> element.
       </audio>
     </Container>
-  );
-};
+  )
+}
