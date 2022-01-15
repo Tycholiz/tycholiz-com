@@ -10,11 +10,15 @@ type Props = {
   songs: {
     _id: string
     title: string
+    writer: string
+    producer: string
+    yearWritten: number
+    yearRecorded: number
     asset: {
       url: string
     }
   }[]
-  toggleDarkMode: any
+  toggleDarkMode: () => null
   isDarkMode: boolean
 }
 
@@ -37,9 +41,13 @@ const MusicPage: NextPage<Props> = (props: Props) => {
 }
 
 const query = groq`
-	*[_type == "song"]{
+	*[_type == "song"] | order(yearRecorded desc, yearWritten desc) {
     _id,
     title,
+    writer,
+    producer,
+    yearWritten,
+    yearRecorded,
     asset->{url}
   }
 `
