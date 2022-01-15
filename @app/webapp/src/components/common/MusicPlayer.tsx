@@ -1,4 +1,4 @@
-import { Paragraph } from '../common'
+import { Text } from '../common'
 import styled from 'styled-components'
 import { SyntheticEvent } from 'react'
 
@@ -6,6 +6,10 @@ type Props = {
   data: {
     _id: string
     title: string
+    writer: string
+    producer: string
+    yearWritten: number
+    yearRecorded: number
     asset: {
       url: string
     }
@@ -14,18 +18,57 @@ type Props = {
 }
 
 const Container = styled.div`
+  background-color: rgb(6, 23, 37);
+  margin: 1em;
+  border-radius: 6px;
+`
+
+const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
+  padding: 2em;
+`
+
+const MetadataContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1em;
+
+  @media (min-width: ${({ theme }) => theme.breakpoint.mobileMedium}) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`
+
+const MetadataBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+const Audio = styled.audio`
+  width: 100%;
 `
 
 export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
   return (
     <Container>
-      <Paragraph>{data.title}</Paragraph>
-      <audio controls onPlay={(e) => pauseOthers(e)} src={data.asset.url}>
-        Your browser does not support the
-        <code>audio</code> element.
-      </audio>
+      <InnerContainer>
+        <MetadataContainer>
+          <MetadataBox>
+            <Text bold>{data.title}</Text>
+            <Text>{data.writer}</Text>
+          </MetadataBox>
+          <MetadataBox>
+            <Text>Written: {data.yearWritten}</Text>
+            <Text>Released: {data.yearRecorded}</Text>
+          </MetadataBox>
+        </MetadataContainer>
+        <Audio controls onPlay={(e) => pauseOthers(e)} src={data.asset.url}>
+          Your browser does not support the
+          <code>audio</code> element.
+        </Audio>
+      </InnerContainer>
     </Container>
   )
 }
