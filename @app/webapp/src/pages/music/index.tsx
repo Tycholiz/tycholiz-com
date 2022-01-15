@@ -3,7 +3,7 @@ import Head from 'next/head'
 import groq from 'groq'
 import client from '../../../sanity-client'
 import { DefaultTemplate } from '../../components/templates'
-import { MusicList } from '../../components/music'
+import { MusicList } from '../../components/custom'
 import { Header } from '../../components/common'
 
 type Props = {

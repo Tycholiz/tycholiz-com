@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Link from 'next/link'
 import { Paragraph, Heading } from '../common'
-import { PostList } from '../posts/PostList'
+import { PostList } from './PostList'
 import { Anchor } from '../common'
 import constants from '../../constants'
 

@@ -1,4 +1,4 @@
-import { MusicPlayer } from '../common'
+import { MusicPlayer } from '.'
 import styled from 'styled-components'
 import { SyntheticEvent } from 'react'
 
