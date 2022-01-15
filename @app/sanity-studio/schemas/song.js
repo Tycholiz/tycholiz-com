@@ -18,5 +18,10 @@ export default {
       title: 'Year Recorded',
       type: 'number',
     },
+    {
+      name: 'producer',
+      title: 'Produced By',
+      type: 'string',
+    },
   ],
 }
