@@ -8,5 +8,10 @@ export default {
       title: 'Title',
       type: 'string',
     },
+    {
+      name: 'yearWritten',
+      title: 'Year Written',
+      type: 'string',
+    },
   ],
 }
