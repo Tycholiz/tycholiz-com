@@ -56,7 +56,7 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
       <InnerContainer>
         <MetadataContainer>
           <MetadataBox>
-            <Text bold>{data.title}</Text>
+            <Text bold={true}>{data.title}</Text>
             <Text>{data.writer}</Text>
           </MetadataBox>
           <MetadataBox>
