@@ -11,7 +11,12 @@ export default {
     {
       name: 'yearWritten',
       title: 'Year Written',
-      type: 'string',
+      type: 'number',
+    },
+    {
+      name: 'yearRecorded',
+      title: 'Year Recorded',
+      type: 'number',
     },
   ],
 }
