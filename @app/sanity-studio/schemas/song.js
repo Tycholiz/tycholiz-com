@@ -19,6 +19,11 @@ export default {
       type: 'number',
     },
     {
+      name: 'writer',
+      title: 'Written By',
+      type: 'string',
+    },
+    {
       name: 'producer',
       title: 'Produced By',
       type: 'string',
