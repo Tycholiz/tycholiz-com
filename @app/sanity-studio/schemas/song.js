@@ -9,16 +9,6 @@ export default {
       type: 'string',
     },
     {
-      name: 'yearWritten',
-      title: 'Year Written',
-      type: 'number',
-    },
-    {
-      name: 'yearRecorded',
-      title: 'Year Recorded',
-      type: 'number',
-    },
-    {
       name: 'writer',
       title: 'Written By',
       type: 'string',
@@ -27,6 +17,16 @@ export default {
       name: 'producer',
       title: 'Produced By',
       type: 'string',
+    },
+    {
+      name: 'yearWritten',
+      title: 'Year Written',
+      type: 'number',
+    },
+    {
+      name: 'yearRecorded',
+      title: 'Year Recorded',
+      type: 'number',
     },
   ],
 }
