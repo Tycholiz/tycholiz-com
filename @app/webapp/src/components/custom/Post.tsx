@@ -5,6 +5,7 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../sanity-client'
 import { Paragraph, Heading, Label } from '../common'
+import { CommentForm } from '../custom'
 import { BlockProps, ImageProps } from '../../../@types/custom-types'
 
 type Props = {
@@ -78,6 +79,8 @@ export const Post = ({ title = 'Missing title', subtitle, body = [], publishedAt
       </Subtitle>
       <Label>{formattedDate}</Label>
       <BlockContent blocks={body} serializers={serializers} {...client.config()} />
+      <CommentForm />
+      {/* <CommentList /> */}
     </article>
   )
 }

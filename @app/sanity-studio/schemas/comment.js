@@ -9,12 +9,6 @@ export default {
 			type: 'string',
 		},
 		{
-			title: 'Approved',
-			name: 'isApproved',
-			type: 'boolean',
-			description: "Comments won't show on the site without approval"
-		},
-		{
       title: 'Email',
 			name: 'email',
 			type: 'string',
@@ -23,6 +17,12 @@ export default {
       title: 'CommentBody',
 			name: 'body',
 			type: 'text',
+		},
+		{
+			title: 'Approved',
+			name: 'isApproved',
+			type: 'boolean',
+			description: "Comments won't show on the site without approval"
 		},
 		{
       title: 'Post',
