@@ -17,6 +17,7 @@ export default {
       title: 'Comment body',
 			name: 'body',
 			type: 'text',
+			// TODO: should this be text?
 		},
 		{
 			title: 'Approved',

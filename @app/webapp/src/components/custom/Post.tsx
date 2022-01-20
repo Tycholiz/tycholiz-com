@@ -5,17 +5,24 @@ import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../sanity-client'
 import { Paragraph, Heading, Label } from '../common'
-import { CommentForm } from '../custom'
+import { CommentForm, CommentList } from '../custom'
 import { BlockProps, ImageProps } from '../../../@types/custom-types'
 
 type Props = {
-  _id: string
-  title: string
-  subtitle?: string
-  name: string
-  categories: any[]
-  body: any[]
-  publishedAt: string
+  post: {
+    _id: string
+    title: string
+    subtitle: string
+    body: any[]
+    publishedAt: string
+    comments: {
+      _id: string
+      _createdAt: string
+      author: string
+      body: string
+      isApproved: boolean
+    }[]
+  }
 }
 
 function urlFor(source: SanityImageSource) {
@@ -65,8 +72,8 @@ const ImageWrapper = styled.figure`
   }
 `
 
-export const Post = ({ _id, title = 'Missing title', subtitle, body = [], publishedAt }: Props) => {
-  const formattedDate = new Date(publishedAt).toLocaleDateString('en-US', {
+export const Post = ({ post }: Props) => {
+  const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -74,14 +81,14 @@ export const Post = ({ _id, title = 'Missing title', subtitle, body = [], publis
 
   return (
     <article>
-      <Heading>{title}</Heading>
+      <Heading>{post.title}</Heading>
       <Subtitle Heading level={3}>
-        {subtitle}
+        {post.subtitle}
       </Subtitle>
       <Label>{formattedDate}</Label>
-      <BlockContent blocks={body} serializers={serializers} {...client.config()} />
-      <CommentForm postId={_id} />
-      {/* <CommentList /> */}
+      <BlockContent blocks={post.body} serializers={serializers} {...client.config()} />
+      <CommentForm postId={post._id} />
+      <CommentList comments={post.comments} />
     </article>
   )
 }

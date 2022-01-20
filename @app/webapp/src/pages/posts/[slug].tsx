@@ -4,20 +4,30 @@ import client from '../../../sanity-client'
 import { Post } from '../../components/custom'
 import { DefaultTemplate } from '../../components/templates'
 import { Header } from '../../components/common'
+import { getPostQuery } from '../../queries'
 
 type Props = {
-  title: string
-  name: string
-  subtitle: string
-  categories: any[]
-  authorImage: string
-  body: any[]
-  publishedAt: string
+  post: {
+    _id: string
+    title: string
+    subtitle: string
+    body: any[]
+    publishedAt: string
+    comments: {
+      _id: string
+      _createdAt: string
+      author: string
+      body: string
+      isApproved: boolean
+    }[]
+  }
   toggleDarkMode: any
   isDarkMode: boolean
 }
 
-const PostPage = (props: Props) => {
+const PostPage = ({ toggleDarkMode, isDarkMode, ...props }: Props) => {
+  console.log(props);
+
   return (
     <>
       <Head>
@@ -27,7 +37,7 @@ const PostPage = (props: Props) => {
       </Head>
 
       <DefaultTemplate
-        header={<Header toggleDarkMode={props.toggleDarkMode} isDarkMode={props.isDarkMode} />}
+        header={<Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />}
       >
         <Post {...props} />
       </DefaultTemplate>
@@ -35,22 +45,13 @@ const PostPage = (props: Props) => {
   )
 }
 
-const query = groq`
-  *[_type == "post" && slug.current == $slug][0] {
-  _id,
-  title,
-  subtitle,
-  "name": author->name,
-  "categories": categories[]->title,
-  "authorImage": author->image,
-  body,
-  publishedAt
-}`
-
+// TODO: get date added
 PostPage.getInitialProps = async function (context: any) {
   // default the slug so that it doesn't return "undefined"
   const { slug = '' } = context.query
-  return await client.fetch(query, { slug })
+  return {
+    post: await client.fetch(getPostQuery, { slug })
+  }
 }
 
 export default PostPage
