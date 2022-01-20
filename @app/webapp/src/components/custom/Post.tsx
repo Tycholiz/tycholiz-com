@@ -9,6 +9,7 @@ import { CommentForm } from '../custom'
 import { BlockProps, ImageProps } from '../../../@types/custom-types'
 
 type Props = {
+  _id: string
   title: string
   subtitle?: string
   name: string
@@ -64,7 +65,7 @@ const ImageWrapper = styled.figure`
   }
 `
 
-export const Post = ({ title = 'Missing title', subtitle, body = [], publishedAt }: Props) => {
+export const Post = ({ _id, title = 'Missing title', subtitle, body = [], publishedAt }: Props) => {
   const formattedDate = new Date(publishedAt).toLocaleDateString('en-US', {
     year: 'numeric',
     month: 'long',
@@ -79,7 +80,7 @@ export const Post = ({ title = 'Missing title', subtitle, body = [], publishedAt
       </Subtitle>
       <Label>{formattedDate}</Label>
       <BlockContent blocks={body} serializers={serializers} {...client.config()} />
-      <CommentForm />
+      <CommentForm postId={_id} />
       {/* <CommentList /> */}
     </article>
   )

@@ -18,7 +18,7 @@ interface Response {
 }
 
 export default async function createComment(req: NextApiRequest, res: NextApiResponse<Response>) {
-	const { _id, author, email, body, post }: CommentRequestBody = JSON.parse(req.body)
+	const { _id, author, email, body }: CommentRequestBody = JSON.parse(req.body)
 	try {
 		await client.create({
 			_type: 'comment',
