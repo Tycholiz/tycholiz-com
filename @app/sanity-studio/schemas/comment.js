@@ -14,7 +14,7 @@ export default {
 			type: 'string',
 		},
 		{
-      title: 'CommentBody',
+      title: 'Comment body',
 			name: 'body',
 			type: 'text',
 		},
