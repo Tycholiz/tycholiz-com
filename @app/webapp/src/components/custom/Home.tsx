@@ -26,7 +26,7 @@ const PostWrapper = styled.div``
 export const Home: React.FC<Props> = ({ posts }) => {
   return (
     <>
-      <Heading colored>Me in 10 seconds</Heading>
+      <Heading colored={true}>Me in 10 seconds</Heading>
       <Paragraph>I am a musician, programmer, and lifelong learner from Canada.</Paragraph>
 
       <Paragraph>
@@ -36,7 +36,7 @@ export const Home: React.FC<Props> = ({ posts }) => {
         <Anchor href={constants.dendronTechUrl}>second-brain</Anchor>.
       </Paragraph>
 
-      <Heading colored>What I&apos;m working on now</Heading>
+      <Heading colored={true}>What I&apos;m working on now</Heading>
       <Paragraph>
         See my{' '}
         <Link href="/now" as={`/now`} passHref={true}>
@@ -45,7 +45,7 @@ export const Home: React.FC<Props> = ({ posts }) => {
         .
       </Paragraph>
 
-      <Heading colored>Let&apos;s get in touch</Heading>
+      <Heading colored={true}>Let&apos;s get in touch</Heading>
       <Paragraph>
         I love to make connections with people. Each of us is in a position to offer something
         valuable to another. Finding it is the key.
@@ -56,7 +56,7 @@ export const Home: React.FC<Props> = ({ posts }) => {
       </Paragraph>
 
       <Row>
-        <Heading colored>Latest articles</Heading>
+        <Heading colored={true}>Latest articles</Heading>
         <Link href="/posts" as={`/posts`} passHref={true}>
           <Anchor>see all</Anchor>
         </Link>
