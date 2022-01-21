@@ -58,7 +58,7 @@ const serializers = {
 }
 
 const Subtitle = styled(Heading)`
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 `
 
 const ImageWrapper = styled.figure`
@@ -76,7 +76,7 @@ const ImageWrapper = styled.figure`
 export const Post = ({ post }: Props) => {
   return (
     <article>
-      <Heading>{post.title}</Heading>
+      <Heading colored>{post.title}</Heading>
       <Subtitle Heading level={3}>
         {post.subtitle}
       </Subtitle>

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Text } from '../common'
+import { Heading, Text } from '../common'
 import { useState } from 'react'
 import { SyntheticEvent } from 'react'
 
@@ -55,6 +55,7 @@ export const CommentForm: React.FC<Props> = ({ postId }) => {
 	}
   return (
 		<Container>
+			<Heading>Your thoughts?</Heading>
 			<form method="post">
 				<Label>Your name
 					<Input type="text" value={author} onChange={e => setAuthor(e.target.value)} />
@@ -63,7 +64,7 @@ export const CommentForm: React.FC<Props> = ({ postId }) => {
 					<Input type="text" value={email} onChange={e => setEmail(e.target.value)} />
 				</Label>
 				<Label>Comment
-					<Textarea type="text" value={commentBody} onChange={e => setCommentBody(e.target.value)} />
+					<Textarea value={commentBody} onChange={e => setCommentBody(e.target.value)} />
 				</Label>
 				<button onClick={handleSubmitComment}>Submit</button>
 			</form>
