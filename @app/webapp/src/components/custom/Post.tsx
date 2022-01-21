@@ -4,7 +4,7 @@ import BlockContent from '@sanity/block-content-to-react'
 import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../sanity-client'
-import { Paragraph, Heading, Label } from '../common'
+import { Paragraph, Heading, Text } from '../common'
 import { CommentForm, CommentList } from '../custom'
 import { BlockProps, ImageProps } from '../../../@types/custom-types'
 import { formatDate } from '../../utils'
@@ -76,11 +76,11 @@ const ImageWrapper = styled.figure`
 export const Post = ({ post }: Props) => {
   return (
     <article>
-      <Heading colored>{post.title}</Heading>
+      <Heading colored={true}>{post.title}</Heading>
       <Subtitle Heading level={3}>
         {post.subtitle}
       </Subtitle>
-      <Label>{formatDate(post.publishedAt)}</Label>
+      <Text small>{formatDate(post.publishedAt)}</Text>
       <BlockContent blocks={post.body} serializers={serializers} {...client.config()} />
       <CommentForm postId={post._id} />
       <CommentList comments={post.comments} />

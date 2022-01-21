@@ -29,7 +29,7 @@ const BrowsePostsPage = (props: Props) => {
       <DefaultTemplate
         header={<Header toggleDarkMode={props.toggleDarkMode} isDarkMode={props.isDarkMode} />}
       >
-        <Heading colored>Thoughts on...</Heading>
+        <Heading colored={true}>Thoughts on...</Heading>
         <PostList {...props} />
       </DefaultTemplate>
     </>

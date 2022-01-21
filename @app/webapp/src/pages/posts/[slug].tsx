@@ -25,7 +25,7 @@ type Props = {
   isDarkMode: boolean
 }
 
-const PostPage = ({ toggleDarkMode, isDarkMode, ...props }: Props) => {
+const PostPage = ({ toggleDarkMode, isDarkMode, post }: Props) => {
   return (
     <>
       <Head>
@@ -37,7 +37,7 @@ const PostPage = ({ toggleDarkMode, isDarkMode, ...props }: Props) => {
       <DefaultTemplate
         header={<Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />}
       >
-        <Post {...props} />
+        <Post post={post} />
       </DefaultTemplate>
     </>
   )

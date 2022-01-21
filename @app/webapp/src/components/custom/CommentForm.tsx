@@ -28,8 +28,8 @@ const Textarea = styled.textarea`
 	margin-bottom: 0.6em;
 `
 
-/* Upon 200 OK from api call to Sanity, we should replace the form with a Success message in UI */
-export const CommentForm: React.FC<Props> = ({ postId }) => {
+/* TODO: Upon 200 OK from api call to Sanity, we should replace the form with a Success message in UI */
+export const CommentForm: React.FC<Props> = ({ postId }: Props) => {
 	const [author, setAuthor] = useState('')
 	const [email, setEmail] = useState('')
 	const [commentBody, setCommentBody] = useState('')
@@ -37,7 +37,6 @@ export const CommentForm: React.FC<Props> = ({ postId }) => {
 	const handleSubmitComment = async (e: SyntheticEvent) => {
 		e.preventDefault()
 		try {
-				/* @ts-ignore */
 			await fetch('/api/createComment', {
 				method: 'POST',
 				body: JSON.stringify({
