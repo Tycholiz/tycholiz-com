@@ -7,8 +7,8 @@ type Props = {
     _id: string
     title: string
     subtitle?: string
-    slug: any
-    _updatedAt: string
+    slug: string
+    publishedAt: string
   }[]
 }
 
@@ -53,13 +53,13 @@ export const PostList = ({ posts = [] }: Props) => {
   return (
     <Wrapper>
       {posts.map(
-        ({ _id, title = '', subtitle = '', slug = '', _updatedAt = '' }) =>
+        ({ _id, title = '', subtitle = '', slug = '', publishedAt = '' }) =>
           slug && (
             <li key={_id}>
               <Link href="/posts/[slug]" as={`/posts/${slug.current}`} passHref>
                 <StyledAnchor>
                   <InnerWrapper>
-                    <DateLabel>{new Date(_updatedAt).toDateString()}</DateLabel>
+                    <DateLabel>{new Date(publishedAt).toDateString()}</DateLabel>
                     <Title>{title}</Title>
                     <Subtitle>{subtitle}</Subtitle>
                   </InnerWrapper>

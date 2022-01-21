@@ -1,7 +1,6 @@
 import { Paragraph, Anchor, Text } from '../common'
 
 export const Now = () => {
-  // TODO: add last updated to this page
   return (
     <>
       <Text small>Last updated: Jan 20, 2022</Text>
