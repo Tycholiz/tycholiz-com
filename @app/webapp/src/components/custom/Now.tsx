@@ -1,9 +1,10 @@
-import { Paragraph, Anchor } from '../common'
+import { Paragraph, Anchor, Text } from '../common'
 
 export const Now = () => {
   // TODO: add last updated to this page
   return (
     <>
+      <Text small>Last updated: Jan 20, 2022</Text>
       <Paragraph>
         In the past I have been known to take on too many projects at once. This of course was
         accompanied by the attendant graveyard of partially completed projects. To combat this
@@ -13,7 +14,7 @@ export const Now = () => {
       </Paragraph>
 
       <Paragraph>
-        The first project is to record a song written several years ago. I will find a way to link
+        The first project is to record a song written several years ago. I will link
         it to my website when it is ready. It is being produced by my friend{' '}
         <Anchor target="_blank" href="https://www.devbrow.com">
           Dev Brow
@@ -22,11 +23,10 @@ export const Now = () => {
       </Paragraph>
 
       <Paragraph>
-        Secondly, I am working on finishing off my personal website. My next goal is to get my
-        publicly available Dendron Second Brain to stay up to date with my local one. Right now,
-        deployments have to be made manually. From there I will try to write with some regularity. I
-        still have not decided what I&apos;d like to write about, but the subject matter will be
-        something that feels natural to me.
+        Secondly, I am working on finishing off my personal website. I have set
+        up automatic syncing of my Second Brain, meaning what's published will
+        lag by no more than a day from what's on my machine. The site also has
+        music now, and will soon have comments finished.
       </Paragraph>
     </>
   )
