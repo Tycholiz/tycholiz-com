@@ -1,6 +1,7 @@
 import { Paragraph, Anchor } from '../common'
 
 export const Now = () => {
+  // TODO: add last updated to this page
   return (
     <>
       <Paragraph>

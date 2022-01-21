@@ -26,8 +26,6 @@ type Props = {
 }
 
 const PostPage = ({ toggleDarkMode, isDarkMode, ...props }: Props) => {
-  console.log(props);
-
   return (
     <>
       <Head>
