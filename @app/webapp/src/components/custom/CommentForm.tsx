@@ -33,6 +33,13 @@ export const CommentForm: React.FC<Props> = ({ postId }: Props) => {
 	const [author, setAuthor] = useState('')
 	const [email, setEmail] = useState('')
 	const [commentBody, setCommentBody] = useState('')
+	const [hasSubmittedComment, setHasSubmittedComment] = useState(false)
+
+	const resetCommentForm = () => {
+		setAuthor('')
+		setEmail('')
+		setCommentBody('')
+	}
 
 	const handleSubmitComment = async (e: SyntheticEvent) => {
 		e.preventDefault()
@@ -48,25 +55,33 @@ export const CommentForm: React.FC<Props> = ({ postId }: Props) => {
 				/* @ts-ignore */
 				type: 'application/json'
 			})
+			resetCommentForm()
+			setHasSubmittedComment(true)
 		} catch(err) {
 			console.error(err)
 		}
 	}
   return (
 		<Container>
-			<Heading>Your thoughts?</Heading>
-			<form method="post">
-				<Label>Your name
-					<Input type="text" value={author} onChange={e => setAuthor(e.target.value)} />
-				</Label>
-				<Label>Your email <Text small>(PRIVATE FOR MY EYES ONLY)</Text>
-					<Input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-				</Label>
-				<Label>Comment
-					<Textarea value={commentBody} onChange={e => setCommentBody(e.target.value)} />
-				</Label>
-				<button onClick={handleSubmitComment}>Submit</button>
-			</form>
+			{hasSubmittedComment ?
+				<Text colored={true}>Thank you for submitting a comment</Text>
+				:
+				<>
+				<Heading>Your thoughts?</Heading>
+				<form method="post">
+					<Label>Your name
+						<Input type="text" value={author} onChange={e => setAuthor(e.target.value)} />
+					</Label>
+					<Label>Your email <Text small>(PRIVATE FOR MY EYES ONLY)</Text>
+						<Input type="text" value={email} onChange={e => setEmail(e.target.value)} />
+					</Label>
+					<Label>Comment
+						<Textarea value={commentBody} onChange={e => setCommentBody(e.target.value)} />
+					</Label>
+					<button onClick={handleSubmitComment}>Submit</button>
+				</form>
+				</>
+			}
 		</Container>
   )
 }
