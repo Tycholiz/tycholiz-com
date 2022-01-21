@@ -1,7 +1,7 @@
 type Props = {
   comments: {
     _id: string
-    _createdAt: string
+    publishedAt: string
     author: string
     body: string
   }[]

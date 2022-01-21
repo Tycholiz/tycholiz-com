@@ -17,7 +17,7 @@ export default {
       title: 'Comment body',
 			name: 'body',
 			type: 'text',
-			// TODO: should this be text?
+			// TODO: should this be text or block content?
 		},
 		{
 			title: 'Approved',
@@ -25,6 +25,11 @@ export default {
 			type: 'boolean',
 			description: "Comments won't show on the site without approval"
 		},
+    {
+      name: 'publishedAt',
+      title: 'Published at',
+      type: 'datetime',
+    },
 		{
       title: 'Post',
 			name: 'post',

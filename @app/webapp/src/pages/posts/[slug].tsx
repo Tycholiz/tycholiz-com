@@ -15,7 +15,7 @@ type Props = {
     publishedAt: string
     comments: {
       _id: string
-      _createdAt: string
+      publishedAt: string
       author: string
       body: string
       isApproved: boolean
