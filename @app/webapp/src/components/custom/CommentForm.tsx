@@ -1,16 +1,32 @@
 import styled from 'styled-components'
-import Link from 'next/link'
-import { Paragraph, Heading } from '../common'
-import { PostList } from './PostList'
-import { Anchor } from '../common'
-import constants from '../../constants'
+import { Text } from '../common'
 import { useState } from 'react'
 import { SyntheticEvent } from 'react'
-import { NextApiResponse } from 'next'
 
 type Props = {
 	postId: string
 }
+
+const Container = styled.div`
+	margin-top: 2em;
+	margin-bottom: 2em;
+`
+
+const Label = styled.label`
+	line-height: 1.8;
+`
+
+const Input = styled.input`
+	display: block;
+	margin-bottom: 0.4em;
+`
+
+const Textarea = styled.textarea`
+	display: block;
+	width: 100%;
+	height: 10em;
+	margin-bottom: 0.6em;
+`
 
 /* Upon 200 OK from api call to Sanity, we should replace the form with a Success message in UI */
 export const CommentForm: React.FC<Props> = ({ postId }) => {
@@ -38,17 +54,19 @@ export const CommentForm: React.FC<Props> = ({ postId }) => {
 		}
 	}
   return (
-		<form method="post">
-			<label>your name
-				<input type="text" value={author} onChange={e => setAuthor(e.target.value)} />
-			</label>
-			<label>your email (private for my eyes only)
-				<input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-			</label>
-			<label>comment
-				<input type="text" value={commentBody} onChange={e => setCommentBody(e.target.value)} />
-			</label>
-			<button onClick={handleSubmitComment}>Save</button>
-		</form>
+		<Container>
+			<form method="post">
+				<Label>Your name
+					<Input type="text" value={author} onChange={e => setAuthor(e.target.value)} />
+				</Label>
+				<Label>Your email <Text small>(PRIVATE FOR MY EYES ONLY)</Text>
+					<Input type="text" value={email} onChange={e => setEmail(e.target.value)} />
+				</Label>
+				<Label>Comment
+					<Textarea type="text" value={commentBody} onChange={e => setCommentBody(e.target.value)} />
+				</Label>
+				<button onClick={handleSubmitComment}>Submit</button>
+			</form>
+		</Container>
   )
 }
