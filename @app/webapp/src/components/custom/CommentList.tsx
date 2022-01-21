@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Paragraph, Text } from '../common'
+import { formatDate } from '../../utils'
 
 type Props = {
   comments: {
@@ -23,7 +24,7 @@ export const CommentList: React.FC<Props> = ({ comments = [] }: Props) => {
 				{comments?.map(({ _id, publishedAt, author, body }) => (
 					<Comment key={_id}>
 						<Text>{author} </Text>
-						<Text>({publishedAt})</Text>
+						<Text>({formatDate(publishedAt)})</Text>
 						<Paragraph>{body}</Paragraph>
 					</Comment>
 				))}

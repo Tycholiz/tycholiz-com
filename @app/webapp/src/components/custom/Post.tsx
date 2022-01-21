@@ -7,6 +7,7 @@ import client from '../../../sanity-client'
 import { Paragraph, Heading, Label } from '../common'
 import { CommentForm, CommentList } from '../custom'
 import { BlockProps, ImageProps } from '../../../@types/custom-types'
+import { formatDate } from '../../utils'
 
 type Props = {
   post: {
@@ -73,19 +74,13 @@ const ImageWrapper = styled.figure`
 `
 
 export const Post = ({ post }: Props) => {
-  const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  })
-
   return (
     <article>
       <Heading>{post.title}</Heading>
       <Subtitle Heading level={3}>
         {post.subtitle}
       </Subtitle>
-      <Label>{formattedDate}</Label>
+      <Label>{formatDate(post.publishedAt)}</Label>
       <BlockContent blocks={post.body} serializers={serializers} {...client.config()} />
       <CommentForm postId={post._id} />
       <CommentList comments={post.comments} />
