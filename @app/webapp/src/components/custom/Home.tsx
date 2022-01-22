@@ -11,7 +11,7 @@ type Props = {
     title: string
     subtitle?: string
     slug: any
-    _updatedAt: string
+    publishedAt: string
   }[]
 }
 

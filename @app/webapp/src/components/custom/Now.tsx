@@ -23,8 +23,8 @@ export const Now = () => {
 
       <Paragraph>
         Secondly, I am working on finishing off my personal website. I have set
-        up automatic syncing of my Second Brain, meaning what's published will
-        lag by no more than a day from what's on my machine. The site also has
+        up automatic syncing of my Second Brain, meaning what&apos;s published will
+        lag by no more than a day from what&apos;s on my machine. The site also has
         music now, and will soon have comments finished.
       </Paragraph>
     </>

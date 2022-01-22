@@ -7,7 +7,7 @@ type Props = {
     _id: string
     title: string
     subtitle?: string
-    slug: string
+    slug: any
     publishedAt: string
   }[]
 }

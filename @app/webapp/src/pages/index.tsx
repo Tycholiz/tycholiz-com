@@ -10,9 +10,9 @@ type Props = {
   posts: {
     _id: string
     title: string
-    subtitle: string
+    subtitle?: string
     slug: any
-    _updatedAt: string
+    publishedAt: string
   }[]
   toggleDarkMode?: any
   isDarkMode?: boolean
