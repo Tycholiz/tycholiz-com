@@ -8,7 +8,8 @@ import approveCommentEmailTemplate from '../../static/approveCommentEmailTemplat
 const mailjetClient = mailjet.connect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_API_SECRET}`)
 
 type Data = {
-  name: string
+  key: string | undefined
+  secret: string | undefined
 }
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
@@ -48,5 +49,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
       console.log(err.statusCode)
     })
 
-  res.status(200).json({ name: 'John Doe' })
+  res.status(200).json({
+    key: process.env.MAILJET_API_KEY,
+    secret: process.env.MAILJET_API_SECRET
+  })
 }
