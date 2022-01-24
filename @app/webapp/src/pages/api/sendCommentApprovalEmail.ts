@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import mailjet from 'node-mailjet'
-import approveCommentEmailTemplate from '../../static/approveCommentEmailTemplate'
+import generateApproveCommentTemplate from '../../static/generateApproveCommentTemplate'
 
 
 // const mailjetClient = mailjet.connect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_API_SECRET}`, {version: 'v3.1'})
@@ -33,9 +33,9 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
               "Name": "Kyle"
             }
           ],
-          "Subject": "Greetings from Mailjet.",
+          "Subject": "New comment on kyletycholiz.com",
           "TextPart": "My first Mailjet email",
-          "HTMLPart": approveCommentEmailTemplate,
+          "HTMLPart": generateApproveCommentTemplate(req.body),
           "CustomID": "AppGettingStartedTest"
         }
       ]
