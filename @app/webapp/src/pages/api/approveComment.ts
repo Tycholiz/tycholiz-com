@@ -7,7 +7,7 @@ interface Response {
   err?: any
 }
 
-export default async function createComment(req: NextApiRequest & { params: any }, res: NextApiResponse<Response>) {
+export default async function createComment(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { _id } = req.query
   
   try {
