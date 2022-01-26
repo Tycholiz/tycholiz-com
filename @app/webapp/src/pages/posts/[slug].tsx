@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import groq from 'groq'
 import client from '../../../sanity-client'
 import { Post } from '../../components/custom'
 import { DefaultTemplate } from '../../components/templates'

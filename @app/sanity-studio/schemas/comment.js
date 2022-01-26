@@ -9,12 +9,12 @@ export default {
 			type: 'string',
 		},
 		{
-      title: 'Email',
+			title: 'Email',
 			name: 'email',
 			type: 'string',
 		},
 		{
-      title: 'Comment body',
+			title: 'Comment body',
 			name: 'body',
 			type: 'text',
 			// TODO: should this be text or block content?
@@ -25,13 +25,13 @@ export default {
 			type: 'boolean',
 			description: "Comments won't show on the site without approval"
 		},
-    {
-      name: 'publishedAt',
-      title: 'Published at',
-      type: 'datetime',
-    },
 		{
-      title: 'Post',
+			name: 'publishedAt',
+			title: 'Published at',
+			type: 'datetime',
+		},
+		{
+			title: 'Post',
 			name: 'post',
 			type: 'reference',
 			to: [
@@ -39,7 +39,7 @@ export default {
 			]
 		},
 		{
-      title: 'Reply',
+			title: 'Reply',
 			name: 'reply',
 			type: 'reference',
 			to: [
