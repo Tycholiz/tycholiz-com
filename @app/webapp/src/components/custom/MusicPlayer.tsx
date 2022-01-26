@@ -1,19 +1,10 @@
 import { Text } from '../common'
 import styled from 'styled-components'
 import { SyntheticEvent } from 'react'
+import { Song } from '../../../@types/schema-types'
 
 type Props = {
-  data: {
-    _id: string
-    title: string
-    writer: string
-    producer: string
-    yearWritten: number
-    yearRecorded: number
-    asset: {
-      url: string
-    }
-  }
+  data: Song
   pauseOthers: (e: SyntheticEvent) => void
 }
 

@@ -1,15 +1,10 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Anchor } from '../common'
+import { Post } from '../../../@types/schema-types'
 
 type Props = {
-  posts: {
-    _id: string
-    title: string
-    subtitle?: string
-    slug: any
-    publishedAt: string
-  }[]
+  posts: Post[]
 }
 
 const Wrapper = styled.ul`

@@ -5,15 +5,10 @@ import client from '../../sanity-client'
 import { DefaultTemplate } from '../components/templates'
 import { Home } from '../components/custom'
 import { Header } from '../components/common'
+import { Post } from '../../@types/schema-types'
 
 type Props = {
-  posts: {
-    _id: string
-    title: string
-    subtitle?: string
-    slug: any
-    publishedAt: string
-  }[]
+  posts: Post[]
   toggleDarkMode?: any
   isDarkMode?: boolean
 }

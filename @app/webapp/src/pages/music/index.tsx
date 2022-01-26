@@ -5,19 +5,10 @@ import client from '../../../sanity-client'
 import { DefaultTemplate } from '../../components/templates'
 import { MusicList } from '../../components/custom'
 import { Header } from '../../components/common'
+import { Song } from '../../../@types/schema-types'
 
 type Props = {
-  songs: {
-    _id: string
-    title: string
-    writer: string
-    producer: string
-    yearWritten: number
-    yearRecorded: number
-    asset: {
-      url: string
-    }
-  }[]
+  songs: Song[]
   toggleDarkMode: () => null
   isDarkMode: boolean
 }

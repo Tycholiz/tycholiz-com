@@ -8,22 +8,10 @@ import { Paragraph, Heading, Text } from '../common'
 import { CommentForm, CommentList } from '../custom'
 import { BlockProps, ImageProps } from '../../../@types/custom-types'
 import { formatDate } from '../../utils'
+import { Post as IPost } from '../../../@types/schema-types'
 
 type Props = {
-  post: {
-    _id: string
-    title: string
-    subtitle: string
-    body: any[]
-    publishedAt: string
-    comments: {
-      _id: string
-      publishedAt: string
-      author: string
-      body: string
-      isApproved: boolean
-    }[]
-  }
+  post: IPost
 }
 
 function urlFor(source: SanityImageSource) {

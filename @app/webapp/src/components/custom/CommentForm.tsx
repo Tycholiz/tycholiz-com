@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { SyntheticEvent } from 'react'
 
 type Props = {
-	postId: string
+  postId: string
 }
 
 const Container = styled.div`
@@ -30,58 +30,58 @@ const Textarea = styled.textarea`
 
 /* TODO: Upon 200 OK from api call to Sanity, we should replace the form with a Success message in UI */
 export const CommentForm: React.FC<Props> = ({ postId }: Props) => {
-	const [author, setAuthor] = useState('')
-	const [email, setEmail] = useState('')
-	const [commentBody, setCommentBody] = useState('')
-	const [hasSubmittedComment, setHasSubmittedComment] = useState(false)
+  const [author, setAuthor] = useState('')
+  const [email, setEmail] = useState('')
+  const [commentBody, setCommentBody] = useState('')
+  const [hasSubmittedComment, setHasSubmittedComment] = useState(false)
 
-	const resetCommentForm = () => {
-		setAuthor('')
-		setEmail('')
-		setCommentBody('')
-	}
+  const resetCommentForm = () => {
+    setAuthor('')
+    setEmail('')
+    setCommentBody('')
+  }
 
-	const handleSubmitComment = async (e: SyntheticEvent) => {
-		e.preventDefault()
-		try {
-			await fetch('/api/createComment', {
-				method: 'POST',
-				body: JSON.stringify({
-					_id: postId,
-					author,
-					email,
-					body: commentBody,
-				}),
-				/* @ts-ignore */
-				type: 'application/json'
-			})
-			resetCommentForm()
-			setHasSubmittedComment(true)
-		} catch(err) {
-			console.error(err)
-		}
-	}
+  const handleSubmitComment = async (e: SyntheticEvent) => {
+    e.preventDefault()
+    try {
+      await fetch('/api/createComment', {
+        method: 'POST',
+        body: JSON.stringify({
+          _id: postId,
+          author,
+          email,
+          body: commentBody,
+        }),
+        /* @ts-ignore */
+        type: 'application/json'
+      })
+      resetCommentForm()
+      setHasSubmittedComment(true)
+    } catch (err) {
+      console.error(err)
+    }
+  }
   return (
-		<Container>
-			{hasSubmittedComment ?
-				<Text colored={true}>Thank you for submitting a comment</Text>
-				:
-				<>
-				<Heading>Your thoughts?</Heading>
-				<form method="post">
-					<Label>Your name
-						<Input type="text" value={author} onChange={e => setAuthor(e.target.value)} />
-					</Label>
-					<Label>Your email <Text small>(PRIVATE FOR MY EYES ONLY)</Text>
-						<Input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-					</Label>
-					<Label>Comment
-						<Textarea value={commentBody} onChange={e => setCommentBody(e.target.value)} />
-					</Label>
-					<button onClick={handleSubmitComment}>Submit</button>
-				</form>
-				</>
-			}
-		</Container>
+    <Container>
+      {hasSubmittedComment ?
+        <Text colored={true}>Thank you for submitting a comment</Text>
+        :
+        <>
+          <Heading>Your thoughts?</Heading>
+          <form method="post">
+            <Label>Your name
+              <Input type="text" value={author} onChange={e => setAuthor(e.target.value)} />
+            </Label>
+            <Label>Your email <Text small>(PRIVATE FOR MY EYES ONLY)</Text>
+              <Input type="text" value={email} onChange={e => setEmail(e.target.value)} />
+            </Label>
+            <Label>Comment
+              <Textarea value={commentBody} onChange={e => setCommentBody(e.target.value)} />
+            </Label>
+            <button onClick={handleSubmitComment}>Submit</button>
+          </form>
+        </>
+      }
+    </Container>
   )
 }

@@ -4,15 +4,10 @@ import { Paragraph, Heading } from '../common'
 import { PostList } from './PostList'
 import { Anchor } from '../common'
 import constants from '../../constants'
+import { Post } from '../../../@types/schema-types'
 
 type Props = {
-  posts: {
-    _id: string
-    title: string
-    subtitle?: string
-    slug: any
-    publishedAt: string
-  }[]
+  posts: Post[]
 }
 
 const Row = styled.div`

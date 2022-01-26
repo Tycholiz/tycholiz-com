@@ -1,19 +1,10 @@
 import { MusicPlayer } from '.'
 import styled from 'styled-components'
 import { SyntheticEvent } from 'react'
+import { Song } from '../../../@types/schema-types'
 
 type Props = {
-  songs: {
-    _id: string
-    title: string
-    writer: string
-    producer: string
-    yearWritten: number
-    yearRecorded: number
-    asset: {
-      url: string
-    }
-  }[]
+  songs: Song[]
 }
 
 const PlayerContainer = styled.div`

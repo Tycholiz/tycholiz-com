@@ -43,7 +43,7 @@ const ApproveCommentPage: NextPage = () => {
     {hasDocumentUpdated ?
       <h1>The comment has been approved</h1>
       :
-      <h1>Wasn't able to approve comment. Check browser console.</h1>
+      <h1>Wasn&apos;t able to approve comment. Check browser console.</h1>
     }
     </>
   )

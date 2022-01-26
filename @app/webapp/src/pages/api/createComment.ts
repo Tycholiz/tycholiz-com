@@ -1,5 +1,6 @@
 import client from '../../../sanity-client'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { Comment } from '../../../@types/schema-types'
 
 interface CommentRequestBody {
   _id: string
