@@ -6,19 +6,21 @@ import generateApproveCommentTemplate from '../../static/generateApproveCommentT
 
 const mailjetClient = mailjet.connect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_API_SECRET}`, {version: 'v3.1'})
 
-type Data = {
-  name: string
+type Response = {
+  message: string
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
-  console.log(req.body);
+export default function sendCommentApprovalEmail(req: NextApiRequest, res: NextApiResponse<Response>) {
 
+  // TODO: can this be a POST instead?
+  // if (req.method === 'POST') {
   const request = mailjetClient
     .post("send")
     .request({
       "Messages": [
         {
           "From": {
+            // TODO: put these emails into an env file so they aren't exposed to github
             "Email": "tycholiz22@hotmail.com",
             "Name": "Kyle"
           },
@@ -47,5 +49,5 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
       console.log(err.statusCode)
     })
 
-  res.status(200).json({ name: 'John Doe' })
+  res.status(200).json({ message: 'CommentApprovalEmail has been sent!' })
 }
