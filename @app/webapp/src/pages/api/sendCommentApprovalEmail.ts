@@ -4,8 +4,7 @@ import mailjet from 'node-mailjet'
 import generateApproveCommentTemplate from '../../static/generateApproveCommentTemplate'
 
 
-// const mailjetClient = mailjet.connect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_API_SECRET}`, {version: 'v3.1'})
-const mailjetClient = mailjet.connect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_API_SECRET}`)
+const mailjetClient = mailjet.connect(`${process.env.MAILJET_API_KEY}`, `${process.env.MAILJET_API_SECRET}`, {version: 'v3.1'})
 
 type Data = {
   name: string
@@ -15,7 +14,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse<Data>)
   console.log(req.body);
 
   const request = mailjetClient
-    .post("send", { 'version': 'v3.1' })
+    .post("send")
     .request({
       "Messages": [
         {
