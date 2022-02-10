@@ -47,6 +47,10 @@ export default {
 			]
 		}
 	],
+	initialValue: () => ({
+		isApproved: false,
+		publishedAt: (new Date()).toISOString()
+	})
 	// preview: {
 	// 	select: {
 	// 		name: 'author',
