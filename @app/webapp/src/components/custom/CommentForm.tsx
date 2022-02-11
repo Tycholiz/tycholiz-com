@@ -44,7 +44,7 @@ export const CommentForm: React.FC<Props> = ({ postId }: Props) => {
   const handleSubmitComment = async (e: SyntheticEvent) => {
     e.preventDefault()
     try {
-      await fetch('/api/createComment', {
+      await fetch('/api/createUnapprovedComment', {
         method: 'POST',
         body: JSON.stringify({
           _id: postId,

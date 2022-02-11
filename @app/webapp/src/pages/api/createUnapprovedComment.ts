@@ -17,7 +17,8 @@ interface Response {
   err?: any
 }
 
-export default async function createComment(req: NextApiRequest, res: NextApiResponse<Response>) {
+// TODO: rename createUnapprovedComment
+export default async function createUnapprovedComment(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { _id, author, email, body }: CommentRequestBody = JSON.parse(req.body)
   try {
     await client.create({

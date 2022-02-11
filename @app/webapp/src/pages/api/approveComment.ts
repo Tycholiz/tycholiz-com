@@ -7,7 +7,7 @@ interface Response {
   err?: any
 }
 
-export default async function createComment(req: NextApiRequest, res: NextApiResponse<Response>) {
+export default async function approveComment(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { _id } = req.query
   
   try {
@@ -24,5 +24,5 @@ export default async function createComment(req: NextApiRequest, res: NextApiRes
     console.error(err)
     return res.status(500).json({ message: `Couldn't approve comment`, err })
   }
-  return res.status(200).json({ message: 'Comment submitted' })
+  return res.status(200).json({ message: 'You have approved the comment' })
 }
