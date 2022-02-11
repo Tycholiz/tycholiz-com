@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "main": "package.json",
-  "author": "Kyle Tycholiz",
+  "author": "Kyle Tycholiz <tycholiz22@hotmail.com>",
   "license": "UNLICENSED",
   "scripts": {
     "dev": "sanity start",

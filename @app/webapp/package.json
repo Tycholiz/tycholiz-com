@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "clean": "rm -rf ./.next",
-    "lint": "next lint",
-    "test": "jest"
+    "lint": "next lint"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^3.0.0",

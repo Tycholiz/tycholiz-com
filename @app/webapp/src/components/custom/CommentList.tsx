@@ -8,8 +8,8 @@ type Props = {
 }
 
 const Comment = styled.li`
-  margin-bottom: 3em;
-  list-style: none;
+    margin-bottom: 3em;
+    list-style: none;
 `
 
 export const CommentList: React.FC<Props> = ({ comments = [] }: Props) => {
