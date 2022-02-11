@@ -20,13 +20,12 @@ export default function sendCommentApprovalEmail(req: NextApiRequest, res: NextA
       "Messages": [
         {
           "From": {
-            // TODO: put these emails into an env file so they aren't exposed to github
-            "Email": "tycholiz22@hotmail.com",
+            "Email": process.env.PERSONAL_EMAIL,
             "Name": "Kyle"
           },
           "To": [
             {
-              "Email": "tycholizkyle@gmail.com",
+              "Email": process.env.PUBLIC_EMAIL,
               "Name": "Kyle"
             },
             {
@@ -34,10 +33,10 @@ export default function sendCommentApprovalEmail(req: NextApiRequest, res: NextA
               "Name": "Kyle"
             }
           ],
-          "Subject": "New comment on kyletycholiz.com",
-          "TextPart": "My first Mailjet email",
+          "Subject": `New comment from ${req.body.author} on kyletycholiz.com`,
+          "TextPart": "CommentApprovalEmail",
           "HTMLPart": generateApproveCommentTemplate(req.body),
-          "CustomID": "AppGettingStartedTest"
+          "CustomID": "CommentApprovalEmail"
         }
       ]
     })
