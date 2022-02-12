@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import groq from 'groq'
 import client from '../../sanity-client'
 import { DefaultTemplate } from '../components/templates'
 import { Home } from '../components/custom'
 import { Header } from '../components/common'
 import { Post } from '../../@types/schema-types'
+import { getLatestPostsQuery } from '../queries'
 
 type Props = {
   posts: Post[]
@@ -32,12 +32,9 @@ const HomePage: NextPage<Props> = ({ posts, toggleDarkMode, isDarkMode = false }
   )
 }
 
-const query = groq`
-  *[_type == "post" && publishedAt < now()][0..5] | order(publishedAt desc)
-`
 
 HomePage.getInitialProps = async () => ({
-  posts: await client.fetch(query),
+  posts: await client.fetch(getLatestPostsQuery),
 })
 
 export default HomePage

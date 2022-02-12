@@ -1,10 +1,10 @@
 import Head from 'next/head'
-import groq from 'groq'
 import client from '../../../sanity-client'
 import { PostList } from '../../components/custom'
 import { DefaultTemplate } from '../../components/templates'
 import { Header, Heading } from '../../components/common'
 import { Post } from '../../../@types/schema-types'
+import { getAllPostsQuery } from '../../queries'
 
 export type Props = {
   posts: Post[]
@@ -31,12 +31,8 @@ const BrowsePostsPage = (props: Props) => {
   )
 }
 
-const query = groq`
-  *[_type == "post" && publishedAt < now()]|order(publishedAt desc)
-`
-
 BrowsePostsPage.getInitialProps = async () => ({
-  posts: await client.fetch(query),
+  posts: await client.fetch(getAllPostsQuery),
 })
 
 export default BrowsePostsPage

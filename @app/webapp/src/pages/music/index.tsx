@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import groq from 'groq'
 import client from '../../../sanity-client'
 import { DefaultTemplate } from '../../components/templates'
 import { MusicList } from '../../components/custom'
 import { Header } from '../../components/common'
 import { Song } from '../../../@types/schema-types'
+import { getSongsQuery } from '../../queries'
 
 type Props = {
   songs: Song[]
@@ -31,22 +31,11 @@ const MusicPage: NextPage<Props> = (props: Props) => {
   )
 }
 
-const query = groq`
-	*[_type == "song"] | order(yearRecorded desc, yearWritten desc) {
-    _id,
-    title,
-    writer,
-    producer,
-    yearWritten,
-    yearRecorded,
-    asset->{url}
-  }
-`
 
 export async function getStaticProps() {
   return {
     props: {
-      songs: await client.fetch(query),
+      songs: await client.fetch(getSongsQuery),
     },
   }
 }
