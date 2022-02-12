@@ -43,7 +43,7 @@ export default {
 			name: 'reply',
 			type: 'reference',
 			to: [
-				{ type: 'comment' }
+				{ type: 'reply' }
 			]
 		}
 	],
