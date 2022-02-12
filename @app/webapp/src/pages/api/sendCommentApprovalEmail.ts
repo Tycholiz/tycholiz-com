@@ -28,10 +28,6 @@ export default function sendCommentApprovalEmail(req: NextApiRequest, res: NextA
               "Email": process.env.PUBLIC_EMAIL,
               "Name": "Kyle"
             },
-            {
-              "Email": "tycholiz@hotmail.com",
-              "Name": "Kyle"
-            }
           ],
           "Subject": `New comment from ${req.body.author} on kyletycholiz.com`,
           "TextPart": "CommentApprovalEmail",
