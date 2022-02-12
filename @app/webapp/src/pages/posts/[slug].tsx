@@ -16,7 +16,7 @@ const PostPage = ({ toggleDarkMode, isDarkMode, post }: Props) => {
   return (
     <>
       <Head>
-        <title>Kyle Tycholiz</title>
+        <title>Kyle Tycholiz &bull; {post.title}</title>
         <meta name="description" content="Personal website of Kyle Tycholiz" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

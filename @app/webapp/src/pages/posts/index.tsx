@@ -16,7 +16,7 @@ const BrowsePostsPage = (props: Props) => {
   return (
     <>
       <Head>
-        <title>Kyle Tycholiz</title>
+        <title>Kyle Tycholiz &bull; Thoughts</title>
         <meta name="description" content="Personal website of Kyle Tycholiz" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

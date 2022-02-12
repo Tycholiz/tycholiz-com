@@ -15,7 +15,7 @@ const NowPage: NextPage<Props> = (props: Props) => {
   return (
     <>
       <Head>
-        <title>Kyle Tycholiz &bull; What I&apos;m doing now</title>
+        <title>Kyle Tycholiz &bull; Now</title>
         <meta name="description" content="Personal website of Kyle Tycholiz" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

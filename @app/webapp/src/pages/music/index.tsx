@@ -17,7 +17,7 @@ const MusicPage: NextPage<Props> = (props: Props) => {
   return (
     <>
       <Head>
-        <title>Music of Kyle Tycholiz</title>
+        <title>Kyle Tycholiz &bull; Music</title>
         <meta name="description" content="Music of Kyle Tycholiz" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
