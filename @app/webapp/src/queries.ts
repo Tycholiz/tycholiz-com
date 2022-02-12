@@ -20,6 +20,9 @@ export const getPostQuery = groq`
 		${postFields}
 		'comments': *[ _type == "comment" && post._ref == ^._id && isApproved == true] {
 			${commentFields}
+      'reply': *[ _type == "reply"][0] {
+        body
+      }
 		}
 	}
 `
