@@ -4,6 +4,13 @@ export type Comment = {
   author: string
   body: string
   isApproved: boolean
+  reply: Reply
+}
+
+export type Reply = {
+  _id: string
+  publishedAt: string
+  body: string
 }
 
 export type Post = {
