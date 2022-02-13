@@ -26,11 +26,6 @@ export default {
 			description: "Comments won't show on the site without approval"
 		},
 		{
-			name: 'publishedAt',
-			title: 'Published at',
-			type: 'datetime',
-		},
-		{
 			title: 'Post',
 			name: 'post',
 			type: 'reference',

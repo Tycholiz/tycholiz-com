@@ -1,6 +1,6 @@
 export type Comment = {
   _id: string
-  publishedAt: string
+  _createdAt: string
   author: string
   body: string
   isApproved: boolean

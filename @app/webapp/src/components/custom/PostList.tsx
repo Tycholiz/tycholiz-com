@@ -2,6 +2,7 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { Anchor } from '../common'
 import { Post } from '../../../@types/schema-types'
+import { formatDate } from '../../utils'
 
 type Props = {
   posts: Post[]
@@ -54,7 +55,7 @@ export const PostList = ({ posts = [] }: Props) => {
               <Link href="/posts/[slug]" as={`/posts/${slug.current}`} passHref>
                 <StyledAnchor>
                   <InnerWrapper>
-                    <DateLabel>{new Date(publishedAt).toDateString()}</DateLabel>
+                    <DateLabel>{formatDate.long(publishedAt)}</DateLabel>
                     <Title>{title}</Title>
                     <Subtitle>{subtitle}</Subtitle>
                   </InnerWrapper>

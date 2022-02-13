@@ -9,7 +9,7 @@ const postFields = `
 `
 const commentFields = `
   _id,
-  publishedAt,
+  _createdAt,
   author,
   body,
 	isApproved,

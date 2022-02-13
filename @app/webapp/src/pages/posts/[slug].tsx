@@ -1,3 +1,4 @@
+import { NextPageContext } from 'next'
 import Head from 'next/head'
 import client from '../../../sanity-client'
 import { Post } from '../../components/custom'
@@ -30,9 +31,8 @@ const PostPage = ({ toggleDarkMode, isDarkMode, post }: Props) => {
   )
 }
 
-// TODO: get date added
-PostPage.getInitialProps = async function (context: any) {
-  // default the slug so that it doesn't return "undefined"
+PostPage.getInitialProps = async function (context: NextPageContext) {
+  /* default the slug so that it doesn't return "undefined" */
   const { slug = '' } = context.query
   return {
     post: await client.fetch(getPostQuery, { slug })

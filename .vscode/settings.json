@@ -1,3 +1,8 @@
 {
-  "cSpell.ignoreWords": ["groq"]
+  "cSpell.ignoreWords": [
+    "groq"
+  ],
+  "cSpell.words": [
+    "serializers"
+  ]
 }

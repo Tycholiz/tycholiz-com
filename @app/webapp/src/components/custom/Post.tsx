@@ -68,7 +68,7 @@ export const Post = ({ post }: Props) => {
       <Subtitle Heading level={3}>
         {post.subtitle}
       </Subtitle>
-      <Text small>{formatDate(post.publishedAt)}</Text>
+      <Text small>{formatDate.long(post.publishedAt)}</Text>
       <BlockContent blocks={post.body} serializers={serializers} {...client.config()} />
       <CommentForm postId={post._id} />
       <CommentList comments={post.comments} />
