@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Heading, HorizontalRule, Label } from '.'
-import constants from '../../constants'
+import constants from '@constants'
 
 type Props = {
   toggleDarkMode: any

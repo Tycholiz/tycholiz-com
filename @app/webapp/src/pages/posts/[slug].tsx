@@ -1,10 +1,10 @@
 import { NextPageContext } from 'next'
 import Head from 'next/head'
 import client from '../../../sanity-client'
-import { Post } from '../../components/custom'
-import { DefaultTemplate } from '../../components/templates'
-import { Header } from '../../components/common'
-import { getPostQuery } from '../../queries'
+import { Post } from '@components/custom'
+import { DefaultTemplate } from '@components/templates'
+import { Header } from '@components/common'
+import { getPostQuery } from '@queries'
 import { Post as IPost } from '../../../@types/schema-types'
 
 type Props = {

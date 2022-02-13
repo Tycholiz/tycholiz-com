@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Heading, Text } from '../common'
+import { Heading, Text } from '@components/common'
 import { useState } from 'react'
 import { SyntheticEvent } from 'react'
 

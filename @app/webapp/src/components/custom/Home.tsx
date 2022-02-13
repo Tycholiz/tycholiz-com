@@ -1,9 +1,8 @@
 import styled from 'styled-components'
 import Link from 'next/link'
-import { Paragraph, Heading } from '../common'
+import { Paragraph, Heading, Anchor } from '@components/common'
 import { PostList } from './PostList'
-import { Anchor } from '../common'
-import constants from '../../constants'
+import constants from '@constants'
 import { Post } from '../../../@types/schema-types'
 
 type Props = {

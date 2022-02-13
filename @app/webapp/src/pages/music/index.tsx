@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import client from '../../../sanity-client'
-import { DefaultTemplate } from '../../components/templates'
-import { MusicList } from '../../components/custom'
-import { Header } from '../../components/common'
+import { DefaultTemplate } from '@components/templates'
+import { MusicList } from '@components/custom'
+import { Header } from '@components/common'
+import { getSongsQuery } from '@queries'
 import { Song } from '../../../@types/schema-types'
-import { getSongsQuery } from '../../queries'
 
 type Props = {
   songs: Song[]

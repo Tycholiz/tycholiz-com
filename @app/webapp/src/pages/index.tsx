@@ -1,11 +1,11 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import client from '../../sanity-client'
-import { DefaultTemplate } from '../components/templates'
-import { Home } from '../components/custom'
-import { Header } from '../components/common'
+import { DefaultTemplate } from '@components/templates'
+import { Home } from '@components/custom'
+import { Header } from '@components/common'
+import { getLatestPostsQuery } from '@queries'
 import { Post } from '../../@types/schema-types'
-import { getLatestPostsQuery } from '../queries'
 
 type Props = {
   posts: Post[]

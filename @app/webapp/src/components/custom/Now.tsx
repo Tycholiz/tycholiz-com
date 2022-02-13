@@ -1,4 +1,4 @@
-import { Paragraph, Anchor, Text } from '../common'
+import { Paragraph, Anchor, Text } from '@components/common'
 
 export const Now = () => {
   return (

@@ -1,8 +1,8 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import { Now } from '../../components/custom'
-import { DefaultTemplate } from '../../components/templates'
-import { Header } from '../../components/common'
+import { Now } from '@components/custom'
+import { DefaultTemplate } from '@components/templates'
+import { Header } from '@components/common'
 import { Post } from '../../../@types/schema-types'
 
 type Props = {

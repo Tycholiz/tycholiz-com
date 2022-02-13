@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Anchor } from '../common'
+import { Anchor } from '@components/common'
 import { Post } from '../../../@types/schema-types'
 import { formatDate } from '../../utils'
 
