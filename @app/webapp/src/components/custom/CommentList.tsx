@@ -29,7 +29,6 @@ const Reply: React.FC<{ data: IReply }> = ({ data }) => {
 }
 
 export const CommentList: React.FC<Props> = ({ comments = [] }: Props) => {
-  console.log('comments', comments);
   // TODO remove those classes below
   return (
     <>

@@ -36,6 +36,7 @@ export default function sendCommentApprovalEmail(req: NextApiRequest, res: NextA
         }
       ]
     })
+  // TODO set up logrocket or sentry to capture these logs
   request
     .then((result) => {
       console.log(JSON.stringify(result.body, null, 2))
