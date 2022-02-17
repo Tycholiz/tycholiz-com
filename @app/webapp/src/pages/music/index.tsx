@@ -31,7 +31,6 @@ const MusicPage: NextPage<Props> = (props: Props) => {
   )
 }
 
-
 export async function getStaticProps() {
   return {
     props: {

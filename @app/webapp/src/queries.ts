@@ -34,7 +34,6 @@ export const getLatestPostsQuery = groq`
   *[_type == "post" && publishedAt < now()][0..5] | order(publishedAt desc)
 `
 
-
 export const getAllPostsQuery = groq`
   *[_type == "post" && publishedAt < now()] | order(publishedAt desc)
 `

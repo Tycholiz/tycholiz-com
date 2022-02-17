@@ -1,7 +1,6 @@
 import client from '../../../sanity-client'
 import { NextApiRequest, NextApiResponse } from 'next'
 
-
 interface Response {
   message: string
   err?: any
@@ -9,13 +8,14 @@ interface Response {
 
 export default async function approveComment(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { _id } = req.query
-  
+
   try {
-    await client.patch(_id as string)
+    await client
+      .patch(_id as string)
       .set({ isApproved: true })
       .commit()
       .then((updatedComment: any) => {
-        console.log('updatedComment', updatedComment);
+        console.log('updatedComment', updatedComment)
       })
       .catch((err: Error) => {
         console.error('Oh no, the update failed: ', err.message)

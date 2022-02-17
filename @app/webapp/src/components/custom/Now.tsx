@@ -13,8 +13,8 @@ export const Now = () => {
       </Paragraph>
 
       <Paragraph>
-        The first project is to record a song written several years ago. I will link
-        it to my website when it is ready. It is being produced by my friend{' '}
+        The first project is to record a song written several years ago. I will link it to my
+        website when it is ready. It is being produced by my friend{' '}
         <Anchor target="_blank" href="https://www.devbrow.com">
           Dev Brow
         </Anchor>
@@ -22,10 +22,10 @@ export const Now = () => {
       </Paragraph>
 
       <Paragraph>
-        Secondly, I am working on finishing off my personal website. I have set
-        up automatic syncing of my Second Brain, meaning what&apos;s published will
-        lag by no more than a day from what&apos;s on my machine. The site also has
-        music now, and will soon have comments finished.
+        Secondly, I am working on finishing off my personal website. I have set up automatic syncing
+        of my Second Brain, meaning what&apos;s published will lag by no more than a day from
+        what&apos;s on my machine. The site also has music now, and will soon have comments
+        finished.
       </Paragraph>
     </>
   )

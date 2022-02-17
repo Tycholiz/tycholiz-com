@@ -22,9 +22,7 @@ const PostPage = ({ toggleDarkMode, isDarkMode, post }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <DefaultTemplate
-        header={<Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />}
-      >
+      <DefaultTemplate header={<Header toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />}>
         <Post post={post} />
       </DefaultTemplate>
     </>
@@ -35,7 +33,7 @@ PostPage.getInitialProps = async function (context: NextPageContext) {
   /* default the slug so that it doesn't return "undefined" */
   const { slug = '' } = context.query
   return {
-    post: await client.fetch(getPostQuery, { slug })
+    post: await client.fetch(getPostQuery, { slug }),
   }
 }
 

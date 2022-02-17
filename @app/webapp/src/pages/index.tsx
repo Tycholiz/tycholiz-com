@@ -32,7 +32,6 @@ const HomePage: NextPage<Props> = ({ posts, toggleDarkMode, isDarkMode = false }
   )
 }
 
-
 HomePage.getInitialProps = async () => ({
   posts: await client.fetch(getLatestPostsQuery),
 })

@@ -32,7 +32,7 @@ export const CommentList: React.FC<Props> = ({ comments = [] }: Props) => {
   // TODO remove those classes below
   return (
     <>
-      {!!comments.length &&
+      {!!comments.length && (
         <>
           <h2 className="mt-10 mb-4 text-4xl lg:text-6xl leading-tight">Comments:</h2>
           <ul>
@@ -46,7 +46,7 @@ export const CommentList: React.FC<Props> = ({ comments = [] }: Props) => {
             ))}
           </ul>
         </>
-      }
+      )}
     </>
   )
 }

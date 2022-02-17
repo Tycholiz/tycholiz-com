@@ -4,15 +4,8 @@ import BlockContent from '@sanity/block-content-to-react'
 import { SanityImageSource } from '@sanity/image-url/lib/types/types'
 import imageUrlBuilder from '@sanity/image-url'
 import client from '../../../sanity-client'
-import { 
-  Paragraph,
-  Heading,
-  Text,
-} from '@components/common'
-import {
-  CommentForm,
-  CommentList,
-} from '@components/custom'
+import { Paragraph, Heading, Text } from '@components/common'
+import { CommentForm, CommentList } from '@components/custom'
 import { formatDate } from '@utils'
 import { BlockProps, ImageProps } from '../../../@types/custom-types'
 import { Post as IPost } from '../../../@types/schema-types'
