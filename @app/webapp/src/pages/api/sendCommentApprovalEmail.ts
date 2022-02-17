@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import mailjet from 'node-mailjet'
 import generateApproveCommentTemplate from '../../static/generateApproveCommentTemplate'
+import { withSentry } from "@sentry/nextjs"
 
 const mailjetClient = mailjet.connect(
   `${process.env.MAILJET_API_KEY}`,
@@ -19,7 +20,7 @@ type Response = {
  * @param req 
  * @param res 
  */
-export default function sendCommentApprovalEmail(
+function sendCommentApprovalEmail(
   req: NextApiRequest,
   res: NextApiResponse<Response>,
 ) {
@@ -45,7 +46,6 @@ export default function sendCommentApprovalEmail(
       },
     ],
   })
-  // TODO set up logrocket or sentry to capture these logs
   request
     .then((result) => {
       console.log(JSON.stringify(result.body, null, 2))
@@ -57,3 +57,5 @@ export default function sendCommentApprovalEmail(
 
   res.status(200).json({ message: 'CommentApprovalEmail has been sent!' })
 }
+
+export default withSentry(sendCommentApprovalEmail)
