@@ -1,6 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { withSentry } from '@sentry/nextjs'
 import client from '../../../sanity-client'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 interface CommentRequestBody {
   _id: string
@@ -18,7 +17,7 @@ interface Response {
   err?: any
 }
 
-async function createUnapprovedComment(req: NextApiRequest, res: NextApiResponse<Response>) {
+export default async function createUnapprovedComment(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { _id, author, email, body }: CommentRequestBody = JSON.parse(req.body)
 
   try {
@@ -43,5 +42,3 @@ async function createUnapprovedComment(req: NextApiRequest, res: NextApiResponse
   }
   return res.status(200).json({ message: 'Comment submitted' })
 }
-
-export default withSentry(createUnapprovedComment)

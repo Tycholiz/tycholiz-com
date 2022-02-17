@@ -1,6 +1,6 @@
+// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import mailjet from 'node-mailjet'
-import { withSentry } from '@sentry/nextjs'
 import generateApproveCommentTemplate from '../../static/generateApproveCommentTemplate'
 
 
@@ -10,7 +10,7 @@ type Response = {
   message: string
 }
 
-function sendCommentApprovalEmail(req: NextApiRequest, res: NextApiResponse<Response>) {
+export default function sendCommentApprovalEmail(req: NextApiRequest, res: NextApiResponse<Response>) {
 
   // TODO: can this be a POST instead?
   // if (req.method === 'POST') {
@@ -36,6 +36,7 @@ function sendCommentApprovalEmail(req: NextApiRequest, res: NextApiResponse<Resp
         }
       ]
     })
+  // TODO set up logrocket or sentry to capture these logs
   request
     .then((result) => {
       console.log(JSON.stringify(result.body, null, 2))
@@ -46,5 +47,3 @@ function sendCommentApprovalEmail(req: NextApiRequest, res: NextApiResponse<Resp
 
   res.status(200).json({ message: 'CommentApprovalEmail has been sent!' })
 }
-
-export default withSentry(sendCommentApprovalEmail)

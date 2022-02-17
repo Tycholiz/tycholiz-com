@@ -1,6 +1,5 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-import { withSentry } from '@sentry/nextjs'
 import client from '../../../sanity-client'
+import { NextApiRequest, NextApiResponse } from 'next'
 
 
 interface Response {
@@ -8,7 +7,7 @@ interface Response {
   err?: any
 }
 
-async function approveComment(req: NextApiRequest, res: NextApiResponse<Response>) {
+export default async function approveComment(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { _id } = req.query
   
   try {
@@ -27,5 +26,3 @@ async function approveComment(req: NextApiRequest, res: NextApiResponse<Response
   }
   return res.status(200).json({ message: 'You have approved the comment' })
 }
-
-export default withSentry(approveComment)
