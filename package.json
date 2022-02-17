@@ -24,7 +24,8 @@
   "workspaces": {
     "packages": [
       "@app/*"
-    ]
+    ],
+    "nohoist": ["**/@sentry/**", "@sentry/**"]
   },
   "devDependencies": {
     "@types/styled-components": "^5.1.20",
