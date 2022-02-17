@@ -21,13 +21,12 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
-  "workspaces": {
-    "packages": [
-      "@app/*"
-    ]
-  },
+  "workspaces": [
+    "@app/*"
+  ],
   "devDependencies": {
     "@types/styled-components": "^5.1.20",
-    "prettier": "2.5.1"
+    "prettier": "2.5.1",
+    "turbo": "^1.1.2"
   }
 }

@@ -2,3 +2,9 @@
 **/*log
 **/.DS_Store
 **/.env*
+.turbo
+**/build/**
+**/dist/**
+**/.next/**
+**/.sentryclirc
+
