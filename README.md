@@ -7,5 +7,5 @@
 
 ### Infrastructure
 
-The folder structure of this project is laid out using yarn workspaces. All
-modules are found in the `@app/` directory.
+The monorepo is implemented with yarn workspaces and
+turborepo. All modules are found in the `@app/` directory.
