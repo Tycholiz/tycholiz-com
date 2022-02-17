@@ -11,8 +11,14 @@ const mailjetClient = mailjet.connect(
 
 type Response = {
   message: string
+  err?: any
 }
 
+/**
+ * Sends an email to the website owner, giving the option to approve a comment
+ * @param req 
+ * @param res 
+ */
 export default function sendCommentApprovalEmail(
   req: NextApiRequest,
   res: NextApiResponse<Response>,
@@ -45,7 +51,8 @@ export default function sendCommentApprovalEmail(
       console.log(JSON.stringify(result.body, null, 2))
     })
     .catch((err) => {
-      console.log(err.statusCode)
+      console.error(err.statusCode)
+      return res.status(500).json({ message: 'couldn\'t send approve comment email', err })
     })
 
   res.status(200).json({ message: 'CommentApprovalEmail has been sent!' })
