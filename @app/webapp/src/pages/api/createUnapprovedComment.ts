@@ -20,7 +20,12 @@ interface Response {
 
 async function createUnapprovedComment(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { _id, author, email, body }: CommentRequestBody = JSON.parse(req.body)
+
   try {
+    if (!author) throw new Error('Author is required')
+    if (!email) throw new Error('Email is required')
+    if (!body) throw new Error('Body is required')
+
     await client.create({
       _type: 'comment',
       author,
