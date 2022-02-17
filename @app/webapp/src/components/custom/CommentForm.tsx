@@ -44,6 +44,10 @@ export const CommentForm: React.FC<Props> = ({ postId }: Props) => {
   const handleSubmitComment = async (e: SyntheticEvent) => {
     e.preventDefault()
     try {
+      if (!author || !email || !commentBody) {
+        window.alert('Please enter all the fields')
+        return
+      }
       await fetch('/api/createUnapprovedComment', {
         method: 'POST',
         body: JSON.stringify({
