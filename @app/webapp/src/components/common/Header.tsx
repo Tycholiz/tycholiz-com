@@ -1,7 +1,9 @@
 import Link from 'next/link'
 import styled from 'styled-components'
 import { Heading, HorizontalRule, Label } from '.'
+import { DarkModeSwitch } from '@components/custom'
 import constants from '@constants'
+
 
 type Props = {
   toggleDarkMode: any
@@ -37,7 +39,6 @@ const Bullet = styled.span`
   color: ${({ theme }) => theme.color.grayscale[2]};
 `
 
-const StyledCheckbox = styled.input``
 
 export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
   return (
@@ -47,8 +48,7 @@ export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
           <Heading>Kyle Tycholiz</Heading>
         </Link>
         <Label>
-          {isDarkMode ? 'Dark mode' : 'Light mode'}
-          <StyledCheckbox onChange={toggleDarkMode} type="checkbox" checked={isDarkMode} />
+          <DarkModeSwitch onChange={toggleDarkMode} type="checkbox" checked={isDarkMode} />
         </Label>
       </TopLine>
       <HorizontalRule />
