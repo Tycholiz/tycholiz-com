@@ -87,6 +87,14 @@ export const CommentForm: React.FC<Props> = ({ postId }: Props) => {
             </Label>
             <button onClick={handleSubmitComment}>Submit</button>
           </form>
+          <button
+            type="button"
+            onClick={() => {
+              throw new Error('Sentry Frontend Error')
+            }}
+          >
+            Throw error
+          </button>
         </>
       )}
     </Container>
