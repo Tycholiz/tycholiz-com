@@ -6,6 +6,7 @@ const SENTRY_DSN: string =
 
 Sentry.init({
   dsn: SENTRY_DSN || "https://3cae9c724cad439ca0a4acba33219ec8@o1143175.ingest.sentry.io/6204419",
+  tunnel: '/tunnel',
   // We recommend adjusting this value in production, or using tracesSampler
   // for finer control
   tracesSampleRate: 1.0,
