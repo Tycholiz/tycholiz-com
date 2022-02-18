@@ -1,6 +1,6 @@
 import client from '../../../sanity-client'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { withSentry } from "@sentry/nextjs"
+import { withSentry, captureException } from "@sentry/nextjs"
 
 interface Response {
   message: string
@@ -22,7 +22,7 @@ async function approveComment(req: NextApiRequest, res: NextApiResponse<Response
         console.error('Oh no, the update failed: ', err.message)
       })
   } catch (err) {
-    console.error(err)
+    captureException(err)
     return res.status(500).json({ message: `Couldn't approve comment`, err })
   }
   return res.status(200).json({ message: 'You have approved the comment' })

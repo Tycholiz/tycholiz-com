@@ -2,7 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import mailjet from 'node-mailjet'
 import generateApproveCommentTemplate from '../../static/generateApproveCommentTemplate'
-import { withSentry } from "@sentry/nextjs"
+import { withSentry, captureException } from "@sentry/nextjs"
 
 const mailjetClient = mailjet.connect(
   `${process.env.MAILJET_API_KEY}`,
@@ -51,7 +51,7 @@ function sendCommentApprovalEmail(
       console.log(JSON.stringify(result.body, null, 2))
     })
     .catch((err) => {
-      console.error(err.statusCode)
+      captureException(err)
       return res.status(500).json({ message: 'couldn\'t send approve comment email', err })
     })
 
