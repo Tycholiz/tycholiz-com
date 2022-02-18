@@ -7,6 +7,11 @@ interface Response {
   err?: any
 }
 
+/**
+ * Approves the comment so that it may be shown on the site.
+ * @param req 
+ * @param res 
+ */
 async function approveComment(req: NextApiRequest, res: NextApiResponse<Response>) {
   const { _id } = req.query
 
@@ -19,7 +24,7 @@ async function approveComment(req: NextApiRequest, res: NextApiResponse<Response
         console.log('updatedComment', updatedComment)
       })
       .catch((err: Error) => {
-        console.error('Oh no, the update failed: ', err.message)
+        throw new Error(err.message)
       })
   } catch (err) {
     captureException(err)

@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import mailjet from 'node-mailjet'
-import generateApproveCommentTemplate from '../../static/generateApproveCommentTemplate'
+import { generateEmailContents } from '../../static/generateEmailContents'
 import { withSentry, captureException } from "@sentry/nextjs"
 
 const mailjetClient = mailjet.connect(
@@ -16,7 +16,9 @@ type Response = {
 }
 
 /**
- * Sends an email to the website owner, giving the option to approve a comment
+ * Sends an email to the website owner, giving the option to approve a comment. 
+ * 
+ * This should be triggered by a webhook.
  * @param req 
  * @param res 
  */
@@ -26,27 +28,11 @@ function sendCommentApprovalEmail(
 ) {
   // TODO: can this be a POST instead?
   // if (req.method === 'POST') {
-  const request = mailjetClient.post('send').request({
-    Messages: [
-      {
-        From: {
-          Email: process.env.PERSONAL_EMAIL,
-          Name: 'Kyle',
-        },
-        To: [
-          {
-            Email: process.env.PUBLIC_EMAIL,
-            Name: 'Kyle',
-          },
-        ],
-        Subject: `New comment from ${req.body.author} on kyletycholiz.com`,
-        TextPart: 'CommentApprovalEmail',
-        HTMLPart: generateApproveCommentTemplate(req.body),
-        CustomID: 'CommentApprovalEmail',
-      },
-    ],
-  })
-  request
+  mailjetClient
+    .post('send')
+    .request({
+      Messages: generateEmailContents(req.body),
+    })
     .then((result) => {
       console.log(JSON.stringify(result.body, null, 2))
     })

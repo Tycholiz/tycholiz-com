@@ -18,6 +18,11 @@ interface Response {
   err?: any
 }
 
+/**
+ * Creates an unapproved comment in the Sanity datastore. Comments will not be visible to the public until they are approved. 
+ * @param req 
+ * @param res 
+ */
 async function createUnapprovedComment(
   req: NextApiRequest,
   res: NextApiResponse<Response>,
