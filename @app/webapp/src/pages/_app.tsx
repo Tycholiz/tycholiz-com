@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '@styles/theme'
 import { GlobalStyles } from '@styles/global'
@@ -12,8 +12,16 @@ import type { AppProps } from 'next/app'
 function MyApp({ Component, pageProps }: AppProps) {
   const [isDarkMode, setDarkMode] = useState(false)
 
+  useEffect(() => {
+    const localStorageDarkMode = localStorage.getItem('darkMode')
+    if (localStorageDarkMode) {
+      setDarkMode(localStorageDarkMode === 'true')
+    }
+  }, [isDarkMode])
+
   const toggleDarkMode = () => {
     isDarkMode === false ? setDarkMode(true) : setDarkMode(false)
+    localStorage.setItem('darkMode', String(!isDarkMode))
   }
   const theme = isDarkMode ? darkTheme : lightTheme
 
