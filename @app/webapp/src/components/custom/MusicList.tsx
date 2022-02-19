@@ -1,7 +1,7 @@
 import { MusicPlayer } from '.'
 import styled from 'styled-components'
 import { SyntheticEvent } from 'react'
-import { Song } from '../../../@types/schema-types'
+import { Song } from '@types'
 
 type Props = {
   songs: Song[]

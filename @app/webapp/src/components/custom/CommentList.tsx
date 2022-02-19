@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Paragraph, Text } from '@components/common'
 import { formatDate } from '@utils'
-import { Comment as IComment, Reply as IReply } from '../../../@types/schema-types'
+import { Comment as IComment, Reply as IReply } from '@types'
 
 type Props = {
   comments: IComment[]

@@ -5,7 +5,7 @@ import { DefaultTemplate } from '@components/templates'
 import { Home } from '@components/custom'
 import { Header } from '@components/common'
 import { getLatestPostsQuery } from '@queries'
-import { Post } from '../../@types/schema-types'
+import { Post } from '@types'
 
 type Props = {
   posts: Post[]

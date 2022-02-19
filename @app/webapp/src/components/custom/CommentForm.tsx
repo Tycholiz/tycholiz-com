@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import { Heading, Text } from '@components/common'
-import { useState } from 'react'
-import { SyntheticEvent } from 'react'
+import { useState, SyntheticEvent  } from 'react'
 
 type Props = {
   postId: string

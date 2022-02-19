@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Paragraph, Heading, Anchor } from '@components/common'
 import { PostList } from './PostList'
 import constants from '@constants'
-import { Post } from '../../../@types/schema-types'
+import { Post } from '@types'
 
 type Props = {
   posts: Post[]

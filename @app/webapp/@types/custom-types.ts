@@ -1,4 +1,4 @@
-type BlockPropsNode = {
+export type BlockPropsNode = {
   children: any[]
   markDefs: any[]
   style: string
@@ -6,7 +6,7 @@ type BlockPropsNode = {
   _type: 'block'
 }
 
-type ImagePropsNode = {
+export type ImagePropsNode = {
   _type: 'image'
   alt: string
   asset: {

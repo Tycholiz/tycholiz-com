@@ -7,8 +7,7 @@ import client from '../../../sanity-client'
 import { Paragraph, Heading, Text } from '@components/common'
 import { CommentForm, CommentList } from '@components/custom'
 import { formatDate } from '@utils'
-import { BlockProps, ImageProps } from '../../../@types/custom-types'
-import { Post as IPost } from '../../../@types/schema-types'
+import { BlockProps, ImageProps, Post as IPost } from '@types'
 
 type Props = {
   post: IPost

@@ -25,6 +25,7 @@
       "@components/common": ["src/components/common"],
       "@components/custom": ["src/components/custom"],
       "@components/templates": ["src/components/templates"],
+      "@types": ["@types"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/pages/_error.js"],

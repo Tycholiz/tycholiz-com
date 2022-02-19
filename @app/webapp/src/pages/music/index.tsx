@@ -5,7 +5,7 @@ import { DefaultTemplate } from '@components/templates'
 import { MusicList } from '@components/custom'
 import { Header } from '@components/common'
 import { getSongsQuery } from '@queries'
-import { Song } from '../../../@types/schema-types'
+import { Song } from '@types'
 
 type Props = {
   songs: Song[]

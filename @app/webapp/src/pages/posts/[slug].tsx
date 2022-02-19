@@ -5,7 +5,7 @@ import { Post } from '@components/custom'
 import { DefaultTemplate } from '@components/templates'
 import { Header } from '@components/common'
 import { getPostQuery } from '@queries'
-import { Post as IPost } from '../../../@types/schema-types'
+import { Post as IPost } from '@types'
 
 type Props = {
   post: IPost

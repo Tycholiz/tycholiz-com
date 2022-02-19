@@ -3,7 +3,7 @@ import Head from 'next/head'
 import { Now } from '@components/custom'
 import { DefaultTemplate } from '@components/templates'
 import { Header } from '@components/common'
-import { Post } from '../../../@types/schema-types'
+import { Post } from '@types'
 
 type Props = {
   posts: Post[]
