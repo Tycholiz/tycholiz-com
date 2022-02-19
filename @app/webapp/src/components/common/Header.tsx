@@ -47,7 +47,7 @@ export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
         <Link href="/" as={`/`} passHref>
           <Heading>Kyle Tycholiz</Heading>
         </Link>
-        <DarkModeSwitch onChange={toggleDarkMode} type="checkbox" checked={isDarkMode} />
+        <DarkModeSwitch toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
       </TopLine>
       <HorizontalRule />
       <NavList>

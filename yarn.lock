@@ -2178,6 +2178,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.5.tgz#75a2a8e7d8ab4b230414505d92335d1dcb53a6df"
   integrity sha512-L28j2FcJfSZOnL1WBjDYp2vUHCeIFlyYI/53EwD/rKUBQ7MtUUfbQWiyKJGpcnv4/WgrhWsFKrcPstcAt/J0tQ==
 
+"@types/react-toggle@^4.0.3":
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/@types/react-toggle/-/react-toggle-4.0.3.tgz#8db98ac8d2c5e8c03c2d3a42027555c1cd2289da"
+  integrity sha512-57QdMWeeQdRjM2/p+udgYerxUbSkmeUIW18kwUttcci6GHkgxoqCsDZfRtsCsAHcvvM5VBQdtDUEgLWo2e87mA==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*":
   version "17.0.33"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.33.tgz#e01ae3de7613dac1094569880bb3792732203ad5"
@@ -9631,6 +9638,13 @@ react-textarea-autosize@^8.3.2:
     "@babel/runtime" "^7.10.2"
     use-composed-ref "^1.0.0"
     use-latest "^1.0.0"
+
+react-toggle@^4.1.2:
+  version "4.1.2"
+  resolved "https://registry.yarnpkg.com/react-toggle/-/react-toggle-4.1.2.tgz#b00500832f925ad524356d909821821ae39f6c52"
+  integrity sha512-4Ohw31TuYQdhWfA6qlKafeXx3IOH7t4ZHhmRdwsm1fQREwOBGxJT+I22sgHqR/w8JRdk+AeMCJXPImEFSrNXow==
+  dependencies:
+    classnames "^2.2.5"
 
 react@17.0.1:
   version "17.0.1"
