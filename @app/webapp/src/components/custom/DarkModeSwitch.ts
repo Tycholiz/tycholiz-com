@@ -5,30 +5,30 @@ import styled, { keyframes } from 'styled-components'
 const off = keyframes`
   0%{
     transform: translateX(80px);
-    width: 30px;
+    width: 46px;
   }
   50%{
-    width: 50px;  
+    width: 75px;  
     border-radius: 25px;   
   }
   100%{
     transform: translateX(0px); 
-    width: 30px;
+    width: 46px;
   }
 `
 
 const on = keyframes`
   0%{
     transform: translateX(0px);
-    width: 30px;
+    width: 46px;
   }
   50%{
-    width: 50px;  
+    width: 75px;  
     border-radius: 25px;   
   }
   100%{
     transform: translateX(80px); 
-    width: 30px;
+    width: 46px;
   }
 `
 
@@ -86,8 +86,8 @@ const moon = keyframes`
 
 export const DarkModeSwitch = styled.input`
   position: relative;
-  width: 87px;
-  height: 34px;
+  width: 130px;
+  height: 50px;
   margin: 0px;
   appearance: none;
   -webkit-appearance: none;
@@ -110,7 +110,6 @@ export const DarkModeSwitch = styled.input`
     &:after {
       animation: ${on} 0.7s forwards cubic-bezier(0.8, 0.5, 0.2, 1.4);
       box-shadow: inset -5px -5px 4px rgba(53, 53, 53, 0.3);
-      left: -25px;
     }
 
     &:before {
@@ -119,7 +118,7 @@ export const DarkModeSwitch = styled.input`
       height: 15px;
       border-radius: 50%;
       position: absolute;
-      right: 149px;
+      right: 187px;
       top: 5px;
       transform-origin: 53px 10px;
       background-color: transparent;
@@ -131,8 +130,8 @@ export const DarkModeSwitch = styled.input`
 
   &:after {
     content: '';
-    width: 30px;
-    height: 30px;
+    width: 46px;
+    height: 46px;
     border-radius: 50%;
     background-color: #fff;
     position: absolute;

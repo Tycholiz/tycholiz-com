@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import styled from 'styled-components'
-import { Heading, HorizontalRule } from '.'
+import { Heading, HorizontalRule, Label } from '.'
 import { DarkModeSwitch } from '@components/custom'
 import constants from '@constants'
 
@@ -47,7 +47,9 @@ export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
         <Link href="/" as={`/`} passHref>
           <Heading>Kyle Tycholiz</Heading>
         </Link>
-        <DarkModeSwitch onChange={toggleDarkMode} type="checkbox" checked={isDarkMode} />
+        <Label>
+          <DarkModeSwitch onChange={toggleDarkMode} type="checkbox" checked={isDarkMode} />
+        </Label>
       </TopLine>
       <HorizontalRule />
       <NavList>
