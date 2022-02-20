@@ -20,6 +20,7 @@ const PostWrapper = styled.div``
 export const Home: React.FC<Props> = ({ posts }) => {
   return (
     <>
+    <section>
       <Heading colored="true">Me in 10 seconds</Heading>
       <Paragraph>I am a musician, programmer, and lifelong learner from Canada.</Paragraph>
 
@@ -48,7 +49,9 @@ export const Home: React.FC<Props> = ({ posts }) => {
         If you think we should be in touch, then I look forward to talking with you! The best way to
         reach me is through email.
       </Paragraph>
+    </section>
 
+    <section>
       <Row>
         <Heading colored="true">Latest articles</Heading>
         <Link href="/posts" as={`/posts`} passHref={true}>
@@ -59,6 +62,7 @@ export const Home: React.FC<Props> = ({ posts }) => {
       <PostWrapper>
         <PostList posts={posts} />
       </PostWrapper>
+    </section>
     </>
   )
 }

@@ -2,7 +2,7 @@ import { Paragraph, Anchor, Text } from '@components/common'
 
 export const Now = () => {
   return (
-    <>
+    <section>
       <Text small>Last updated: Jan 20, 2022</Text>
       <Paragraph>
         In the past I have been known to take on too many projects at once. This of course was
@@ -27,6 +27,6 @@ export const Now = () => {
         what&apos;s on my machine. The site also has music now, and will soon have comments
         finished.
       </Paragraph>
-    </>
+    </section>
   )
 }

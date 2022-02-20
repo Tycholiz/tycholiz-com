@@ -29,13 +29,14 @@ const StyledAnchor = styled(Anchor)`
 
 const Title = styled.span``
 
-const Subtitle = styled.div`
+const Subtitle = styled.span`
+  display: block;
   color: ${({ theme }) => theme.color.grayscale[2]};
   font-style: italic;
   margin-top: 0.3em;
 `
 
-const DateLabel = styled.div`
+const DateLabel = styled.span`
   float: right;
   font-size: 0.8em;
   color: ${({ theme }) => theme.color.grayscale[4]};

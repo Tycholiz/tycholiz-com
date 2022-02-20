@@ -7,7 +7,7 @@ type Props = {
   songs: Song[]
 }
 
-const PlayerContainer = styled.div`
+const PlayerContainer = styled.section`
   display: flex;
   flex-direction: column;
 `

@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 const Header = styled.header``
 
-const Content = styled.section`
+const Content = styled.main`
   width: 100%;
   box-sizing: border-box;
   padding: 0.4em 2em;
