@@ -10,3 +10,7 @@
 
 The monorepo is implemented with yarn workspaces and
 turborepo. All modules are found in the `@app/` directory.
+
+### Deployment
+Hosting is handled by Vercel. Vercel hooks into pushes to the remote master
+branch and builds the new code and serves it to the internet.

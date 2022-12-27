@@ -38,12 +38,18 @@ const Bullet = styled.span`
   color: ${({ theme }) => theme.color.grayscale[2]};
 `
 
+const HeadingWrapper = styled.div`
+  cursor: pointer;
+`
+
 export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
   return (
     <InnerWrapper>
       <TopLine>
         <Link href="/" as={`/`} passHref>
-          <Heading>Kyle Tycholiz</Heading>
+          <HeadingWrapper>
+            <Heading>Kyle Tycholiz</Heading>
+          </HeadingWrapper>
         </Link>
         <DarkModeSwitch toggleDarkMode={toggleDarkMode} isDarkMode={isDarkMode} />
       </TopLine>
