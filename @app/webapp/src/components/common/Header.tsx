@@ -4,7 +4,6 @@ import { Heading, HorizontalRule } from '.'
 import { DarkModeSwitch } from '@components/custom'
 import constants from '@constants'
 
-
 type Props = {
   toggleDarkMode: any
   isDarkMode: boolean
@@ -38,7 +37,6 @@ const Bullet = styled.span`
   padding-right: 0.5em;
   color: ${({ theme }) => theme.color.grayscale[2]};
 `
-
 
 export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
   return (
@@ -76,8 +74,14 @@ export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
         </li>
         <Bullet>&bull;</Bullet>
         <li>
-          <a href={constants.dendronTechUrl} target="_blank" rel="noreferrer">
+          <a href={constants.dendronThoughtsTechUrl} target="_blank" rel="noreferrer">
             second brain
+          </a>
+        </li>
+        <Bullet>&bull;</Bullet>
+        <li>
+          <a href={constants.dendronTechUrl} target="_blank" rel="noreferrer">
+            digital garden
           </a>
         </li>
       </NavList>
