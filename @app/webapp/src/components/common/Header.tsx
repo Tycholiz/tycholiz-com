@@ -61,12 +61,12 @@ export const Header = ({ toggleDarkMode, isDarkMode }: Props) => {
           </Link>
         </li>
         <Bullet>&bull;</Bullet>
-        <li>
+        {/* <li>
           <Link href="/posts" as={`/posts`}>
             <a>thoughts</a>
           </Link>
         </li>
-        <Bullet>&bull;</Bullet>
+        <Bullet>&bull;</Bullet> */}
         <li>
           <Link href="/now" as={`/now`}>
             <a>now</a>
