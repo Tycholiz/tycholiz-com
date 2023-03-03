@@ -45,17 +45,7 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
   return (
     <Container>
       <InnerContainer>
-        <MetadataContainer>
-          <MetadataBox>
-            <Text bold={true}>{data.title}</Text>
-            <Text>{data.writer}</Text>
-          </MetadataBox>
-          <MetadataBox>
-            <Text>Written: {data.yearWritten}</Text>
-            <Text>Released: {data.yearRecorded}</Text>
-          </MetadataBox>
-        </MetadataContainer>
-        <Audio controls onPlay={(e) => pauseOthers(e)} src={data.asset.url}>
+        <Audio controls onPlay={(e) => pauseOthers(e)} src={data.asset.audioFileUrl}>
           Your browser does not support the
           <code>audio</code> element.
         </Audio>
