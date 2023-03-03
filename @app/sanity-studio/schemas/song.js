@@ -28,5 +28,10 @@ export default {
       title: 'Year Recorded',
       type: 'number',
     },
+    {
+      name: 'songArt',
+      title: 'Song Art',
+      type: 'image',
+    },
   ],
 }

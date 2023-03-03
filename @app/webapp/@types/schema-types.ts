@@ -32,5 +32,6 @@ export type Song = {
   yearRecorded: number
   asset: {
     url: string
+    songArtUrl: string
   }
 }
