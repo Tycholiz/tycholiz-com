@@ -46,7 +46,7 @@ export const getSongsQuery = groq`
     producer,
     yearWritten,
     yearRecorded,
-    asset->{url},
+    asset->{audioFileUrl},
     asset->{songArtUrl},
   }
 `

@@ -29,8 +29,13 @@ export default {
       type: 'number',
     },
     {
-      name: 'songArt',
-      title: 'Song Art',
+      name: 'audioFileUrl',
+      title: 'Audio File URL',
+      type: 'file',
+    },
+    {
+      name: 'songArtUrl',
+      title: 'Song Art URL',
       type: 'image',
     },
   ],
