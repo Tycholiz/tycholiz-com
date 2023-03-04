@@ -4,7 +4,7 @@ import { useState, SyntheticEvent } from 'react'
 import { Song } from '@types'
 import { useWindowSize } from 'src/hooks'
 import { darkTheme } from '@styles/theme'
-import { Modal } from '@components/common'
+import { Modal, Heading } from '@components/common'
 
 type Props = {
   data: Song
@@ -72,8 +72,8 @@ const SongArt = styled.img`
 const LyricsButton = styled.a`
   cursor: pointer;
   margin-left: auto;
-  padding-top: 1em;
-  color: ${({ theme }) => theme.color.grayscale[4]};
+  margin-top: 1em;
+  color: ${({ theme }) => theme.color.grayscale[3]};
 `
 
 const LyricsBlock = styled.div`
@@ -89,6 +89,7 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
   }
   return (
     <Container>
+      {/* Desktop view song art */}
       {data.songArtUrl && width && width >= darkTheme.breakpointInteger.mobileMedium && (
         <SongArt src={data.songArtUrl} alt={`${data.title} song art`} height={100} />
       )}
@@ -104,13 +105,14 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
               <Text>Released: {data.yearRecorded}</Text>
             </MetadataBox>
           </MetadataContainer>
+          {/* Mobile view song art */}
           {data.songArtUrl && width && width < darkTheme.breakpointInteger.mobileMedium && (
             <SongArt src={data.songArtUrl} alt={`${data.title} song art`} height={75} />
           )}
         </TopContainer>
         {showLyricsModal && (
           <Modal onClose={handleModalClose}>
-            <h2>{data.title}</h2>
+            <Heading level={2}>{data.title}</Heading>
             <hr />
             <LyricsBlock dangerouslySetInnerHTML={{ __html: data.lyrics }}></LyricsBlock>
           </Modal>

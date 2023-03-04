@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
+/* lightTheme used here because modal uses the same colors despite dark/light mode */
+import { lightTheme } from '@styles/theme'
 
 type Props = {
   children: any
@@ -20,29 +22,35 @@ const ModalOverlay = styled.div`
 `
 
 const ModalContent = styled.div`
-  background-color: #fff;
+  position: relative;
+  background-color: ${() => lightTheme.color.grayscale[7]};
   padding: 20px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   height: 90%;
-  width: 90%;
+  min-width: 40%;
+  max-width: 90%;
   overflow-y: auto;
+  & > * {
+    color: ${() => lightTheme.color.grayscale[2]};
+  }
 `
 
 const ModalCloseButton = styled.button`
   position: absolute;
-  top: 7%;
-  right: 8%;
+  top: 3%;
+  right: 5%;
   background: none;
   border: none;
   font-size: 3em;
   cursor: pointer;
-  color: ${({ theme }) => theme.color.grayscale[1]};
+  color: ${() => lightTheme.color.grayscale[2]};
 `
 
 export const Modal = ({ children, onClose }: Props) => {
   const modalRef = useRef(null)
 
+  /* Allow modal to be closed with Esc key */
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -57,6 +65,7 @@ export const Modal = ({ children, onClose }: Props) => {
     }
   }, [onClose])
 
+  /* Allow modal to be closed when clicking on overlay */
   const handleOverlayClick = (event: any) => {
     if (event.target === modalRef.current) {
       onClose()
