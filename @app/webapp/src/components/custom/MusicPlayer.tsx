@@ -15,14 +15,16 @@ const Container = styled.div`
   background-color: rgb(6, 23, 37);
   margin: 1em;
   border-radius: 6px;
-  padding: 2em;
+  padding: 1em;
 `
 
 const InnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  padding-left: 1em;
+  @media (min-width: ${({ theme }) => theme.breakpoint.mobileMedium}) {
+    padding-left: 1em;
+  }
 `
 
 const TopContainer = styled.div`
