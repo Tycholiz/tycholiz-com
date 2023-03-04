@@ -16,6 +16,12 @@ const Container = styled.div`
   margin: 1em;
   border-radius: 6px;
   padding: 1em;
+  @media (min-width: ${({ theme }) => theme.breakpoint.mobileMedium}) {
+    padding: 1.5em;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoint.mobileLarge}) {
+    padding: 2em;
+  }
 `
 
 const InnerContainer = styled.div`
