@@ -38,5 +38,10 @@ export default {
       title: 'Song Art URL',
       type: 'image',
     },
+    {
+      name: 'lyrics',
+      title: 'Lyrics',
+      type: 'lyricsBlock',
+    },
   ],
 }

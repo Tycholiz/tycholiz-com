@@ -12,6 +12,8 @@ import song from './song'
 import author from './author'
 import comment from './comment'
 import reply from './reply'
+import lyricsBlock from './lyricsBlock'
+import lyrics from './lyrics'
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -28,6 +30,8 @@ export default createSchema({
     category,
     comment,
     reply,
+    lyricsBlock,
+    lyrics,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
