@@ -13,9 +13,11 @@ type Props = {
 const Container = styled.div`
   display: flex;
   background-color: rgb(6, 23, 37);
-  margin: 1em;
+  margin-top: 0.9em;
   border-radius: 6px;
   padding: 1em;
+  border: thick double #ffffff;
+  border-radius: 10px;
   @media (min-width: ${({ theme }) => theme.breakpoint.mobileMedium}) {
     padding: 1.5em;
   }
