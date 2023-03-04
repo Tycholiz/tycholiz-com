@@ -1,9 +1,10 @@
 import { Text } from '@components/common'
 import styled from 'styled-components'
-import { SyntheticEvent } from 'react'
+import { useState, SyntheticEvent } from 'react'
 import { Song } from '@types'
 import { useWindowSize } from 'src/hooks'
 import { darkTheme } from '@styles/theme'
+import { Modal } from '@components/common'
 
 type Props = {
   data: Song
@@ -68,12 +69,24 @@ const SongArt = styled.img`
   border-radius: 6px;
 `
 
+const LyricsButton = styled.a`
+  cursor: pointer;
+  margin-left: auto;
+  padding-top: 1em;
+  color: ${({ theme }) => theme.color.grayscale[4]};
+`
+
 export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
   const { width } = useWindowSize()
+  const [showLyricsModal, setShowLyricsModal] = useState(false)
+
+  const handleModalClose = () => {
+    setShowLyricsModal(false)
+  }
   return (
     <Container>
       {data.songArtUrl && width && width >= darkTheme.breakpointInteger.mobileMedium && (
-        <SongArt src={data.songArtUrl} alt="" height={100} />
+        <SongArt src={data.songArtUrl} alt={`${data.title} song art`} height={100} />
       )}
       <InnerContainer>
         <TopContainer>
@@ -91,10 +104,18 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
             <SongArt src={data.songArtUrl} alt={`${data.title} song art`} height={75} />
           )}
         </TopContainer>
+        {showLyricsModal && (
+          <Modal onClose={handleModalClose}>
+            <h2>{data.title}</h2>
+            <hr />
+            <p>You can put any content you want here.</p>
+          </Modal>
+        )}
         <Audio controls onPlay={(e) => pauseOthers(e)} src={data.audioFileUrl}>
           Your browser does not support the
           <code>audio</code> element.
         </Audio>
+        <LyricsButton onClick={() => setShowLyricsModal(true)}>Lyrics</LyricsButton>
       </InnerContainer>
     </Container>
   )
