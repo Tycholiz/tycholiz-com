@@ -28,11 +28,18 @@ const ModalContent = styled.div`
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   height: 90%;
-  min-width: 40%;
-  max-width: 90%;
   overflow-y: auto;
+  min-width: 80%;
   & > * {
     color: ${() => lightTheme.color.grayscale[2]};
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoint.mobileMedium}) {
+    min-width: 60%;
+    max-width: 60%;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoint.mobileLarge}) {
+    min-width: 40%;
+    max-width: 40%;
   }
 `
 
