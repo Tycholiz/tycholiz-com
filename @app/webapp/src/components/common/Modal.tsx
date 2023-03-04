@@ -26,6 +26,7 @@ const ModalContent = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   height: 90%;
   width: 90%;
+  overflow-y: auto;
 `
 
 const ModalCloseButton = styled.button`

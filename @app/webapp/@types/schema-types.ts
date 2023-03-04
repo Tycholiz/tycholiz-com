@@ -32,4 +32,5 @@ export type Song = {
   yearRecorded: number
   audioFileUrl: string
   songArtUrl: string
+  lyrics: string
 }

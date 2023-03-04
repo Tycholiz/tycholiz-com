@@ -76,6 +76,10 @@ const LyricsButton = styled.a`
   color: ${({ theme }) => theme.color.grayscale[4]};
 `
 
+const LyricsBlock = styled.div`
+  margin-top: 2em;
+`
+
 export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
   const { width } = useWindowSize()
   const [showLyricsModal, setShowLyricsModal] = useState(false)
@@ -108,14 +112,16 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
           <Modal onClose={handleModalClose}>
             <h2>{data.title}</h2>
             <hr />
-            <p>You can put any content you want here.</p>
+            <LyricsBlock dangerouslySetInnerHTML={{ __html: data.lyrics }}></LyricsBlock>
           </Modal>
         )}
         <Audio controls onPlay={(e) => pauseOthers(e)} src={data.audioFileUrl}>
           Your browser does not support the
           <code>audio</code> element.
         </Audio>
-        <LyricsButton onClick={() => setShowLyricsModal(true)}>Lyrics</LyricsButton>
+        {data.lyrics && (
+          <LyricsButton onClick={() => setShowLyricsModal(true)}>Lyrics</LyricsButton>
+        )}
       </InnerContainer>
     </Container>
   )

@@ -1,7 +1,7 @@
 export default {
   name: 'song',
   title: 'Song',
-  type: 'file',
+  type: 'document',
   fields: [
     {
       name: 'title',
@@ -41,7 +41,7 @@ export default {
     {
       name: 'lyrics',
       title: 'Lyrics',
-      type: 'lyricsBlock',
+      type: 'string',
     },
   ],
 }
