@@ -4,6 +4,11 @@ const baseTheme = {
     mobileMedium: '541px',
     mobileLarge: '650px',
   },
+  breakpointInteger: {
+    mobileSmall: 400,
+    mobileMedium: 541,
+    mobileLarge: 650,
+  },
   color: {
     primary: ['#60c17d', '#5e8d6c'],
   },

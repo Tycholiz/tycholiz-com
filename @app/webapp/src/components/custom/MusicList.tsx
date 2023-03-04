@@ -13,6 +13,9 @@ const PlayerContainer = styled.section`
 `
 
 export const MusicList: React.FC<Props> = ({ songs }) => {
+  /**
+   * When hitting 'play' on a song, pause all other songs that may be actively playing
+   */
   const pauseOthers = (e: SyntheticEvent) => {
     const audioTags = document.getElementsByTagName('audio')
     for (var i = 0; i < audioTags.length; i++) {
