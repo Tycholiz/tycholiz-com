@@ -1,1 +1,1 @@
-{"_type": "song", "title": "Alhambra", "_sanityAsset": "file@file:///Users/kyletycholiz/Documents/Alhambra.mp3"}
+{"_type": "song", "title": "Alhambra", "writer": "Kyle Tycholiz", "producer": "Dev Brow", "yearWritten": 2015, "yearRecorded": 2015, "songArtUrl": { "_type": "image", "_sanityAsset": "image@file:///Users/kyletycholiz/Downloads/Alhambra-solo.png" }, "audioFileUrl": { "_type": "file", "_sanityAsset": "file@file:///Users/kyletycholiz/Downloads/Alhambra.mp3" } }
