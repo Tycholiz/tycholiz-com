@@ -43,6 +43,7 @@ const serializers = {
 
 export const Now = ({ nowPageData }: Props) => {
   const options = { year: 'numeric', month: 'short', day: 'numeric' }
+  /* @ts-ignore */
   const formattedDate = new Intl.DateTimeFormat('en-US', options).format(
     new Date(nowPageData.lastUpdated),
   )
