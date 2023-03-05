@@ -51,3 +51,10 @@ export const getSongsQuery = groq`
     "songArtUrl": songArtUrl.asset->url
   }
 `
+
+export const getNowQuery = groq`
+  *[_type == "now"][0] {
+    body,
+    lastUpdated
+  }
+`
