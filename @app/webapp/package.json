@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "node --openssl-legacy-provider ./node_modules/.bin/next dev",
+    "build": "node --openssl-legacy-provider ./node_modules/.bin/next build",
+    "start": "node --openssl-legacy-provider ./node_modules/.bin/next",
     "clean": "rm -rf ./.next",
     "lint": "next lint"
   },
