@@ -8,16 +8,20 @@ import { Modal, Heading } from '@components/common'
 
 type Props = {
   data: Song
+  songIndex: number
+  isPlaying: boolean
   pauseOthers: (e: SyntheticEvent) => void
+  onSongEnd: () => void
 }
 
-const Container = styled.div`
+const Container = styled.div<{ isPlaying: boolean }>`
   display: flex;
   background-color: rgb(6, 23, 37);
   margin-top: 0.9em;
   border-radius: 6px;
   padding: 1em;
-  border: thick double #ffffff;
+  border: thick double
+    ${({ isPlaying, theme }) => (isPlaying ? '#8ee4a8' : theme.color.grayscale[7])};
   border-radius: 10px;
   @media (min-width: ${({ theme }) => theme.breakpoint.mobileMedium}) {
     padding: 1.5em;
@@ -80,7 +84,13 @@ const LyricsBlock = styled.div`
   margin-top: 2em;
 `
 
-export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
+export const MusicPlayer: React.FC<Props> = ({
+  data,
+  songIndex,
+  isPlaying,
+  pauseOthers,
+  onSongEnd,
+}) => {
   const { width } = useWindowSize()
   const [showLyricsModal, setShowLyricsModal] = useState(false)
 
@@ -88,7 +98,7 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
     setShowLyricsModal(false)
   }
   return (
-    <Container>
+    <Container isPlaying={isPlaying}>
       {/* Desktop view song art */}
       {data.songArtUrl && width && width >= darkTheme.breakpointInteger.mobileMedium && (
         <SongArt src={data.songArtUrl} alt={`${data.title} song art`} height={100} />
@@ -117,7 +127,7 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
             <LyricsBlock dangerouslySetInnerHTML={{ __html: data.lyrics }}></LyricsBlock>
           </Modal>
         )}
-        <Audio controls onPlay={(e) => pauseOthers(e)} src={data.audioFileUrl}>
+        <Audio controls onPlay={(e) => pauseOthers(e)} onEnded={onSongEnd} src={data.audioFileUrl}>
           Your browser does not support the
           <code>audio</code> element.
         </Audio>
