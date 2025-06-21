@@ -20,7 +20,8 @@ const Container = styled.div<{ isPlaying: boolean }>`
   margin-top: 0.9em;
   border-radius: 6px;
   padding: 1em;
-  border: thick double ${({ isPlaying, theme }) => (isPlaying ? '#8ee4a8' : '#ffffff')};
+  border: thick double
+    ${({ isPlaying, theme }) => (isPlaying ? '#8ee4a8' : theme.color.grayscale[7])};
   border-radius: 10px;
   @media (min-width: ${({ theme }) => theme.breakpoint.mobileMedium}) {
     padding: 1.5em;
