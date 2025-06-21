@@ -8,7 +8,9 @@ import { Modal, Heading } from '@components/common'
 
 type Props = {
   data: Song
+  songIndex: number
   pauseOthers: (e: SyntheticEvent) => void
+  onSongEnd: () => void
 }
 
 const Container = styled.div`
@@ -80,7 +82,7 @@ const LyricsBlock = styled.div`
   margin-top: 2em;
 `
 
-export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
+export const MusicPlayer: React.FC<Props> = ({ data, songIndex, pauseOthers, onSongEnd }) => {
   const { width } = useWindowSize()
   const [showLyricsModal, setShowLyricsModal] = useState(false)
 
@@ -117,7 +119,7 @@ export const MusicPlayer: React.FC<Props> = ({ data, pauseOthers }) => {
             <LyricsBlock dangerouslySetInnerHTML={{ __html: data.lyrics }}></LyricsBlock>
           </Modal>
         )}
-        <Audio controls onPlay={(e) => pauseOthers(e)} src={data.audioFileUrl}>
+        <Audio controls onPlay={(e) => pauseOthers(e)} onEnded={onSongEnd} src={data.audioFileUrl}>
           Your browser does not support the
           <code>audio</code> element.
         </Audio>
