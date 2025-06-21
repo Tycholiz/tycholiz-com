@@ -15,11 +15,7 @@ const PlayerContainer = styled.section`
 const AutoplayContainer = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 1em;
-  padding: 1em;
-  background-color: rgb(6, 23, 37);
-  border-radius: 6px;
-  border: thick double #ffffff;
+  margin-top: 2em;
   width: fit-content;
 `
 
@@ -27,7 +23,7 @@ const AutoplayLabel = styled.label`
   display: flex;
   align-items: center;
   cursor: pointer;
-  color: white;
+  color: ${({ theme }) => theme.color.grayscale[0]};
   font-weight: bold;
   font-size: 0.9em;
 `
@@ -43,7 +39,8 @@ const ToggleSlider = styled.div<{ checked: boolean }>`
   display: inline-block;
   width: 50px;
   height: 28px;
-  background-color: ${({ checked }) => (checked ? '#34C759' : '#39393D')};
+  background-color: ${({ checked, theme }) =>
+    checked ? theme.color.primary[0] : theme.color.grayscale[5]};
   border-radius: 14px;
   transition: background-color 0.3s ease;
   cursor: pointer;
@@ -55,14 +52,15 @@ const ToggleSlider = styled.div<{ checked: boolean }>`
     left: ${({ checked }) => (checked ? '24px' : '2px')};
     width: 24px;
     height: 24px;
-    background-color: white;
+    background-color: ${({ theme }) => theme.color.grayscale[0]};
     border-radius: 50%;
     transition: left 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   }
 
   &:hover {
-    background-color: ${({ checked }) => (checked ? '#30A14E' : '#48484A')};
+    background-color: ${({ checked, theme }) =>
+      checked ? theme.color.primary[1] : theme.color.grayscale[4]};
   }
 `
 
@@ -127,6 +125,7 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
           key={song._id}
           data={song}
           songIndex={index}
+          isPlaying={currentPlayingIndex === index}
           pauseOthers={(e) => pauseOthers(e, index)}
           onSongEnd={() => handleSongEnd(index)}
         />

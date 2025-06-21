@@ -9,17 +9,18 @@ import { Modal, Heading } from '@components/common'
 type Props = {
   data: Song
   songIndex: number
+  isPlaying: boolean
   pauseOthers: (e: SyntheticEvent) => void
   onSongEnd: () => void
 }
 
-const Container = styled.div`
+const Container = styled.div<{ isPlaying: boolean }>`
   display: flex;
   background-color: rgb(6, 23, 37);
   margin-top: 0.9em;
   border-radius: 6px;
   padding: 1em;
-  border: thick double #ffffff;
+  border: thick double ${({ isPlaying, theme }) => (isPlaying ? '#8ee4a8' : '#ffffff')};
   border-radius: 10px;
   @media (min-width: ${({ theme }) => theme.breakpoint.mobileMedium}) {
     padding: 1.5em;
@@ -82,7 +83,13 @@ const LyricsBlock = styled.div`
   margin-top: 2em;
 `
 
-export const MusicPlayer: React.FC<Props> = ({ data, songIndex, pauseOthers, onSongEnd }) => {
+export const MusicPlayer: React.FC<Props> = ({
+  data,
+  songIndex,
+  isPlaying,
+  pauseOthers,
+  onSongEnd,
+}) => {
   const { width } = useWindowSize()
   const [showLyricsModal, setShowLyricsModal] = useState(false)
 
@@ -90,7 +97,7 @@ export const MusicPlayer: React.FC<Props> = ({ data, songIndex, pauseOthers, onS
     setShowLyricsModal(false)
   }
   return (
-    <Container>
+    <Container isPlaying={isPlaying}>
       {/* Desktop view song art */}
       {data.songArtUrl && width && width >= darkTheme.breakpointInteger.mobileMedium && (
         <SongArt src={data.songArtUrl} alt={`${data.title} song art`} height={100} />
