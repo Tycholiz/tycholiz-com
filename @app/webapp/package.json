@@ -2,9 +2,6 @@
   "name": "@tycholiz/webapp",
   "version": "0.1.0",
   "private": true,
-  "engines": {
-    "node": "22.x"
-  },
   "scripts": {
     "dev": "node --openssl-legacy-provider ./node_modules/.bin/next dev",
     "build": "node --openssl-legacy-provider ./node_modules/.bin/next build",
