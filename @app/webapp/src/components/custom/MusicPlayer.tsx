@@ -77,7 +77,7 @@ const LyricsButton = styled.a`
   cursor: pointer;
   margin-left: auto;
   margin-top: 1em;
-  color: ${({ theme }) => theme.color.grayscale[3]};
+  color: ${({ theme }) => theme.color.grayscale[2]};
 `
 
 const LyricsBlock = styled.div`
