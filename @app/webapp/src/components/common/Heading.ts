@@ -7,6 +7,7 @@ type Props = {
   children: JSX.Element
 }
 
+
 const fontSize = ({ level }: Props) => `${0.75 + 1 * (1 / level)}rem`
 
 const styles = css`
