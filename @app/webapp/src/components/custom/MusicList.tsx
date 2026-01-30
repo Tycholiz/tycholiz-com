@@ -1,6 +1,6 @@
 import { MusicPlayer } from '.'
 import styled from 'styled-components'
-import { SyntheticEvent, useState, useEffect, useMemo } from 'react'
+import { SyntheticEvent, useState, useEffect } from 'react'
 import { Song } from '@types'
 
 type Props = {
@@ -91,20 +91,13 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
     }
   }, [])
 
-  // Generate shuffled order when shuffle is enabled or songs change
+  // Generate shuffled play order when shuffle is enabled or songs change
   useEffect(() => {
     if (isShuffle) {
       const indices = songs.map((_, i) => i)
       setShuffledOrder(shuffleArray(indices))
     }
   }, [isShuffle, songs])
-
-  const displayedSongs = useMemo(() => {
-    if (isShuffle && shuffledOrder.length === songs.length) {
-      return shuffledOrder.map((i) => songs[i])
-    }
-    return songs
-  }, [isShuffle, shuffledOrder, songs])
 
   const toggleAutoplay = () => {
     const newAutoplayState = !isAutoplay
@@ -138,17 +131,39 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
 
   /**
    * Handle when a song ends - if autoplay is enabled, play the next song
+   * If shuffle is enabled, play the next song in the shuffled order
    */
   const handleSongEnd = (songIndex: number) => {
-    if (isAutoplay && songIndex < displayedSongs.length - 1) {
-      const nextIndex = songIndex + 1
-      const audioTags = document.getElementsByTagName('audio')
-      if (audioTags[nextIndex]) {
-        audioTags[nextIndex].play()
-        setCurrentPlayingIndex(nextIndex)
+    if (!isAutoplay) {
+      setCurrentPlayingIndex(null)
+      return
+    }
+
+    const audioTags = document.getElementsByTagName('audio')
+
+    if (isShuffle && shuffledOrder.length === songs.length) {
+      // Find current position in shuffle order and get next
+      const currentShufflePosition = shuffledOrder.indexOf(songIndex)
+      if (currentShufflePosition < shuffledOrder.length - 1) {
+        const nextIndex = shuffledOrder[currentShufflePosition + 1]
+        if (audioTags[nextIndex]) {
+          audioTags[nextIndex].play()
+          setCurrentPlayingIndex(nextIndex)
+        }
+      } else {
+        setCurrentPlayingIndex(null)
       }
     } else {
-      setCurrentPlayingIndex(null)
+      // Normal sequential playback
+      if (songIndex < songs.length - 1) {
+        const nextIndex = songIndex + 1
+        if (audioTags[nextIndex]) {
+          audioTags[nextIndex].play()
+          setCurrentPlayingIndex(nextIndex)
+        }
+      } else {
+        setCurrentPlayingIndex(null)
+      }
     }
   }
 
@@ -168,7 +183,7 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
           Shuffle
         </AutoplayLabel>
       </ControlsContainer>
-      {displayedSongs.map((song, index) => (
+      {songs.map((song, index) => (
         <MusicPlayer
           key={song._id}
           data={song}
