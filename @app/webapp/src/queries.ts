@@ -39,7 +39,7 @@ export const getAllPostsQuery = groq`
 `
 
 export const getSongsQuery = groq`
-	*[_type == "song"] | order(yearRecorded desc, yearWritten desc) {
+	*[_type == "song"] | order(yearWritten desc, yearRecorded desc) {
     _id,
     title,
     writer,
