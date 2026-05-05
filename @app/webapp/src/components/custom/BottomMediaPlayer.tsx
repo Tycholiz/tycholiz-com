@@ -22,7 +22,7 @@ const Bar = styled.div<{ visible: boolean }>`
   z-index: 1000;
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
   flex-direction: column;
-  padding: 0.6em 1em 0.5em;
+  padding: 0.6em 1em calc(0.5em + env(safe-area-inset-bottom));
   gap: 0.4em;
 `
 

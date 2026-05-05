@@ -21,7 +21,7 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 const PlayerContainer = styled.section`
   display: flex;
   flex-direction: column;
-  padding-bottom: 90px;
+  padding-bottom: calc(90px + env(safe-area-inset-bottom));
 `
 
 const ControlsContainer = styled.div`
