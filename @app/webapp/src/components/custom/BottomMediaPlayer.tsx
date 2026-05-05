@@ -173,6 +173,14 @@ const PlayButton = styled(IconButton)`
   }
 `
 
+const MobileShuffleButton = styled.div`
+  display: flex;
+
+  @media (min-width: 541px) {
+    display: none;
+  }
+`
+
 const ShuffleWrapper = styled.div`
   display: none;
 
@@ -378,6 +386,11 @@ export const BottomMediaPlayer: React.FC<Props> = ({
         </SongInfo>
 
         <ButtonsRow>
+          <MobileShuffleButton>
+            <IconButton active={isShuffle} onClick={onToggleShuffle} aria-label="Toggle shuffle">
+              <ShuffleIcon />
+            </IconButton>
+          </MobileShuffleButton>
           <IconButton onClick={onPrev} aria-label="Previous song">
             <PrevIcon />
           </IconButton>
