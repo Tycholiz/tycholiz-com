@@ -136,39 +136,35 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
   const handleNext = () => {
     if (currentPlayingIndex === null) return
     const audioTags = document.getElementsByTagName('audio')
-    let nextIndex: number | null = null
+    let nextIndex: number
 
     if (isShuffle && shuffledOrder.length === songs.length) {
       const pos = shuffledOrder.indexOf(currentPlayingIndex)
-      if (pos < shuffledOrder.length - 1) nextIndex = shuffledOrder[pos + 1]
+      nextIndex = shuffledOrder[(pos + 1) % shuffledOrder.length]
     } else {
-      if (currentPlayingIndex < songs.length - 1) nextIndex = currentPlayingIndex + 1
+      nextIndex = (currentPlayingIndex + 1) % songs.length
     }
 
-    if (nextIndex !== null && audioTags[nextIndex]) {
-      for (let i = 0; i < audioTags.length; i++) audioTags[i].pause()
-      audioTags[nextIndex].play()
-      setCurrentPlayingIndex(nextIndex)
-    }
+    for (let i = 0; i < audioTags.length; i++) audioTags[i].pause()
+    audioTags[nextIndex].play()
+    setCurrentPlayingIndex(nextIndex)
   }
 
   const handlePrev = () => {
     if (currentPlayingIndex === null) return
     const audioTags = document.getElementsByTagName('audio')
-    let prevIndex: number | null = null
+    let prevIndex: number
 
     if (isShuffle && shuffledOrder.length === songs.length) {
       const pos = shuffledOrder.indexOf(currentPlayingIndex)
-      if (pos > 0) prevIndex = shuffledOrder[pos - 1]
+      prevIndex = shuffledOrder[(pos - 1 + shuffledOrder.length) % shuffledOrder.length]
     } else {
-      if (currentPlayingIndex > 0) prevIndex = currentPlayingIndex - 1
+      prevIndex = (currentPlayingIndex - 1 + songs.length) % songs.length
     }
 
-    if (prevIndex !== null && audioTags[prevIndex]) {
-      for (let i = 0; i < audioTags.length; i++) audioTags[i].pause()
-      audioTags[prevIndex].play()
-      setCurrentPlayingIndex(prevIndex)
-    }
+    for (let i = 0; i < audioTags.length; i++) audioTags[i].pause()
+    audioTags[prevIndex].play()
+    setCurrentPlayingIndex(prevIndex)
   }
 
   /**
