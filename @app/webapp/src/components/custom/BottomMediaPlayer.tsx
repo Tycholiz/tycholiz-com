@@ -24,6 +24,7 @@ const Bar = styled.div<{ visible: boolean }>`
   flex-direction: column;
   padding: 0.6em 1em calc(0.5em + env(safe-area-inset-bottom));
   gap: 0.4em;
+  transform: translateZ(0);
 `
 
 const MainRow = styled.div`
