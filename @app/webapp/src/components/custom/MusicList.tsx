@@ -1,4 +1,5 @@
 import { MusicPlayer } from '.'
+import { BottomMediaPlayer } from './BottomMediaPlayer'
 import styled from 'styled-components'
 import { SyntheticEvent, useState, useEffect } from 'react'
 import { Song } from '@types'
@@ -20,6 +21,7 @@ const shuffleArray = <T,>(array: T[]): T[] => {
 const PlayerContainer = styled.section`
   display: flex;
   flex-direction: column;
+  padding-bottom: 90px;
 `
 
 const ControlsContainer = styled.div`
@@ -79,6 +81,7 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
   const [isShuffle, setIsShuffle] = useState(false)
   const [currentPlayingIndex, setCurrentPlayingIndex] = useState<number | null>(null)
   const [shuffledOrder, setShuffledOrder] = useState<number[]>([])
+  const [hasEverPlayed, setHasEverPlayed] = useState(false)
 
   useEffect(() => {
     const localStorageAutoplay = localStorage.getItem('autoplay')
@@ -127,6 +130,45 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
       }
     }
     setCurrentPlayingIndex(songIndex)
+    setHasEverPlayed(true)
+  }
+
+  const handleNext = () => {
+    if (currentPlayingIndex === null) return
+    const audioTags = document.getElementsByTagName('audio')
+    let nextIndex: number | null = null
+
+    if (isShuffle && shuffledOrder.length === songs.length) {
+      const pos = shuffledOrder.indexOf(currentPlayingIndex)
+      if (pos < shuffledOrder.length - 1) nextIndex = shuffledOrder[pos + 1]
+    } else {
+      if (currentPlayingIndex < songs.length - 1) nextIndex = currentPlayingIndex + 1
+    }
+
+    if (nextIndex !== null && audioTags[nextIndex]) {
+      for (let i = 0; i < audioTags.length; i++) audioTags[i].pause()
+      audioTags[nextIndex].play()
+      setCurrentPlayingIndex(nextIndex)
+    }
+  }
+
+  const handlePrev = () => {
+    if (currentPlayingIndex === null) return
+    const audioTags = document.getElementsByTagName('audio')
+    let prevIndex: number | null = null
+
+    if (isShuffle && shuffledOrder.length === songs.length) {
+      const pos = shuffledOrder.indexOf(currentPlayingIndex)
+      if (pos > 0) prevIndex = shuffledOrder[pos - 1]
+    } else {
+      if (currentPlayingIndex > 0) prevIndex = currentPlayingIndex - 1
+    }
+
+    if (prevIndex !== null && audioTags[prevIndex]) {
+      for (let i = 0; i < audioTags.length; i++) audioTags[i].pause()
+      audioTags[prevIndex].play()
+      setCurrentPlayingIndex(prevIndex)
+    }
   }
 
   /**
@@ -193,6 +235,15 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
           onSongEnd={() => handleSongEnd(index)}
         />
       ))}
+      <BottomMediaPlayer
+        songs={songs}
+        currentPlayingIndex={currentPlayingIndex}
+        visible={hasEverPlayed}
+        isShuffle={isShuffle}
+        onToggleShuffle={toggleShuffle}
+        onNext={handleNext}
+        onPrev={handlePrev}
+      />
     </PlayerContainer>
   )
 }
