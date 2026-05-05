@@ -388,7 +388,11 @@ export const BottomMediaPlayer: React.FC<Props> = ({
 
         <ButtonsRow>
           <MobileShuffleButton>
-            <IconButton active={isShuffle} onClick={onToggleShuffle} aria-label="Toggle shuffle">
+            <IconButton
+              style={{ color: isShuffle ? '#60c17d' : '#e0e0e0' }}
+              onClick={onToggleShuffle}
+              aria-label="Toggle shuffle"
+            >
               <ShuffleIcon />
             </IconButton>
           </MobileShuffleButton>
@@ -404,7 +408,11 @@ export const BottomMediaPlayer: React.FC<Props> = ({
         </ButtonsRow>
 
         <ShuffleWrapper>
-          <IconButton active={isShuffle} onClick={onToggleShuffle} aria-label="Toggle shuffle">
+          <IconButton
+            style={{ color: isShuffle ? '#60c17d' : '#e0e0e0' }}
+            onClick={onToggleShuffle}
+            aria-label="Toggle shuffle"
+          >
             <ShuffleIcon />
           </IconButton>
         </ShuffleWrapper>
