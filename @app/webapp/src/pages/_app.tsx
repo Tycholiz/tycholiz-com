@@ -3,6 +3,7 @@ import { ThemeProvider } from 'styled-components'
 import { lightTheme, darkTheme } from '@styles/theme'
 import { GlobalStyles } from '@styles/global'
 import type { AppProps } from 'next/app'
+import Head from 'next/head'
 
 /* 
   This is the entry point into Next.js. The `Component` prop here corresponds to
@@ -27,6 +28,9 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      </Head>
       <GlobalStyles />
       <Component {...pageProps} isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
     </ThemeProvider>

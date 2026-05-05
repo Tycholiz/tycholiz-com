@@ -22,8 +22,9 @@ const Bar = styled.div<{ visible: boolean }>`
   z-index: 1000;
   display: ${({ visible }) => (visible ? 'flex' : 'none')};
   flex-direction: column;
-  padding: 0.6em 1em 0.5em;
+  padding: 0.6em 1em calc(0.5em + env(safe-area-inset-bottom));
   gap: 0.4em;
+  transform: translateZ(0);
 `
 
 const MainRow = styled.div`
@@ -387,7 +388,11 @@ export const BottomMediaPlayer: React.FC<Props> = ({
 
         <ButtonsRow>
           <MobileShuffleButton>
-            <IconButton active={isShuffle} onClick={onToggleShuffle} aria-label="Toggle shuffle">
+            <IconButton
+              style={{ color: isShuffle ? '#60c17d' : '#e0e0e0' }}
+              onClick={onToggleShuffle}
+              aria-label="Toggle shuffle"
+            >
               <ShuffleIcon />
             </IconButton>
           </MobileShuffleButton>
@@ -403,7 +408,11 @@ export const BottomMediaPlayer: React.FC<Props> = ({
         </ButtonsRow>
 
         <ShuffleWrapper>
-          <IconButton active={isShuffle} onClick={onToggleShuffle} aria-label="Toggle shuffle">
+          <IconButton
+            style={{ color: isShuffle ? '#60c17d' : '#e0e0e0' }}
+            onClick={onToggleShuffle}
+            aria-label="Toggle shuffle"
+          >
             <ShuffleIcon />
           </IconButton>
         </ShuffleWrapper>
