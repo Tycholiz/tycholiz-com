@@ -1,5 +1,6 @@
 export { MusicList } from './MusicList'
 export { MusicPlayer } from './MusicPlayer'
+export { BottomMediaPlayer } from './BottomMediaPlayer'
 export { Post } from './Post'
 export { PostList } from './PostList'
 export { Now } from './Now'
