@@ -7,6 +7,7 @@ const config = {
   useCdn: process.env.NODE_ENV === 'production',
   token: process.env.SANITY_API_TOKEN || '',
   apiVersion: '2021-10-26',
+  perspective: 'published',
 }
 
 // Debug logging for build process
