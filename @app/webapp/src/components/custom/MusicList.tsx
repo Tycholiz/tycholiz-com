@@ -1,5 +1,6 @@
 import { MusicPlayer } from '.'
 import { BottomMediaPlayer } from './BottomMediaPlayer'
+import { DownloadAllButton } from './DownloadAllButton'
 import styled from 'styled-components'
 import { SyntheticEvent, useState, useEffect } from 'react'
 import { Song } from '@types'
@@ -26,9 +27,10 @@ const PlayerContainer = styled.section`
 
 const ControlsContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   margin-top: 2em;
-  gap: 2em;
+  gap: 1em 2em;
 `
 
 const AutoplayLabel = styled.label`
@@ -220,6 +222,7 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
           </ToggleContainer>
           Shuffle
         </AutoplayLabel>
+        <DownloadAllButton songs={songs} />
       </ControlsContainer>
       {songs.map((song, index) => (
         <MusicPlayer
