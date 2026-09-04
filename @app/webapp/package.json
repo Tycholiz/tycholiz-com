@@ -17,6 +17,7 @@
     "@types/node-mailjet": "^3.3.8",
     "@types/styled-components": "^5.1.15",
     "groq": "^2.15.0",
+    "jszip": "^3.10.1",
     "next": "11.1.2",
     "node-mailjet": "^3.3.5",
     "react": "17.0.2",
