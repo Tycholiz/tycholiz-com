@@ -1,10 +1,20 @@
 import JSZip from 'jszip'
 import styled from 'styled-components'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Song } from '@types'
 
 type Props = {
   songs: Song[]
+}
+
+const DOWNLOADED_SONG_IDS_KEY = 'downloadedSongIds'
+
+const getDownloadedSongIds = (): string[] => {
+  try {
+    return JSON.parse(localStorage.getItem(DOWNLOADED_SONG_IDS_KEY) || '[]')
+  } catch {
+    return []
+  }
 }
 
 const Button = styled.button`
@@ -42,6 +52,14 @@ const getFileExtension = (url: string) => {
 export const DownloadAllButton: React.FC<Props> = ({ songs }) => {
   const [isDownloading, setIsDownloading] = useState(false)
   const [progress, setProgress] = useState(0)
+  const [isDownloaded, setIsDownloaded] = useState(false)
+
+  useEffect(() => {
+    const downloadedIds = getDownloadedSongIds()
+    setIsDownloaded(
+      songs.length > 0 && songs.every((song) => downloadedIds.includes(song._id))
+    )
+  }, [songs])
 
   const handleDownloadAll = async () => {
     setIsDownloading(true)
@@ -82,6 +100,12 @@ export const DownloadAllButton: React.FC<Props> = ({ songs }) => {
       link.click()
       document.body.removeChild(link)
       URL.revokeObjectURL(url)
+
+      localStorage.setItem(
+        DOWNLOADED_SONG_IDS_KEY,
+        JSON.stringify(songs.map((song) => song._id))
+      )
+      setIsDownloaded(true)
     } finally {
       setIsDownloading(false)
       setProgress(0)
@@ -90,7 +114,11 @@ export const DownloadAllButton: React.FC<Props> = ({ songs }) => {
 
   return (
     <Button onClick={handleDownloadAll} disabled={isDownloading || songs.length === 0}>
-      {isDownloading ? `Downloading ${progress}/${songs.length}...` : 'Download All'}
+      {isDownloading
+        ? `Downloading ${progress}/${songs.length}...`
+        : isDownloaded
+        ? 'Downloaded'
+        : 'Download All'}
     </Button>
   )
 }
