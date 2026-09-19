@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components'
+import { useScrollLock } from 'src/hooks'
 /* lightTheme used here because modal uses the same colors despite dark/light mode */
 import { lightTheme } from '@styles/theme'
 
@@ -19,6 +20,7 @@ const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
   z-index: 9999;
+  overscroll-behavior: contain;
 `
 
 const ModalContent = styled.div`
@@ -29,6 +31,9 @@ const ModalContent = styled.div`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   height: 90%;
   overflow-y: auto;
+  /* Keep the modal's scroll from chaining out to the page behind it */
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   min-width: 80%;
   & > * {
     color: ${() => lightTheme.color.grayscale[2]};
@@ -56,6 +61,9 @@ const ModalCloseButton = styled.button`
 
 export const Modal = ({ children, onClose }: Props) => {
   const modalRef = useRef(null)
+
+  /* Stop the page behind the overlay from scrolling while the modal is open */
+  useScrollLock()
 
   /* Allow modal to be closed with Esc key */
   useEffect(() => {
