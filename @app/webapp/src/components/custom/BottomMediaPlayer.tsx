@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { Song } from '@types'
+import { sanityImageUrl } from '@utils'
 
 type Props = {
   songs: Song[]
@@ -376,7 +377,10 @@ export const BottomMediaPlayer: React.FC<Props> = ({
       <MainRow>
         <SongInfo>
           {displaySong?.songArtUrl ? (
-            <ArtThumb src={displaySong.songArtUrl} alt={`${displaySong.title} art`} />
+            <ArtThumb
+              src={sanityImageUrl(displaySong.songArtUrl, { height: 48 })}
+              alt={`${displaySong.title} art`}
+            />
           ) : (
             <ArtPlaceholder />
           )}

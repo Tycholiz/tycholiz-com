@@ -122,6 +122,29 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
   }
 
   /**
+   * The song that follows `songIndex` in the current play order, wrapping around
+   * at the end. Used both for the next/autoplay controls and to decide which
+   * track is worth preloading.
+   */
+  const getNextIndex = (songIndex: number): number => {
+    if (isShuffle && shuffledOrder.length === songs.length) {
+      const pos = shuffledOrder.indexOf(songIndex)
+      return shuffledOrder[(pos + 1) % shuffledOrder.length]
+    }
+    return (songIndex + 1) % songs.length
+  }
+
+  /**
+   * Audio elements load lazily (preload="none"), so play() can take a moment and
+   * may reject outright. Swallow the rejection rather than leaving it unhandled.
+   */
+  const playAt = (audio: HTMLAudioElement | undefined) => {
+    if (!audio) return
+    const played = audio.play()
+    if (played) played.catch(() => {})
+  }
+
+  /**
    * When hitting 'play' on a song, pause all other songs that may be actively playing
    */
   const pauseOthers = (e: SyntheticEvent, songIndex: number) => {
@@ -138,17 +161,10 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
   const handleNext = () => {
     if (currentPlayingIndex === null) return
     const audioTags = document.getElementsByTagName('audio')
-    let nextIndex: number
-
-    if (isShuffle && shuffledOrder.length === songs.length) {
-      const pos = shuffledOrder.indexOf(currentPlayingIndex)
-      nextIndex = shuffledOrder[(pos + 1) % shuffledOrder.length]
-    } else {
-      nextIndex = (currentPlayingIndex + 1) % songs.length
-    }
+    const nextIndex = getNextIndex(currentPlayingIndex)
 
     for (let i = 0; i < audioTags.length; i++) audioTags[i].pause()
-    audioTags[nextIndex].play()
+    playAt(audioTags[nextIndex])
     setCurrentPlayingIndex(nextIndex)
   }
 
@@ -165,7 +181,7 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
     }
 
     for (let i = 0; i < audioTags.length; i++) audioTags[i].pause()
-    audioTags[prevIndex].play()
+    playAt(audioTags[prevIndex])
     setCurrentPlayingIndex(prevIndex)
   }
 
@@ -187,7 +203,7 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
       if (currentShufflePosition < shuffledOrder.length - 1) {
         const nextIndex = shuffledOrder[currentShufflePosition + 1]
         if (audioTags[nextIndex]) {
-          audioTags[nextIndex].play()
+          playAt(audioTags[nextIndex])
           setCurrentPlayingIndex(nextIndex)
         }
       } else {
@@ -198,7 +214,7 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
       if (songIndex < songs.length - 1) {
         const nextIndex = songIndex + 1
         if (audioTags[nextIndex]) {
-          audioTags[nextIndex].play()
+          playAt(audioTags[nextIndex])
           setCurrentPlayingIndex(nextIndex)
         }
       } else {
@@ -206,6 +222,17 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
       }
     }
   }
+
+  /**
+   * Nothing is fetched until the listener actually asks for a song. Loading every
+   * track's metadata on mount saturates the connection and blows past the
+   * browser's cap on concurrently loaded media elements, which makes a random
+   * subset of the players fail outright. Once something is playing, the current
+   * and next-up tracks are cheap enough to keep warm so autoplay stays seamless.
+   */
+  const upcomingIndex = currentPlayingIndex === null ? null : getNextIndex(currentPlayingIndex)
+  const preloadFor = (songIndex: number): 'none' | 'metadata' =>
+    songIndex === currentPlayingIndex || songIndex === upcomingIndex ? 'metadata' : 'none'
 
   return (
     <PlayerContainer>
@@ -230,6 +257,7 @@ export const MusicList: React.FC<Props> = ({ songs }) => {
           data={song}
           songIndex={index}
           isPlaying={currentPlayingIndex === index}
+          preload={preloadFor(index)}
           pauseOthers={(e) => pauseOthers(e, index)}
           onSongEnd={() => handleSongEnd(index)}
         />
