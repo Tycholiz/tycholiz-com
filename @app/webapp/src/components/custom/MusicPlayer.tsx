@@ -1,18 +1,23 @@
 import { Text } from '@components/common'
 import styled from 'styled-components'
-import { useState, SyntheticEvent } from 'react'
+import { useState, useRef, useEffect, SyntheticEvent } from 'react'
 import { Song } from '@types'
 import { useWindowSize } from 'src/hooks'
 import { darkTheme } from '@styles/theme'
 import { Modal, Heading } from '@components/common'
+import { sanityImageUrl } from '@utils'
 
 type Props = {
   data: Song
   songIndex: number
   isPlaying: boolean
+  preload: 'none' | 'metadata'
   pauseOthers: (e: SyntheticEvent) => void
   onSongEnd: () => void
 }
+
+const MAX_AUTO_RETRIES = 2
+const RETRY_BASE_DELAY_MS = 600
 
 const Container = styled.div<{ isPlaying: boolean }>`
   display: flex;
@@ -84,15 +89,88 @@ const LyricsBlock = styled.div`
   margin-top: 2em;
 `
 
+const StatusBar = styled.div`
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75em;
+  margin-top: 0.6em;
+  font-size: 0.85em;
+  color: #ff9c9c;
+`
+
+const RetryButton = styled.button`
+  padding: 0.35em 0.9em;
+  border: 1px solid #ff9c9c;
+  border-radius: 14px;
+  background: none;
+  color: #ff9c9c;
+  font-size: inherit;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 156, 156, 0.15);
+  }
+`
+
 export const MusicPlayer: React.FC<Props> = ({
   data,
   songIndex,
   isPlaying,
+  preload,
   pauseOthers,
   onSongEnd,
 }) => {
   const { width } = useWindowSize()
   const [showLyricsModal, setShowLyricsModal] = useState(false)
+  const [hasFailed, setHasFailed] = useState(false)
+  const audioRef = useRef<HTMLAudioElement>(null)
+  const retryCountRef = useRef(0)
+  const retryTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  useEffect(
+    () => () => {
+      if (retryTimeoutRef.current) clearTimeout(retryTimeoutRef.current)
+    },
+    [],
+  )
+
+  const reload = (resumePlayback: boolean) => {
+    const audio = audioRef.current
+    if (!audio) return
+    audio.load()
+    if (resumePlayback) {
+      // A rejected play() (autoplay policy, user paused meanwhile) isn't a load
+      // failure, so swallow it rather than surfacing an unhandled rejection.
+      audio.play().catch(() => {})
+    }
+  }
+
+  /**
+   * The element only errors after it has attempted a fetch, so this is always a
+   * real network/decode failure. These are usually transient, so retry a couple
+   * of times with backoff before giving the user a manual retry.
+   */
+  const handleError = () => {
+    if (retryCountRef.current >= MAX_AUTO_RETRIES) {
+      setHasFailed(true)
+      return
+    }
+    const delay = RETRY_BASE_DELAY_MS * 2 ** retryCountRef.current
+    retryCountRef.current += 1
+    retryTimeoutRef.current = setTimeout(() => reload(isPlaying), delay)
+  }
+
+  const handleLoadedMetadata = () => {
+    retryCountRef.current = 0
+    setHasFailed(false)
+  }
+
+  const handleManualRetry = () => {
+    retryCountRef.current = 0
+    setHasFailed(false)
+    reload(true)
+  }
 
   const handleModalClose = () => {
     setShowLyricsModal(false)
@@ -101,7 +179,11 @@ export const MusicPlayer: React.FC<Props> = ({
     <Container isPlaying={isPlaying}>
       {/* Desktop view song art */}
       {data.songArtUrl && width && width >= darkTheme.breakpointInteger.mobileMedium && (
-        <SongArt src={data.songArtUrl} alt={`${data.title} song art`} height={100} />
+        <SongArt
+          src={sanityImageUrl(data.songArtUrl, { height: 100 })}
+          alt={`${data.title} song art`}
+          height={100}
+        />
       )}
       <InnerContainer>
         <TopContainer>
@@ -117,7 +199,11 @@ export const MusicPlayer: React.FC<Props> = ({
           </MetadataContainer>
           {/* Mobile view song art */}
           {data.songArtUrl && width && width < darkTheme.breakpointInteger.mobileMedium && (
-            <SongArt src={data.songArtUrl} alt={`${data.title} song art`} height={75} />
+            <SongArt
+              src={sanityImageUrl(data.songArtUrl, { height: 75 })}
+              alt={`${data.title} song art`}
+              height={75}
+            />
           )}
         </TopContainer>
         {showLyricsModal && (
@@ -127,10 +213,25 @@ export const MusicPlayer: React.FC<Props> = ({
             <LyricsBlock dangerouslySetInnerHTML={{ __html: data.lyrics }}></LyricsBlock>
           </Modal>
         )}
-        <Audio controls onPlay={(e) => pauseOthers(e)} onEnded={onSongEnd} src={data.audioFileUrl}>
+        <Audio
+          ref={audioRef}
+          controls
+          preload={preload}
+          onPlay={(e) => pauseOthers(e)}
+          onEnded={onSongEnd}
+          onError={handleError}
+          onLoadedMetadata={handleLoadedMetadata}
+          src={data.audioFileUrl}
+        >
           Your browser does not support the
           <code>audio</code> element.
         </Audio>
+        {hasFailed && (
+          <StatusBar role="alert">
+            <span>Couldn&apos;t load this track.</span>
+            <RetryButton onClick={handleManualRetry}>Retry</RetryButton>
+          </StatusBar>
+        )}
         {data.lyrics && (
           <LyricsButton onClick={() => setShowLyricsModal(true)}>Lyrics</LyricsButton>
         )}
